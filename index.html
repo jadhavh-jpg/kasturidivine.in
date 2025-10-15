@@ -1,596 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kasturi Divine — Align. Attract. Ascend.</title>
-  <link rel="icon" href="logo.png" />
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide icons (vanilla) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasturi Divine — Free Calculators</title>
+  <meta name="description" content="Kasturi Divine — Free Numerology Calculators">
   <style>
-    /* Nice scroll + selection */
-    ::selection { background: #F5D061; color:#000; }
+    :root{
+      --bg1:#2a1540; --bg2:#3a1f53; --text:#f7f7fb;
+      --card-shadow:0 12px 28px rgba(0,0,0,.18);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         color:var(--text);
+         background: radial-gradient(1200px 600px at 20% 5%, #6d4ea3 0%, transparent 60%),
+                     radial-gradient(1000px 700px at 80% 10%, #8f5caa 0%, transparent 65%),
+                     linear-gradient(160deg, var(--bg1), var(--bg2));}
+    .container{max-width:1100px;margin:0 auto;padding:24px 16px}
+    header{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+    header .brand{display:flex;align-items:center;gap:10px}
+    header .brand .logo{width:36px;height:36px;border-radius:10px;background:#fff}
+    header nav a{color:#e9e7ef;text-decoration:none;margin:0 10px;font-weight:600;opacity:.9}
+    h1{font-size:36px;margin:10px 0 8px}
+    p.lead{opacity:.85;margin:0 0 24px}
+    /* cards */
+    .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+    .tool-card{border-radius:22px;padding:24px;background:#fff;box-shadow:var(--card-shadow);color:#101010;
+               transition:transform .2s ease, box-shadow .2s ease;position:relative;overflow:hidden}
+    .tool-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+    .tool-card .top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .tool-card .icon{width:56px;height:56px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+    .tool-card h3{margin:0 0 6px 0;font-size:18px}
+    .tool-card a.try{font-weight:700;text-decoration:underline}
+    /* pastel backgrounds */
+    .pink{background:#FFD6DE}
+    .blue{background:#D8E9FF}
+    .peach{background:#FFE2B3}
+    .mint{background:#D7F5E1}
+    footer{opacity:.7;text-align:center;padding:30px 0}
+    .wrap{background:rgba(255,255,255,.08);border-radius:20px;padding:20px}
   </style>
 </head>
-<body class="text-white bg-gradient-to-b from-[#1A0824] via-[#2A0E37] to-[#0E0716] antialiased">
-  <!-- Decorative Glows -->
-  <div class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute -top-44 -right-40 h-[520px] w-[520px] rotate-12 bg-gradient-to-tr from-[#8B5CF6]/40 via-[#F5D061]/30 to-transparent blur-3xl"></div>
-    <div class="absolute -bottom-48 -left-40 h-[520px] w-[520px] -rotate-6 bg-gradient-to-tr from-[#F5D061]/30 via-[#8B5CF6]/30 to-transparent blur-3xl"></div>
-  </div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-black/20 border-b border-white/10">
-    <div class="mx-auto max-w-7xl px-4 md:px-8 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="Kasturi Divine Logo" class="h-9 w-9 rounded-xl object-contain bg-white/90 p-1" />
-        <div class="font-semibold tracking-wide">Kasturi Divine</div>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <strong>Kasturi Divine</strong>
       </div>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#home" class="text-white/80 hover:text-white transition">Home</a>
-        <a href="#services" class="text-white/80 hover:text-white transition">Services</a>
-        <a href="#tools" class="text-white/80 hover:text-white transition">Tools</a>
-        <a href="#programs" class="text-white/80 hover:text-white transition">Programs</a>
-        <a href="#courses" class="text-white/80 hover:text-white transition">Courses</a>
-        <a href="#media" class="text-white/80 hover:text-white transition">Media</a>
-        <a href="#contact" class="text-white/80 hover:text-white transition">Contact</a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#free">Tools</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div class="flex items-center gap-3">
-        <a href="tel:+919354370946" class="hidden md:inline text-sm text-white/80 hover:text-white">+91 93543 70946</a>
-        <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
-           class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
-          <i data-lucide="phone-call" class="w-4 h-4"></i> Book a Call
-        </a>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <section id="home" class="relative overflow-hidden">
-  <div class="mx-auto max-w-7xl px-4 md:px-8 py-16 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-    
-    <!-- LEFT SIDE (TEXT) -->
-    <div>
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> KASTURI DIVINE • Premium Spiritual Consulting
-      </span>
-      <h1 class="mt-4 text-4xl md:text-6xl font-semibold leading-tight">
-        Align. Attract. <span class="text-[#F5D061]">Ascend</span> — with<br class="hidden md:block" /> Kasturi Divine
-      </h1>
-      <p class="mt-4 text-white/80 max-w-xl">
-        Practical, modern spiritual solutions — Tarot • Vastu • Numerology • Vedic guidance.
-        Designed to create calm momentum in your career, wealth and relationships.
-      </p>
-      <div class="mt-6 flex flex-wrap items-center gap-3">
-        <a href="#services" class="rounded-full bg-white text-black hover:bg-white/90 px-5 py-3 inline-flex items-center gap-2">
-          <i data-lucide="lotus" class="w-5 h-5"></i> Explore Services
-        </a>
-        <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
-           class="rounded-full border border-white/30 text-white hover:bg-white/10 px-5 py-3 inline-flex items-center gap-2">
-          <i data-lucide="messages-square" class="w-5 h-5"></i> Join WhatsApp Group
-        </a>
-      </div>
-      <div class="mt-6 flex items-center gap-3 text-sm text-white/70">
-        <i data-lucide="check-circle-2" class="w-4 h-4"></i> 1000+ guided sessions
-        <i data-lucide="check-circle-2" class="w-4 h-4 ml-4"></i> Result-focused approach
-      </div>
-    </div>
-
-    <!-- RIGHT SIDE (YouTube Video) -->
-    <div class="relative group rounded-3xl overflow-hidden border border-white/10 bg-black/20">
-      <div class="relative w-full" style="aspect-ratio: 16/9; min-height: 260px;">
-        <iframe
-          class="absolute inset-0 w-full h-full"
-          src="https://www.youtube.com/embed/4qAtW5WjShQ?rel=0"
-          title="Kasturi Divine Intro"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div class="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur text-center py-2 text-sm text-white/80">
-        🎥 Guided Introduction — Kasturi Divine
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  </section>
-  <!-- Services -->
-  <section id="services" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <div class="flex items-end justify-between gap-6 mb-8">
-        <div>
-          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> What we offer
-          </span>
-          <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Signature Services</h2>
-          <p class="text-white/70 max-w-2xl mt-2">Carefully curated sessions that blend tradition with modern practicality.</p>
-        </div>
-        <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
-           class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
-          <i data-lucide="phone-call" class="w-4 h-4"></i> Free 10-min consult
-        </a>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card -->
-        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
-          <div class="p-6">
-            <div class="flex items-center gap-3 text-lg">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
-                <i data-lucide="star" class="w-6 h-6"></i>
-              </span>
-              Tarot Guidance
+    <section id="home" class="wrap">
+      <h1>Free Calculators</h1>
+      <p class="lead">Click “Try Now” to open calculator in a centered popup window.</p>
+      <div class="tool-grid">
+        <!-- Destiny -->
+        <div class="tool-card pink">
+          <div class="top">
+            <div class="icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
+              </svg>
             </div>
-            <p class="text-white/70 text-sm mt-3">Clarity-focused tarot sessions for decisions, career, and relationships.</p>
+            <h3>Destiny Number Calculator</h3>
           </div>
+          <a class="try" href="#" onclick="return openTool('./tools/destiny.html');">Try Now →</a>
         </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
-          <div class="p-6">
-            <div class="flex items-center gap-3 text-lg">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
-                <i data-lucide="lotus" class="w-6 h-6"></i>
-              </span>
-              Vastu & Energy Balancing
+
+        <!-- Personal Year -->
+        <div class="tool-card blue">
+          <div class="top">
+            <div class="icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8" stroke="#111" stroke-width="1.5"/>
+                <path d="M12 12l4-2" stroke="#111" stroke-width="1.5"/>
+              </svg>
             </div>
-            <p class="text-white/70 text-sm mt-3">Subtle corrections to harmonize your space and invite abundance.</p>
+            <h3>Personal Year Calculator</h3>
           </div>
+          <a class="try" href="#" onclick="return openTool('./tools/personal-year.html');">Try Now →</a>
         </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
-          <div class="p-6">
-            <div class="flex items-center gap-3 text-lg">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
-                <i data-lucide="sparkles" class="w-6 h-6"></i>
-              </span>
-              Numerology Name Synthesis
+
+        <!-- Name Numerology -->
+        <div class="tool-card peach">
+          <div class="top">
+            <div class="icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="5" width="16" height="14" rx="2" stroke="#111" stroke-width="1.5"/>
+                <path d="M8 9h8M8 13h5" stroke="#111" stroke-width="1.5"/>
+              </svg>
             </div>
-            <p class="text-white/70 text-sm mt-3">Align name vibrations with goals for long-term growth.</p>
+            <h3>Name Numerology Calculator</h3>
           </div>
+          <a class="try" href="#" onclick="return openTool('./tools/name-numerology.html');">Try Now →</a>
         </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
-          <div class="p-6">
-            <div class="flex items-center gap-3 text-lg">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
-                <i data-lucide="calendar" class="w-6 h-6"></i>
-              </span>
-              Astro-Consultation
+
+        <!-- Lucky Name -->
+        <div class="tool-card mint">
+          <div class="top">
+            <div class="icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M7 7c3 0 3 3 5 3s2-3 5-3-1 10-5 10S4 7 7 7z" stroke="#111" stroke-width="1.5"/>
+              </svg>
             </div>
-            <p class="text-white/70 text-sm mt-3">Practical, date-bound remedies rooted in Vedic insights.</p>
+            <h3>Lucky Name Calculator</h3>
           </div>
+          <a class="try" href="#" onclick="return openTool('./tools/lucky-name.html');">Try Now →</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Tools -->
-  <section id="tools" class="py-16 md:py-24 bg-white/5">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Handy Utilities
-      </span>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Numerology & Tarot Tools</h2>
-      <p class="text-white/70 max-w-2xl mt-2">Quick calculators to get you started. Click a tool to launch. (Icons are demo; replace anytime.)</p>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-   <section class="free-tools" style="max-width:1100px;margin:0 auto;padding:32px 16px;">
-  <h2 style="text-align:center;font-size:32px;margin-bottom:20px;">Free Calculators</h2>
-
-  <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
-    <!-- Destiny Number -->
-    <div class="card" style="background:#FFD6DE;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
-      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-        <!-- icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      <!-- ==================== Free Calculators Section ==================== -->
-<section id="free" style="max-width:1100px;margin:0 auto;padding:32px 16px;">
-  <h2 style="text-align:center;font-size:32px;margin-bottom:20px;">Free Calculators</h2>
-
-  <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
-
-    <!-- Destiny Number -->
-    <div class="card" style="background:#FFD6DE;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:all .3s;">
-      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 style="margin:0 0 8px 0;">Destiny Number Calculator</h3>
-      <a href="#" onclick="return openTool('./destiny.html');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
-    </div>
-
-    <!-- Personal Year -->
-    <div class="card" style="background:#D8E9FF;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:all .3s;">
-      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="8" stroke="#111" stroke-width="1.5"/>
-          <path d="M12 12l4-2" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 style="margin:0 0 8px 0;">Personal Year Calculator</h3>
-      <a href="#" onclick="return openTool('./personal-year.html');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
-    </div>
-
-    <!-- Name Numerology -->
-    <div class="card" style="background:#FFE2B3;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:all .3s;">
-      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="5" width="16" height="14" rx="2" stroke="#111" stroke-width="1.5"/>
-          <path d="M8 9h8M8 13h5" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 style="margin:0 0 8px 0;">Name Numerology Calculator</h3>
-      <a href="#" onclick="return openTool('./name-numerology.html');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
-    </div>
-
-    <!-- Lucky Name -->
-    <div class="card" style="background:#D7F5E1;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);transition:all .3s;">
-      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M7 7c3 0 3 3 5 3s2-3 5-3-1 10-5 10S4 7 7 7z" stroke="#111" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3 style="margin:0 0 8px 0;">Lucky Name Calculator</h3>
-      <a href="#" onclick="return openTool('./lucky-name.html');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
-    </div>
-
+    <footer>© Kasturi Divine</footer>
   </div>
-</section>
-
-<script>
-  // Popup center open function
-  function openTool(url){
-    const w = 900, h = 700;
-    const y = window.top.outerHeight / 2 + window.top.screenY - (h / 2);
-    const x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
-    window.open(url, '_blank',
-      `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
-    );
-    return false;
-  }
-</script>
-<!-- ================================================================ -->
-
-      <h3 style="margin:0 0 8px 0;">Lucky Name Calculator</h3>
-      <a href="#" class="tool-link"
-         onclick="return openTool('./tools/lucky-name.html');">Try Now →</a>
-    </div>
-  </div>
-</section>
-<script>
-  // centered popup window
-  function openTool(url){
-    const w = 900, h = 700;
-    const y = window.top.outerHeight/2 + window.top.screenY - (h/2);
-    const x = window.top.outerWidth/2  + window.top.screenX - (w/2);
-    window.open(url, '_blank',
-      `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`);
-    return false;
-  }
-</script>
-
-  <!-- Programs -->
-  <section id="programs" class="py-16 md:py-24 bg-white/5">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Starter to Advanced
-      </span>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Transformation Programs</h2>
-      <p class="text-white/70 max-w-2xl mt-2">Choose a guided path with milestones, reviews and tangible outcomes.</p>
-
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <div class="bg-white/10 border border-white/10 rounded-2xl">
-          <div class="p-6">
-            <div class="text-xl font-semibold">Kundalini Harmony (21 Days)</div>
-            <ul class="mt-3 space-y-2 text-sm text-white/80">
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Daily micro-practices</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Weekly 1:1 review</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Personal mantra</li>
-            </ul>
-            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
-          </div>
-        </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl">
-          <div class="p-6">
-            <div class="text-xl font-semibold">Wealth Alignment Sprint</div>
-            <ul class="mt-3 space-y-2 text-sm text-white/80">
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Vastu audit</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Lucky dates planner</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Name tune-up</li>
-            </ul>
-            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
-          </div>
-        </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl">
-          <div class="p-6">
-            <div class="text-xl font-semibold">Relationship Reset</div>
-            <ul class="mt-3 space-y-2 text-sm text-white/80">
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Tarot roadmap</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Ritual kit</li>
-              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Follow-up support</li>
-            </ul>
-            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Diwali Offer CTA -->
-  <section class="py-10">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <div class="rounded-3xl p-6 md:p-10 bg-gradient-to-r from-[#8B5CF6]/30 to-[#F5D061]/30 border border-white/10 backdrop-blur">
-        <div class="grid md:grid-cols-3 gap-6 items-center">
-          <div class="md:col-span-2">
-            <h3 class="text-2xl md:text-3xl font-semibold">Diwali Offer: 15-min Consult at ₹500</h3>
-            <p class="text-white/80 mt-2">Limited-time festive pricing. Secure your slot on Calendly or WhatsApp now.</p>
-          </div>
-          <div class="flex flex-wrap gap-3 md:justify-end">
-            <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
-               class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
-              <i data-lucide="phone-call" class="w-4 h-4"></i> Book Now
-            </a>
-            <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
-               class="rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2 inline-flex items-center gap-2">
-              <i data-lucide="messages-square" class="w-4 h-4"></i> Join Group
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Courses + Student Login -->
- <div class="bg-white/10 border border-white/10 rounded-2xl p-6" id="student-card">
-  <div class="text-xl font-semibold mb-2">Student Login</div>
-
-  <div id="auth-state" class="text-sm text-white/70 mb-3">Not signed in</div>
-
-  <div class="flex flex-wrap gap-3">
-    <button id="google-signin" class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2 inline-flex items-center gap-2">
-      Sign in with Google
-    </button>
-    <button id="signout" class="hidden rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2">
-      Sign out
-    </button>
-  </div>
-
-  <div class="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
-    <div class="text-sm text-white/80">Access Status</div>
-    <div id="status-msg" class="mt-1 text-sm">Sign in and check.</div>
-    <div class="mt-3 flex gap-2">
-      <button id="check-access" class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Check Approval</button>
-      <a id="start-learning" href="#courses" class="hidden rounded-full bg-[#F5D061] text-black px-4 py-2">Start Learning</a>
-    </div>
-  </div>
-
-  <p class="text-xs text-white/60 mt-3">
-    Only admin-approved accounts can access student content. For approval, contact WhatsApp group.
-  </p>
-</div>
-
-        </div>
-        <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
-          <div class="text-xl font-semibold">Available Courses</div>
-          <ul class="mt-3 space-y-2 text-sm text-white/80">
-            <li>Tarot Foundations (6 weeks)</li>
-            <li>Practical Numerology (4 weeks)</li>
-            <li>MOBILE NUMEROLOG  (3 weeks)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Media -->
-  <section id="media" class="py-16 md:py-24 bg-white/5">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="youtube" class="w-3.5 h-3.5"></i> YouTube
-      </span>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Watch Our Insights</h2>
-
-      <div class="grid md:grid-cols-2 gap-6 mt-8">
-        <div class="rounded-2xl overflow-hidden aspect-video bg-black/40">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/4qAtW5WjShQ" title="Kasturi Divine Video 1" allowfullscreen></iframe>
-        </div>
-        <div class="rounded-2xl overflow-hidden aspect-video bg-black/40">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/qkMzgrfk2pc" title="Kasturi Divine Video 2" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 md:px-8 grid md:grid-cols-2 gap-10 items-start">
-      <div>
-        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Let’s talk
-        </span>
-        <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Book a discovery call</h2>
-        <p class="text-white/70 mt-2 max-w-xl">Share a few details and we’ll reach out with times. Prefer WhatsApp? Tap the button below.</p>
-
-        <div class="mt-6">
-          <div class="grid grid-cols-2 gap-3">
-            <input placeholder="Your name" class="bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50" />
-            <input placeholder="Email or WhatsApp" class="bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50" />
-          </div>
-          <textarea rows="5" placeholder="What would you like guidance on?"
-                    class="mt-3 w-full bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50"></textarea>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <button class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2 inline-flex items-center gap-2">
-              <i data-lucide="phone-call" class="w-4 h-4"></i> Request Callback
-            </button>
-            <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
-               class="rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2 inline-flex items-center gap-2">
-              <i data-lucide="messages-square" class="w-4 h-4"></i> Join WhatsApp Group
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mentors (single composite photo) -->
-      <div class="rounded-3xl p-6 bg-white/5 border border-white/10">
-        <div class="text-xl font-semibold">Mentors & Why Us</div>
-        <div class="mt-4 flex items-center gap-4">
-          <img src="contact-photo.png" alt="Mentors: Dr. Santoshh Jakhar and Neetu Choudhary"
-               class="h-28 w-28 rounded-4x2 object-cover bg-white/10 p-1" />
-          <div>
-            <div class="font-medium">Dr. Santoshh Jakhar</div>
-            <div class="text-sm text-white/70">Wellness Coach</div>
-            <div class="mt-2 font-medium">Neetu Choudhary</div>
-            <div class="text-sm text-white/70">Astro, Numero</div>
-          </div>
-        </div>
-        <ul class="mt-6 space-y-3 text-white/80">
-          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Action-first guidance with clear dates, no fluff</li>
-          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Confidential 1:1 support on call or chat</li>
-          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Digital ritual kits and templates included</li>
-        </ul>
-        <div class="mt-6 grid grid-cols-3 gap-3 text-center">
-          <div class="rounded-2xl p-4 bg-white/10">
-            <div class="text-3xl font-semibold">4.9★</div>
-            <div class="text-xs text-white/70">Average rating</div>
-          </div>
-          <div class="rounded-2xl p-4 bg-white/10">
-            <div class="text-3xl font-semibold">1K+</div>
-            <div class="text-xs text-white/70">Sessions</div>
-          </div>
-          <div class="rounded-2xl p-4 bg-white/10">
-            <div class="text-3xl font-semibold">15+</div>
-            <div class="text-xs text-white/70">Years exp.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-   ...
-  <footer class="py-10 border-t border-white/10">
-    ...
-  </footer>
-
-  <!-- Firebase SDKs (v9 modular via CDN) -->
-  <script type="module">
-    // ---- 5.1 Firebase Setup ----
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    const ADMIN_EMAILS = ["your-admin@gmail.com"];
-
-    const app  = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
-    const provider = new GoogleAuthProvider();
-
-    const authState   = document.getElementById('auth-state');
-    const btnSignIn   = document.getElementById('google-signin');
-    const btnSignOut  = document.getElementById('signout');
-    const btnCheck    = document.getElementById('check-access');
-    const statusMsg   = document.getElementById('status-msg');
-    const startBtn    = document.getElementById('start-learning');
-
-    function setMsg(text, ok=false) {
-      statusMsg.textContent = text;
-      statusMsg.className = 'mt-1 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
-    }
-
-    async function ensureUserDoc(user) {
-      const ref = doc(db, 'users', user.uid);
-      const snap = await getDoc(ref);
-      if (!snap.exists()) {
-        await setDoc(ref, {
-          uid: user.uid,
-          email: user.email || '',
-          name: user.displayName || '',
-          photoURL: user.photoURL || '',
-          createdAt: serverTimestamp(),
-          lastLoginAt: serverTimestamp(),
-        });
-      } else {
-        await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
-      }
-    }
-
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        authState.textContent = `Signed in as ${user.email}`;
-        btnSignIn.classList.add('hidden');
-        btnSignOut.classList.remove('hidden');
-        await ensureUserDoc(user);
-        setMsg('Signed in. Click “Check Approval”.');
-      } else {
-        authState.textContent = 'Not signed in';
-        btnSignOut.classList.add('hidden');
-        btnSignIn.classList.remove('hidden');
-        setMsg('Sign in and check.');
-        startBtn.classList.add('hidden');
-      }
-    });
-
-    btnSignIn.addEventListener('click', async () => {
-      try { await signInWithPopup(auth, provider); }
-      catch (e) { setMsg('Sign-in failed. ' + e.message); }
-    });
-
-    btnSignOut.addEventListener('click', async () => {
-      await signOut(auth);
-    });
-
-    btnCheck.addEventListener('click', async () => {
-      const user = auth.currentUser;
-      if (!user) return setMsg('Please sign in first.');
-      try {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        const data = snap.data() || {};
-        const approved = !!data.approved;
-        const restricted = !!data.restricted;
-
-        if (restricted) {
-          startBtn.classList.add('hidden');
-          return setMsg('Access restricted. Contact admin.');
-        }
-        if (approved) {
-          startBtn.classList.remove('hidden');
-          return setMsg('Approved! You can start learning.', true);
-        }
-        startBtn.classList.add('hidden');
-        setMsg('Not approved yet. Admin will enable your account.');
-      } catch (e) {
-        setMsg('Could not check approval. ' + e.message);
-      }
-    });
-  </script>
-
-</body>
-</html>
-
-    </div>
-  </footer>
 
   <script>
-    // Init Lucide icons + year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    window.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-    });
+    function openTool(url){
+      const w = 900, h = 700;
+      const y = window.top.outerHeight/2 + window.top.screenY - (h/2);
+      const x = window.top.outerWidth/2  + window.top.screenX - (w/2);
+      window.open(url, '_blank',
+        `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
+      );
+      return false;
+    }
   </script>
 </body>
 </html>
