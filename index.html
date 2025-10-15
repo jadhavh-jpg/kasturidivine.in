@@ -54,7 +54,7 @@
     <!-- LEFT SIDE (TEXT) -->
     <div>
       <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Solvix Presents • Premium Spiritual Consulting
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> KASTURI DIVINE • Premium Spiritual Consulting
       </span>
       <h1 class="mt-4 text-4xl md:text-6xl font-semibold leading-tight">
         Align. Attract. <span class="text-[#F5D061]">Ascend</span> — with<br class="hidden md:block" /> Kasturi Divine
@@ -177,40 +177,72 @@
       <p class="text-white/70 max-w-2xl mt-2">Quick calculators to get you started. Click a tool to launch. (Icons are demo; replace anytime.)</p>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-        <!-- Repeatable Tool Card -->
-        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
-            <img src="tools/demo1.png" alt="Destiny Number Calculator" class="h-14 w-14 object-contain" />
-          </div>
-          <div class="mt-4 font-medium">Destiny Number Calculator</div>
-          <div class="text-xs text-white/60">Open tool</div>
-        </a>
+   <section class="free-tools" style="max-width:1100px;margin:0 auto;padding:32px 16px;">
+  <h2 style="text-align:center;font-size:32px;margin-bottom:20px;">Free Calculators</h2>
 
-        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
-            <img src="tools/demo2.png" alt="Personal Year Calculator" class="h-14 w-14 object-contain" />
-          </div>
-          <div class="mt-4 font-medium">Personal Year Calculator</div>
-          <div class="text-xs text-white/60">Open tool</div>
-        </a>
-
-        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
-            <img src="tools/demo3.png" alt="Name Numerology Calculator" class="h-14 w-14 object-contain" />
-          </div>
-          <div class="mt-4 font-medium">Name Numerology Calculator</div>
-          <div class="text-xs text-white/60">Open tool</div>
-        </a>
-
-        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
-          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
-            <img src="tools/demo4.png" alt="Lucky Name Calculator" class="h-14 w-14 object-contain" />
-          </div>
-          <div class="mt-4 font-medium">Lucky Name Calculator</div>
-          <div class="text-xs text-white/60">Open tool</div>
-        </a>
+  <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+    <!-- Destiny Number -->
+    <div class="card" style="background:#FFD6DE;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+        <!-- icon -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
+        </svg>
       </div>
+      <h3 style="margin:0 0 8px 0;">Destiny Number Calculator</h3>
+      <a href="#" onclick="return openTool('URL_HERE/destiny');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
     </div>
+
+    <!-- Personal Year -->
+    <div class="card" style="background:#D8E9FF;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#111" stroke-width="1.5"/>
+          <path d="M12 12l4-2" stroke="#111" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 style="margin:0 0 8px 0;">Personal Year Calculator</h3>
+      <a href="#" onclick="return openTool('URL_HERE/personal-year');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
+
+    <!-- Name Numerology -->
+    <div class="card" style="background:#FFE2B3;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="5" width="16" height="14" rx="2" stroke="#111" stroke-width="1.5"/>
+          <path d="M8 9h8M8 13h5" stroke="#111" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 style="margin:0 0 8px 0;">Name Numerology Calculator</h3>
+      <a href="#" onclick="return openTool('URL_HERE/name-numerology');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
+
+    <!-- Lucky Name -->
+    <div class="card" style="background:#D7F5E1;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M7 7c3 0 3 3 5 3s2-3 5-3-1 10-5 10S4 7 7 7z" stroke="#111" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 style="margin:0 0 8px 0;">Lucky Name Calculator</h3>
+      <a href="#" onclick="return openTool('URL_HERE/lucky-name');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function openTool(url){
+    // centered popup like your other site
+    const w = 900, h = 700;
+    const y = window.top.outerHeight / 2 + window.top.screenY - ( h / 2);
+    const x = window.top.outerWidth  / 2 + window.top.screenX - ( w / 2);
+    window.open(url, '_blank',
+      `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
+    );
+    return false; // prevent normal link nav
+  }
+</script>
+
   </section>
 
   <!-- Programs -->
