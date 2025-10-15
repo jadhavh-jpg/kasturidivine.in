@@ -3,307 +3,419 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Numerology with Hari — Home</title>
-  <meta name="description" content="Numerology with Hari — Courses, Free Tools, Blog, and Contact." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+  <title>Kasturi Divine — Align. Attract. Ascend.</title>
+  <link rel="icon" href="logo.png" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide icons (vanilla) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    :root{
-      --bg: #F6F6F9;
-      --text: #1A1A1A;
-      --accent: #4F46E5;       /* Indigo */
-      --accent-2: #A5B4FC;     /* Soft Indigo */
-      --btn: #2563EB;          /* CTA Blue */
-      --white: #FFFFFF;
-      --whatsapp: #25D366;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 16px}
-
-    /* Header */
-    .nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid #e9e9f2;}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .brand img{height:36px;width:auto;display:block}
-    .brand span{color:var(--accent)}
-    .menu{display:flex;gap:18px;font-weight:700}
-    .menu a{padding:10px 12px;border-radius:10px}
-    .menu a:hover{background:var(--accent-2);color:#111}
-    .login-btn{font-weight:800;padding:10px 16px;border-radius:12px;background:var(--btn);color:var(--white);border:none;cursor:pointer}
-    .login-btn:hover{filter:brightness(0.95)}
-    .hamburger{display:none;font-size:28px;cursor:pointer}
-
-    /* Hero */
-    .hero{padding:64px 0;display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;align-items:center}
-    .badge{display:inline-block;background:var(--accent-2);color:#111;padding:8px 14px;border-radius:999px;font-weight:800;letter-spacing:.2px}
-    .h1{font-size:40px;line-height:1.1;margin:16px 0 12px;font-weight:800}
-    .lead{font-size:18px;opacity:.9;margin-bottom:20px;font-weight:700}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid transparent}
-    .btn-primary{background:var(--btn);color:var(--white)}
-    .btn-primary:hover{filter:brightness(0.95)}
-    .btn-ghost{border-color:var(--accent);color:var(--accent);background:transparent}
-    .btn-ghost:hover{background:var(--accent-2);border-color:transparent;color:#111}
-    .hero-card{background:#fff;border:1px solid #ececf6;border-radius:16px;padding:20px;box-shadow:0 8px 28px rgba(79,70,229,.12)}
-    .hero-card h3{margin:0 0 8px;font-weight:800}
-
-    /* Sections */
-    section{padding:56px 0}
-    .section-title{font-size:28px;font-weight:800;margin-bottom:18px;color:var(--accent)}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#fff;border:1px solid #ececf6;border-radius:16px;padding:18px;font-weight:700}
-    .card h4{margin:0 0 8px;font-weight:800}
-    .muted{opacity:.85}
-
-    /* Free Tools (calculator) */
-    .tool{display:grid;gap:12px}
-    input,button,textarea,select{
-      font-family:inherit;font-weight:800;
-    }
-    .input{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid #dcdcf0;background:#fff}
-    .input:focus{outline:none;border-color:var(--accent)}
-    .result{padding:12px 14px;border-radius:12px;background:var(--accent-2)}
-
-    /* Blog */
-    .blog .card a{color:var(--btn)}
-    .blog .card a:hover{text-decoration:underline}
-
-    /* WhatsApp */
-    .wa-btn{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid #111;transition:.2s}
-    .wa-btn:hover{background:var(--whatsapp);border-color:var(--whatsapp)}
-
-    /* Footer */
-    footer{padding:28px 0;border-top:1px solid #e9e9f2;font-weight:800}
-
-    /* Modal (Login) */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px}
-    .modal.active{display:flex}
-    .modal-box{width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid #ececf6;box-shadow:0 12px 40px rgba(37,99,235,.18);padding:20px}
-    .modal-box h3{margin:0 0 12px;font-weight:800}
-    .close{background:transparent;border:none;font-size:22px;cursor:pointer}
-
-    /* Responsive */
-    @media (max-width: 960px){
-      .hero{grid-template-columns:1fr}
-      .menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);padding:10px;border-bottom:1px solid #e9e9f2}
-      .menu.open{display:flex;flex-direction:column}
-      .hamburger{display:block}
-    }
+    /* Nice scroll + selection */
+    ::selection { background: #F5D061; color:#000; }
   </style>
 </head>
-<body>
+<body class="text-white bg-gradient-to-b from-[#1A0824] via-[#2A0E37] to-[#0E0716] antialiased">
+  <!-- Decorative Glows -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-44 -right-40 h-[520px] w-[520px] rotate-12 bg-gradient-to-tr from-[#8B5CF6]/40 via-[#F5D061]/30 to-transparent blur-3xl"></div>
+    <div class="absolute -bottom-48 -left-40 h-[520px] w-[520px] -rotate-6 bg-gradient-to-tr from-[#F5D061]/30 via-[#8B5CF6]/30 to-transparent blur-3xl"></div>
+  </div>
 
   <!-- Header -->
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <img src="logo.png" alt="Logo" />
-        <span>Numerology with Hari</span>
+  <header class="sticky top-0 z-50 backdrop-blur bg-black/20 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 md:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Kasturi Divine Logo" class="h-9 w-9 rounded-xl object-contain bg-white/90 p-1" />
+        <div class="font-semibold tracking-wide">Kasturi Divine</div>
       </div>
-
-      <div class="hamburger" id="hamburger">☰</div>
-
-      <div class="menu" id="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="course.html">Course</a>
-        <a href="#blog">Blog</a>
-        <a href="#free">Free</a>
-        <a href="#contact">Contact</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#home" class="text-white/80 hover:text-white transition">Home</a>
+        <a href="#services" class="text-white/80 hover:text-white transition">Services</a>
+        <a href="#tools" class="text-white/80 hover:text-white transition">Tools</a>
+        <a href="#programs" class="text-white/80 hover:text-white transition">Programs</a>
+        <a href="#courses" class="text-white/80 hover:text-white transition">Courses</a>
+        <a href="#media" class="text-white/80 hover:text-white transition">Media</a>
+        <a href="#contact" class="text-white/80 hover:text-white transition">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="tel:+919354370946" class="hidden md:inline text-sm text-white/80 hover:text-white">+91 93543 70946</a>
+        <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
+           class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
+          <i data-lucide="phone-call" class="w-4 h-4"></i> Book a Call
+        </a>
       </div>
-
-      <button class="login-btn" id="openLogin">Login</button>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <header id="home" class="hero container">
-    <div>
-      <span class="badge">Minimal Indigo Theme</span>
-      <h1 class="h1">Discover Your Numbers.<br/>Transform Your Journey.</h1>
-      <p class="lead">Astrology & Numerology guidance with clean design and powerful tools.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="course.html">Explore Courses</a>
-        <a class="btn btn-ghost" href="#free">Try Free Tools</a>
-      </div>
-    </div>
-    <div class="hero-card">
-      <h3>Join our WhatsApp Group</h3>
-      <p class="muted">Guidance, updates & community support.</p>
-      <a class="wa-btn" href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noopener">
-        <span>Join Now</span>
-      </a>
     </div>
   </header>
 
-  <!-- About -->
-  <section id="about" class="container">
-    <h2 class="section-title">About</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h4>Experience</h4>
-        <p class="muted">Years of practice in numerology & astrology with result-oriented guidance.</p>
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 md:px-8 py-16 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Solvix Presents • Premium Spiritual Consulting
+        </span>
+        <h1 class="mt-4 text-4xl md:text-6xl font-semibold leading-tight">
+          Align. Attract. <span class="text-[#F5D061]">Ascend</span> — with<br class="hidden md:block" /> Kasturi Divine
+        </h1>
+        <p class="mt-4 text-white/80 max-w-xl">
+          Practical, modern spiritual solutions — Tarot • Vastu • Numerology • Vedic guidance.
+          Designed to create calm momentum in your career, wealth and relationships.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#services" class="rounded-full bg-white text-black hover:bg-white/90 px-5 py-3 inline-flex items-center gap-2">
+            <i data-lucide="lotus" class="w-5 h-5"></i> Explore Services
+          </a>
+          <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
+             class="rounded-full border border-white/30 text-white hover:bg-white/10 px-5 py-3 inline-flex items-center gap-2">
+            <i data-lucide="messages-square" class="w-5 h-5"></i> Join WhatsApp Group
+          </a>
+        </div>
+        <div class="mt-6 flex items-center gap-3 text-sm text-white/70">
+          <i data-lucide="check-circle-2" class="w-4 h-4"></i> 1000+ guided sessions
+          <i data-lucide="check-circle-2" class="w-4 h-4 ml-4"></i> Result-focused approach
+        </div>
       </div>
-      <div class="card">
-        <h4>Approach</h4>
-        <p class="muted">Practical, easy-to-understand methods tailored to your goals.</p>
+
+      <div>
+        <div class="relative">
+          <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#F5D061]/40 to-[#8B5CF6]/40 blur-2xl"></div>
+          <div class="relative rounded-3xl p-1 bg-white/10 border border-white/10 backdrop-blur">
+            <div class="rounded-2xl overflow-hidden">
+              <div class="aspect-[4/3] bg-gradient-to-br from-[#2E1065] via-[#3B0764] to-[#1E1B4B] grid grid-cols-3 gap-1 p-1">
+                <!-- decorative blocks -->
+                <div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div>
+                <div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div>
+                <div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div><div class="rounded-xl bg-white/10"></div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between p-3">
+              <div class="text-sm text-white/80">Skillex-inspired visual system</div>
+              <button class="text-white/80 hover:text-white inline-flex items-center gap-2">
+                <i data-lucide="play" class="w-4 h-4"></i> See how it works
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h4>Mission</h4>
-        <p class="muted">Empower people with precise insights and actionable steps.</p>
-      </div>
+
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="container">
-    <h2 class="section-title">Services</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h4>Consultation</h4>
-        <p class="muted">Personal sessions for career, relationships, finance and more.</p>
+  <section id="services" class="py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <div class="flex items-end justify-between gap-6 mb-8">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> What we offer
+          </span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Signature Services</h2>
+          <p class="text-white/70 max-w-2xl mt-2">Carefully curated sessions that blend tradition with modern practicality.</p>
+        </div>
+        <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
+           class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
+          <i data-lucide="phone-call" class="w-4 h-4"></i> Free 10-min consult
+        </a>
       </div>
-      <div class="card">
-        <h4>Reports</h4>
-        <p class="muted">Personalized numerology & astrology reports delivered fast.</p>
-      </div>
-      <div class="card">
-        <h4>Workshops</h4>
-        <p class="muted">Live classes and practical training with demos.</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card -->
+        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
+          <div class="p-6">
+            <div class="flex items-center gap-3 text-lg">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
+                <i data-lucide="star" class="w-6 h-6"></i>
+              </span>
+              Tarot Guidance
+            </div>
+            <p class="text-white/70 text-sm mt-3">Clarity-focused tarot sessions for decisions, career, and relationships.</p>
+          </div>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
+          <div class="p-6">
+            <div class="flex items-center gap-3 text-lg">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
+                <i data-lucide="lotus" class="w-6 h-6"></i>
+              </span>
+              Vastu & Energy Balancing
+            </div>
+            <p class="text-white/70 text-sm mt-3">Subtle corrections to harmonize your space and invite abundance.</p>
+          </div>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
+          <div class="p-6">
+            <div class="flex items-center gap-3 text-lg">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </span>
+              Numerology Name Synthesis
+            </div>
+            <p class="text-white/70 text-sm mt-3">Align name vibrations with goals for long-term growth.</p>
+          </div>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl hover:bg-white/15 transition">
+          <div class="p-6">
+            <div class="flex items-center gap-3 text-lg">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#F5D061]">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+              </span>
+              Astro-Consultation
+            </div>
+            <p class="text-white/70 text-sm mt-3">Practical, date-bound remedies rooted in Vedic insights.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Free Tools -->
-  <section id="free" class="container">
-    <h2 class="section-title">Free Tools</h2>
-    <div class="card tool">
-      <h4>Life Path Number Calculator</h4>
-      <label for="dob">Date of Birth</label>
-      <input class="input" id="dob" type="date" />
-      <button class="btn btn-primary" id="calcBtn">Calculate</button>
-      <div id="result" class="result" aria-live="polite">Enter your DOB above and click Calculate.</div>
+  <!-- Tools -->
+  <section id="tools" class="py-16 md:py-24 bg-white/5">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Handy Utilities
+      </span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Numerology & Tarot Tools</h2>
+      <p class="text-white/70 max-w-2xl mt-2">Quick calculators to get you started. Click a tool to launch. (Icons are demo; replace anytime.)</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <!-- Repeatable Tool Card -->
+        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
+            <img src="tools/demo1.png" alt="Destiny Number Calculator" class="h-14 w-14 object-contain" />
+          </div>
+          <div class="mt-4 font-medium">Destiny Number Calculator</div>
+          <div class="text-xs text-white/60">Open tool</div>
+        </a>
+
+        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
+            <img src="tools/demo2.png" alt="Personal Year Calculator" class="h-14 w-14 object-contain" />
+          </div>
+          <div class="mt-4 font-medium">Personal Year Calculator</div>
+          <div class="text-xs text-white/60">Open tool</div>
+        </a>
+
+        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
+            <img src="tools/demo3.png" alt="Name Numerology Calculator" class="h-14 w-14 object-contain" />
+          </div>
+          <div class="mt-4 font-medium">Name Numerology Calculator</div>
+          <div class="text-xs text-white/60">Open tool</div>
+        </a>
+
+        <a href="#contact" class="group rounded-2xl p-5 bg-white/10 border border-white/10 hover:bg-white/15 transition block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
+            <img src="tools/demo4.png" alt="Lucky Name Calculator" class="h-14 w-14 object-contain" />
+          </div>
+          <div class="mt-4 font-medium">Lucky Name Calculator</div>
+          <div class="text-xs text-white/60">Open tool</div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Blog -->
-  <section id="blog" class="container blog">
-    <h2 class="section-title">Blog</h2>
-    <div class="grid-3">
-      <article class="card">
-        <h4>How to Read Your Life Path</h4>
-        <p class="muted">Understand the fundamentals and common mistakes beginners make.</p>
-        <a href="#">Read more →</a>
-      </article>
-      <article class="card">
-        <h4>Repeating Numbers: 111, 222, 333</h4>
-        <p class="muted">Angel numbers and the messages they carry in daily life.</p>
-        <a href="#">Read more →</a>
-      </article>
-      <article class="card">
-        <h4>Name Correction Basics</h4>
-        <p class="muted">When should you consider a change? What to check first.</p>
-        <a href="#">Read more →</a>
-      </article>
+  <!-- Programs -->
+  <section id="programs" class="py-16 md:py-24 bg-white/5">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Starter to Advanced
+      </span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Transformation Programs</h2>
+      <p class="text-white/70 max-w-2xl mt-2">Choose a guided path with milestones, reviews and tangible outcomes.</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="bg-white/10 border border-white/10 rounded-2xl">
+          <div class="p-6">
+            <div class="text-xl font-semibold">Kundalini Harmony (21 Days)</div>
+            <ul class="mt-3 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Daily micro-practices</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Weekly 1:1 review</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Personal mantra</li>
+            </ul>
+            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
+          </div>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl">
+          <div class="p-6">
+            <div class="text-xl font-semibold">Wealth Alignment Sprint</div>
+            <ul class="mt-3 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Vastu audit</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Lucky dates planner</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Name tune-up</li>
+            </ul>
+            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
+          </div>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl">
+          <div class="p-6">
+            <div class="text-xl font-semibold">Relationship Reset</div>
+            <ul class="mt-3 space-y-2 text-sm text-white/80">
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Tarot roadmap</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Ritual kit</li>
+              <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-0.5"></i> Follow-up support</li>
+            </ul>
+            <a href="#contact" class="mt-4 inline-block rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diwali Offer CTA -->
+  <section class="py-10">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <div class="rounded-3xl p-6 md:p-10 bg-gradient-to-r from-[#8B5CF6]/30 to-[#F5D061]/30 border border-white/10 backdrop-blur">
+        <div class="grid md:grid-cols-3 gap-6 items-center">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl md:text-3xl font-semibold">Diwali Offer: 15-min Consult at ₹500</h3>
+            <p class="text-white/80 mt-2">Limited-time festive pricing. Secure your slot on Calendly or WhatsApp now.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 md:justify-end">
+            <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine" target="_blank" rel="noreferrer"
+               class="rounded-full bg-[#F5D061] text-black hover:bg-[#e8c64f] px-4 py-2 inline-flex items-center gap-2">
+              <i data-lucide="phone-call" class="w-4 h-4"></i> Book Now
+            </a>
+            <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
+               class="rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2 inline-flex items-center gap-2">
+              <i data-lucide="messages-square" class="w-4 h-4"></i> Join Group
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses + Student Login -->
+  <section id="courses" class="py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Students
+      </span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Courses & Student Login</h2>
+      <p class="text-white/70 max-w-2xl mt-2">Login is restricted to approved Google accounts. If your Gmail isn't added, request access on WhatsApp.</p>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+          <div class="text-xl font-semibold">Student Login</div>
+          <input type="email" placeholder="Your Gmail address"
+                 class="mt-3 w-full bg-white/10 border border-white/10 rounded-xl px-3 py-2 placeholder:text-white/50" />
+          <button class="mt-3 rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Request Access</button>
+          <p class="text-xs text-white/60 mt-2">Only whitelisted Gmail IDs can login. Admin will verify and enable.</p>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
+          <div class="text-xl font-semibold">Available Courses</div>
+          <ul class="mt-3 space-y-2 text-sm text-white/80">
+            <li>Tarot Foundations (6 weeks)</li>
+            <li>Practical Numerology (4 weeks)</li>
+            <li>Vastu for Apartments (3 weeks)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Media -->
+  <section id="media" class="py-16 md:py-24 bg-white/5">
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+        <i data-lucide="youtube" class="w-3.5 h-3.5"></i> YouTube
+      </span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Watch Our Insights</h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="rounded-2xl overflow-hidden aspect-video bg-black/40">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/4qAtW5WjShQ" title="Kasturi Divine Video 1" allowfullscreen></iframe>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-video bg-black/40">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/qkMzgrfk2pc" title="Kasturi Divine Video 2" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="container">
-    <h2 class="section-title">Contact</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h4>Get in touch</h4>
-        <p class="muted">Call/WhatsApp for quick queries and bookings.</p>
-        <a class="wa-btn" href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noopener">Join WhatsApp Group</a>
+  <section id="contact" class="py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-8 grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Let’s talk
+        </span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Book a discovery call</h2>
+        <p class="text-white/70 mt-2 max-w-xl">Share a few details and we’ll reach out with times. Prefer WhatsApp? Tap the button below.</p>
+
+        <div class="mt-6">
+          <div class="grid grid-cols-2 gap-3">
+            <input placeholder="Your name" class="bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50" />
+            <input placeholder="Email or WhatsApp" class="bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50" />
+          </div>
+          <textarea rows="5" placeholder="What would you like guidance on?"
+                    class="mt-3 w-full bg-white/10 border border-white/10 text-white rounded-xl px-3 py-2 placeholder:text-white/50"></textarea>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2 inline-flex items-center gap-2">
+              <i data-lucide="phone-call" class="w-4 h-4"></i> Request Callback
+            </button>
+            <a href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1" target="_blank" rel="noreferrer"
+               class="rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2 inline-flex items-center gap-2">
+              <i data-lucide="messages-square" class="w-4 h-4"></i> Join WhatsApp Group
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h4>Email</h4>
-        <p class="muted">you@example.com</p>
-      </div>
-      <div class="card">
-        <h4>Photo</h4>
-        <img id="contact-photo" src="contact-photo.jpg" alt="Contact" style="width:100%;border-radius:12px;border:1px solid #ececf6;">
+
+      <!-- Mentors (single composite photo) -->
+      <div class="rounded-3xl p-6 bg-white/5 border border-white/10">
+        <div class="text-xl font-semibold">Mentors & Why Us</div>
+        <div class="mt-4 flex items-center gap-4">
+          <img src="contact-photo.png" alt="Mentors: Dr. Santoshh Jakhar and Neetu Choudhary"
+               class="h-28 w-28 rounded-2xl object-cover bg-white/10 p-1" />
+          <div>
+            <div class="font-medium">Dr. Santoshh Jakhar</div>
+            <div class="text-sm text-white/70">Wellness Coach</div>
+            <div class="mt-2 font-medium">Neetu Choudhary</div>
+            <div class="text-sm text-white/70">Astro, Numero</div>
+          </div>
+        </div>
+        <ul class="mt-6 space-y-3 text-white/80">
+          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Action-first guidance with clear dates, no fluff</li>
+          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Confidential 1:1 support on call or chat</li>
+          <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 mt-1"></i> Digital ritual kits and templates included</li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+          <div class="rounded-2xl p-4 bg-white/10">
+            <div class="text-3xl font-semibold">4.9★</div>
+            <div class="text-xs text-white/70">Average rating</div>
+          </div>
+          <div class="rounded-2xl p-4 bg-white/10">
+            <div class="text-3xl font-semibold">1K+</div>
+            <div class="text-xs text-white/70">Sessions</div>
+          </div>
+          <div class="rounded-2xl p-4 bg-white/10">
+            <div class="text-3xl font-semibold">15+</div>
+            <div class="text-xs text-white/70">Years exp.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-      <div>© <span id="year"></span> Numerology with Hari</div>
-      <div style="color:var(--accent)">Designed in Indigo palette</div>
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-white/60">© <span id="year"></span> Kasturi Divine • A Solvix Project</div>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="#" class="text-white/70 hover:text-white">Privacy</a>
+        <a href="#" class="text-white/70 hover:text-white">Terms</a>
+        <a href="#contact" class="text-white/70 hover:text-white">Contact</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Login Modal -->
-  <div class="modal" id="loginModal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
-    <div class="modal-box">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <h3 id="loginTitle">Student Login</h3>
-        <button class="close" id="closeLogin" aria-label="Close">×</button>
-      </div>
-      <p class="muted" style="margin-bottom:10px">Enter access code to open the course page.</p>
-      <input class="input" id="accessCode" type="password" placeholder="Enter Access Code" />
-      <button class="btn btn-primary" id="loginNow" style="margin-top:10px;width:100%">Login</button>
-      <div id="loginMsg" class="muted" style="margin-top:10px;font-weight:800;"></div>
-    </div>
-  </div>
-
   <script>
-    // Year
+    // Init Lucide icons + year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('menu');
-    hamburger?.addEventListener('click', () => menu.classList.toggle('open'));
-
-    // Login modal
-    const openLogin = document.getElementById('openLogin');
-    const loginModal = document.getElementById('loginModal');
-    const closeLogin = document.getElementById('closeLogin');
-    const loginNow = document.getElementById('loginNow');
-    const accessCode = document.getElementById('accessCode');
-    const loginMsg = document.getElementById('loginMsg');
-
-    openLogin.addEventListener('click', () => {
-      loginModal.classList.add('active');
-      accessCode.value = '';
-      loginMsg.textContent = '';
-      accessCode.focus();
-    });
-    closeLogin.addEventListener('click', () => loginModal.classList.remove('active'));
-    loginModal.addEventListener('click', (e)=>{ if(e.target === loginModal){ loginModal.classList.remove('active'); }});
-
-    loginNow.addEventListener('click', () => {
-      if (accessCode.value.trim().toLowerCase() === 'kd2025') {
-        loginMsg.style.color = 'green';
-        loginMsg.textContent = 'Access granted. Redirecting...';
-        setTimeout(()=> window.location.href = 'course.html', 600);
-      } else {
-        loginMsg.style.color = 'crimson';
-        loginMsg.textContent = 'Invalid code. Try: kd2025';
-      }
-    });
-
-    // Free Tool: Life Path Number
-    function sumDigits(n){ return n.toString().split('').reduce((s,d)=>s+parseInt(d,10),0); }
-    function reduceToCore(n){
-      const master = [11,22,33];
-      while(n > 9 && !master.includes(n)){ n = sumDigits(n); }
-      return n;
-    }
-    document.getElementById('calcBtn').addEventListener('click', ()=>{
-      const dob = document.getElementById('dob').value;
-      if(!dob){ document.getElementById('result').textContent = 'Please select your Date of Birth.'; return; }
-      const parts = dob.split('-'); // yyyy-mm-dd
-      const total = parts.join('').split('').reduce((s,d)=>s+parseInt(d,10),0);
-      const lifePath = reduceToCore(total);
-      document.getElementById('result').textContent = 'Your Life Path Number is: ' + lifePath;
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
     });
   </script>
 </body>
