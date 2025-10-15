@@ -188,9 +188,22 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
           <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
         </svg>
+      <!-- ==================== Free Calculators Section ==================== -->
+<section id="free" style="max-width:1100px;margin:0 auto;padding:32px 16px;">
+  <h2 style="text-align:center;font-size:32px;margin-bottom:20px;">Free Calculators</h2>
+
+  <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+
+    <!-- Destiny Number -->
+    <div class="card" style="background:#FFD6DE;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l2.5 5 5 .8-3.7 3.6.9 5-4.7-2.5-4.7 2.5.9-5L4.5 8.8l5-.8L12 3z" stroke="#111" stroke-width="1.5"/>
+        </svg>
       </div>
       <h3 style="margin:0 0 8px 0;">Destiny Number Calculator</h3>
       <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/destiny');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
 
     <!-- Personal Year -->
     <div class="card" style="background:#D8E9FF;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
@@ -200,7 +213,8 @@
           <path d="M12 12l4-2" stroke="#111" stroke-width="1.5"/>
         </svg>
       </div>
-     <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/personal-year');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+      <h3 style="margin:0 0 8px 0;">Personal Year Calculator</h3>
+      <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/personal-year');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
     </div>
 
     <!-- Name Numerology -->
@@ -212,7 +226,8 @@
         </svg>
       </div>
       <h3 style="margin:0 0 8px 0;">Name Numerology Calculator</h3>
-     <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/name-numerology');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+      <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/name-numerology');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
 
     <!-- Lucky Name -->
     <div class="card" style="background:#D7F5E1;border-radius:20px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.05);">
@@ -223,21 +238,24 @@
       </div>
       <h3 style="margin:0 0 8px 0;">Lucky Name Calculator</h3>
       <a href="#" onclick="return openTool('https://numerology-with-hari.vercel.app/lucky-name');" style="font-weight:600;text-decoration:underline;">Try Now →</a>
+    </div>
+
   </div>
 </section>
 
 <script>
   function openTool(url){
-    // centered popup like your other site
     const w = 900, h = 700;
-    const y = window.top.outerHeight / 2 + window.top.screenY - ( h / 2);
-    const x = window.top.outerWidth  / 2 + window.top.screenX - ( w / 2);
+    const y = window.top.outerHeight / 2 + window.top.screenY - (h / 2);
+    const x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
     window.open(url, '_blank',
       `popup=yes,width=${w},height=${h},left=${x},top=${y},resizable=yes,scrollbars=yes`
     );
-    return false; // prevent normal link nav
+    return false;
   }
 </script>
+<!-- ================================================================ -->
+
 
   </section>
 
