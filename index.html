@@ -287,28 +287,41 @@
   </section>
 
   <!-- Courses + Student Login -->
-  <section id="courses" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 md:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs backdrop-blur">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Students
-      </span>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Courses & Student Login</h2>
-      <p class="text-white/70 max-w-2xl mt-2">Login is restricted to approved Google accounts. If your Gmail isn't added, request access on WhatsApp.</p>
+ <div class="bg-white/10 border border-white/10 rounded-2xl p-6" id="student-card">
+  <div class="text-xl font-semibold mb-2">Student Login</div>
 
-      <div class="grid md:grid-cols-2 gap-6 mt-6">
-        <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
-          <div class="text-xl font-semibold">Student Login</div>
-          <input type="email" placeholder="Your Gmail address"
-                 class="mt-3 w-full bg-white/10 border border-white/10 rounded-xl px-3 py-2 placeholder:text-white/50" />
-          <button class="mt-3 rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Request Access</button>
-          <p class="text-xs text-white/60 mt-2">Only whitelisted Gmail IDs can login. Admin will verify and enable.</p>
+  <div id="auth-state" class="text-sm text-white/70 mb-3">Not signed in</div>
+
+  <div class="flex flex-wrap gap-3">
+    <button id="google-signin" class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2 inline-flex items-center gap-2">
+      Sign in with Google
+    </button>
+    <button id="signout" class="hidden rounded-full border border-white/30 text-white hover:bg-white/10 px-4 py-2">
+      Sign out
+    </button>
+  </div>
+
+  <div class="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
+    <div class="text-sm text-white/80">Access Status</div>
+    <div id="status-msg" class="mt-1 text-sm">Sign in and check.</div>
+    <div class="mt-3 flex gap-2">
+      <button id="check-access" class="rounded-full bg-white text-black hover:bg-white/90 px-4 py-2">Check Approval</button>
+      <a id="start-learning" href="#courses" class="hidden rounded-full bg-[#F5D061] text-black px-4 py-2">Start Learning</a>
+    </div>
+  </div>
+
+  <p class="text-xs text-white/60 mt-3">
+    Only admin-approved accounts can access student content. For approval, contact WhatsApp group.
+  </p>
+</div>
+
         </div>
         <div class="bg-white/10 border border-white/10 rounded-2xl p-6">
           <div class="text-xl font-semibold">Available Courses</div>
           <ul class="mt-3 space-y-2 text-sm text-white/80">
             <li>Tarot Foundations (6 weeks)</li>
             <li>Practical Numerology (4 weeks)</li>
-            <li>Vastu for Apartments (3 weeks)</li>
+            <li>MOBILE NUMEROLOG  (3 weeks)</li>
           </ul>
         </div>
       </div>
@@ -399,15 +412,117 @@
     </div>
   </section>
 
-  <!-- Footer -->
+   ...
   <footer class="py-10 border-t border-white/10">
-    <div class="mx-auto max-w-7xl px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="text-sm text-white/60">© <span id="year"></span> Kasturi Divine • A Solvix Project</div>
-      <div class="flex items-center gap-4 text-sm">
-        <a href="#" class="text-white/70 hover:text-white">Privacy</a>
-        <a href="#" class="text-white/70 hover:text-white">Terms</a>
-        <a href="#contact" class="text-white/70 hover:text-white">Contact</a>
-      </div>
+    ...
+  </footer>
+
+  <!-- ✅ PASTE THIS FIREBASE SCRIPT HERE (below footer, above </body>) -->
+  <!-- Firebase SDKs (v9 modular via CDN) -->
+  <script type="module">
+    // ---- 5.1 Firebase Setup ----
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const ADMIN_EMAILS = ["your-admin@gmail.com"];
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    const authState   = document.getElementById('auth-state');
+    const btnSignIn   = document.getElementById('google-signin');
+    const btnSignOut  = document.getElementById('signout');
+    const btnCheck    = document.getElementById('check-access');
+    const statusMsg   = document.getElementById('status-msg');
+    const startBtn    = document.getElementById('start-learning');
+
+    function setMsg(text, ok=false) {
+      statusMsg.textContent = text;
+      statusMsg.className = 'mt-1 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
+    }
+
+    async function ensureUserDoc(user) {
+      const ref = doc(db, 'users', user.uid);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) {
+        await setDoc(ref, {
+          uid: user.uid,
+          email: user.email || '',
+          name: user.displayName || '',
+          photoURL: user.photoURL || '',
+          createdAt: serverTimestamp(),
+          lastLoginAt: serverTimestamp(),
+        });
+      } else {
+        await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
+      }
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        authState.textContent = `Signed in as ${user.email}`;
+        btnSignIn.classList.add('hidden');
+        btnSignOut.classList.remove('hidden');
+        await ensureUserDoc(user);
+        setMsg('Signed in. Click “Check Approval”.');
+      } else {
+        authState.textContent = 'Not signed in';
+        btnSignOut.classList.add('hidden');
+        btnSignIn.classList.remove('hidden');
+        setMsg('Sign in and check.');
+        startBtn.classList.add('hidden');
+      }
+    });
+
+    btnSignIn.addEventListener('click', async () => {
+      try { await signInWithPopup(auth, provider); }
+      catch (e) { setMsg('Sign-in failed. ' + e.message); }
+    });
+
+    btnSignOut.addEventListener('click', async () => {
+      await signOut(auth);
+    });
+
+    btnCheck.addEventListener('click', async () => {
+      const user = auth.currentUser;
+      if (!user) return setMsg('Please sign in first.');
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        const data = snap.data() || {};
+        const approved = !!data.approved;
+        const restricted = !!data.restricted;
+
+        if (restricted) {
+          startBtn.classList.add('hidden');
+          return setMsg('Access restricted. Contact admin.');
+        }
+        if (approved) {
+          startBtn.classList.remove('hidden');
+          return setMsg('Approved! You can start learning.', true);
+        }
+        startBtn.classList.add('hidden');
+        setMsg('Not approved yet. Admin will enable your account.');
+      } catch (e) {
+        setMsg('Could not check approval. ' + e.message);
+      }
+    });
+  </script>
+
+</body>
+</html>
+
     </div>
   </footer>
 
