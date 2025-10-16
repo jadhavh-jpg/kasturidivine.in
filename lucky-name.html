@@ -1,15 +1,77 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lucky Name Calculator</title>
-  <style>html,body{height:100%;margin:0} .wrap{height:100%}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucky Name Helper — Kasturi Divine</title>
+  <link rel="stylesheet" href="/tools/styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <iframe src="https://numerology-with-hari.vercel.app/lucky-name"
-            title="Lucky Name Calculator"
-            style="border:0;width:100%;height:100%"></iframe>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><span class="dot"></span> Kasturi Divine</div>
+      <nav class="nav">
+        <a href="/tools/index.html">Home</a>
+        <a href="/tools/destiny.html">Destiny</a>
+        <a href="/tools/personal-year.html">Personal Year</a>
+        <a href="/tools/name-numerology.html">Name Numerology</a>
+      </nav>
+    </div>
+
+    <h1>Lucky Name Helper (Chaldean)</h1>
+    <div class="form">
+      <label for="name">Current / Candidate Name</label>
+      <input type="text" id="name" placeholder="Enter name to evaluate" />
+      <label for="target">Target Reduced Number</label>
+      <select id="target">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="11">11 (Master)</option>
+        <option value="22">22 (Master)</option>
+        <option value="33">33 (Master)</option>
+      </select>
+      <button id="calc">Suggest</button>
+      <div class="output" id="out"></div>
+    </div>
+
+    <div class="footer">We show minimal points you need to add to reach your target vibe and sample letter combos.</div>
   </div>
+  <script src="/tools/chaldean.js"></script>
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('calc').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value;
+      const target = parseInt(document.getElementById('target').value,10);
+      if(!name){ out.innerHTML='Please enter a name.'; return; }
+      const { total } = Chaldean.chaldeanSum(name);
+      const currentReduced = Chaldean.digitalRoot(total, true);
+      const need = Chaldean.suggestAdditions(total, target);
+      let suggestion = '';
+      if(need===0){
+        suggestion = '<p>Your name already matches the target reduced number.</p>';
+      }else if(need===null){
+        suggestion = '<p>No simple suggestion found.</p>';
+      }else{
+        const opts = Chaldean.letterOptionsForSum(need);
+        suggestion = `
+          <p>Add value <strong>${need}</strong> to move from reduced <strong>${currentReduced}</strong> to target <strong>${target}</strong>.</p>
+          <p><strong>Single-letter options:</strong> ${opts.single.join(', ') || '—'}</p>
+          <p><strong>Two-letter samples:</strong> ${opts.pairs.join(', ') || '—'}</p>
+          <p>Tip: You can adjust spacing, add initials, or include middle names to achieve the value.</p>
+        `;
+      }
+      out.innerHTML = `
+        <h3>Result</h3>
+        <p><strong>Total:</strong> ${total} | <strong>Reduced:</strong> ${currentReduced}</p>
+        ${suggestion}
+      `;
+    });
+  </script>
 </body>
 </html>
