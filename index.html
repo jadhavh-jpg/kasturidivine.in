@@ -450,14 +450,14 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
   import {
-    getAuth, signInWithPopup, GoogleAuthProvider,
-    onAuthStateChanged, signOut
+    getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect,
+    getRedirectResult, onAuthStateChanged, signOut
   } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
   import {
     getFirestore, doc, getDoc, setDoc, serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-  // 🟢  Replace below values with your real Firebase config:
+  // ✅ Your real config (same as firebase-init.js)
   const firebaseConfig = {
     apiKey: "AIzaSyCHAYkKUEsGateO9VkIbOm16dFezVVz2Q",
     authDomain: "kasturidivine-in.firebaseapp.com",
@@ -467,13 +467,13 @@
     appId: "1:637084935513:web:bedbd411d6a8455f4adc48"
   };
 
-  // 🔧 Firebase init
+  // Init
   const app  = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db   = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
-  // 🔧 UI Elements
+  // UI
   const authState  = document.getElementById('auth-state');
   const btnSignIn  = document.getElementById('google-signin');
   const btnSignOut = document.getElementById('signout');
@@ -481,36 +481,43 @@
   const statusMsg  = document.getElementById('status-msg');
   const startBtn   = document.getElementById('start-learning');
 
-  function setMsg(msg, ok=false) {
+  function setMsg(msg, ok=false){
+    if (!statusMsg) return;
     statusMsg.textContent = msg;
     statusMsg.className = 'mt-2 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
   }
 
-  // 🔹 When user signs in/out
+  // 🔄 Handle redirect result (if popup was blocked and we redirected)
+  try {
+    const res = await getRedirectResult(auth);
+    if (res && res.user) setMsg('Signed in via redirect ✅', true);
+  } catch (e) {
+    // ignore if there's no redirect result
+  }
+
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       authState.textContent = `Signed in as ${user.email}`;
-      btnSignIn.classList.add('hidden');
-      btnSignOut.classList.remove('hidden');
+      btnSignIn?.classList.add('hidden');
+      btnSignOut?.classList.remove('hidden');
       await ensureUserDoc(user);
       setMsg('Signed in. Click “Check Approval”.');
     } else {
       authState.textContent = 'Not signed in';
-      btnSignOut.classList.add('hidden');
-      btnSignIn.classList.remove('hidden');
-      startBtn.classList.add('hidden');
+      btnSignOut?.classList.add('hidden');
+      btnSignIn?.classList.remove('hidden');
+      startBtn?.classList.add('hidden');
       setMsg('Sign in first to check approval.');
     }
   });
 
-  // 🔹 Create or update Firestore user doc
-  async function ensureUserDoc(user) {
+  async function ensureUserDoc(user){
     const ref = doc(db, 'users', user.uid);
     const snap = await getDoc(ref);
     if (!snap.exists()) {
       await setDoc(ref, {
         uid: user.uid,
-        email: user.email,
+        email: user.email || '',
         name: user.displayName || '',
         createdAt: serverTimestamp(),
         lastLoginAt: serverTimestamp()
@@ -520,36 +527,63 @@
     }
   }
 
-  // 🔹 Button Events
-  btnSignIn.addEventListener('click', async () => {
-    try { await signInWithPopup(auth, provider); }
-    catch (e) { setMsg('Sign-in failed: ' + e.message); }
+  // ✳️ Try popup → fallback to redirect
+  btnSignIn?.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      setMsg('Opening Google…');
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      // These usually happen when the popup is blocked/closed
+      const popupIssues = [
+        'auth/popup-blocked',
+        'auth/popup-closed-by-user',
+        'auth/cancelled-popup-request'
+      ];
+      if (popupIssues.includes(err.code)) {
+        setMsg('Popup blocked — redirecting…');
+        await signInWithRedirect(auth, provider);
+      } else {
+        setMsg('Sign-in failed: ' + err.message);
+      }
+    }
   });
 
-  btnSignOut.addEventListener('click', async () => { await signOut(auth); });
+  btnSignOut?.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await signOut(auth);
+  });
 
-  btnCheck.addEventListener('click', async () => {
+  btnCheck?.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user) return setMsg('Please sign in first.');
     try {
-      const ref = doc(db, 'users', user.uid);
-      const snap = await getDoc(ref);
+      const snap = await getDoc(doc(db, 'users', user.uid));
       const data = snap.data() || {};
       if (data.restricted) {
-        startBtn.classList.add('hidden');
+        startBtn?.classList.add('hidden');
         return setMsg('Access restricted. Contact admin.');
       }
       if (data.approved) {
-        startBtn.classList.remove('hidden');
+        startBtn?.classList.remove('hidden');
         return setMsg('Approved! You can start learning.', true);
       }
-      startBtn.classList.add('hidden');
+      startBtn?.classList.add('hidden');
       setMsg('Not approved yet. Admin will enable your account.');
     } catch (e) {
       setMsg('Error checking approval: ' + e.message);
     }
   });
 </script>
+</footer>
+
+<!-- 🔥 Firebase Modular SDK + Auth Logic -->
+<script type="module">
+  // your firebaseConfig and all logic here
+</script>
 
 </body>
 </html>
+
+
+
