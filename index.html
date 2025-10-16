@@ -16,6 +16,53 @@
   </style>
 </head>
 <body class="text-white bg-gradient-to-b from-[#1A0824] via-[#2A0E37] to-[#0E0716] antialiased">
+  <!-- 🌟 Kasturi Divine Navbar Start -->
+<header class="sticky top-0 z-50 bg-gradient-to-r from-[#1A0824] via-[#20AE37] to-[#007016] text-white shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Logo + Title -->
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="logo.png" alt="Kasturi Divine" class="h-10 w-10 rounded-full bg-white p-1">
+      <span class="text-xl font-semibold tracking-wide">Kasturi Divine</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <nav class="hidden md:flex space-x-6 text-white/90">
+      <a href="index.html" class="hover:text-yellow-300 transition">Home</a>
+      <a href="destiny.html" class="hover:text-yellow-300 transition">Destiny</a>
+      <a href="name-numerology.html" class="hover:text-yellow-300 transition">Name Numerology</a>
+      <a href="personal-year.html" class="hover:text-yellow-300 transition">Personal Year</a>
+      <a href="lucky-name.html" class="hover:text-yellow-300 transition">Lucky Name</a>
+      <a href="contact.html" class="hover:text-yellow-300 transition">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden flex flex-col space-y-1 focus:outline-none">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-black/90 text-white flex flex-col items-center space-y-4 py-4">
+    <a href="index.html" class="hover:text-yellow-300">Home</a>
+    <a href="destiny.html" class="hover:text-yellow-300">Destiny</a>
+    <a href="name-numerology.html" class="hover:text-yellow-300">Name Numerology</a>
+    <a href="personal-year.html" class="hover:text-yellow-300">Personal Year</a>
+    <a href="lucky-name.html" class="hover:text-yellow-300">Lucky Name</a>
+    <a href="contact.html" class="hover:text-yellow-300">Contact</a>
+  </div>
+
+  <script>
+    // 🌙 Mobile Menu Toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</header>
+<!-- 🌟 Kasturi Divine Navbar End -->
+
   <!-- Decorative Glows -->
   <div class="pointer-events-none fixed inset-0 -z-10">
     <div class="absolute -top-44 -right-40 h-[520px] w-[520px] rotate-12 bg-gradient-to-tr from-[#8B5CF6]/40 via-[#F5D061]/30 to-transparent blur-3xl"></div>
