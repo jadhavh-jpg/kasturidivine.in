@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase Auth Test — Kasturi Divine</title>
+  <script type="module">
+    // ✅ Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithPopup, 
+      GoogleAuthProvider, 
+      signOut, 
+      onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    // ✅ Your Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCHAYKkUEesGateO9VkIbDml6DFezVVz2Q",
+      authDomain: "kasturidivine-in.firebaseapp.com",
+      projectId: "kasturidivine-in",
+      storageBucket: "kasturidivine-in.firebasestorage.app",
+      messagingSenderId: "637004935513",
+      appId: "1:637004935513:web:0edbb411d6a8455f4adc48"
+    };
+
+    // ✅ Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // ✅ Elements
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const statusDiv = document.getElementById("status");
+
+    // ✅ Google Login
+    loginBtn.addEventListener("click", async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (err) {
+        alert("Login failed: " + err.message);
+      }
+    });
+
+    // ✅ Logout
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+    // ✅ Listen for auth changes
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        statusDiv.innerHTML = `
+          <h3>✅ Logged in</h3>
+          <p><b>Name:</b> ${user.displayName}</p>
+          <p><b>Email:</b> ${user.email}</p>
+          <button id="logoutBtn" style="padding:8px 12px;">Logout</button>
+        `;
+        document.getElementById("logoutBtn").addEventListener("click", async () => {
+          await signOut(auth);
+          statusDiv.innerHTML = "<h3>Signed out</h3>";
+        });
+      } else {
+        statusDiv.innerHTML = `
+          <h3>🔒 Not logged in</h3>
+          <button id="loginBtn" style="padding:8px 12px;">Login with Google</button>
+        `;
+        document.getElementById("loginBtn").addEventListener("click", async () => {
+          try {
+            await signInWithPopup(auth, provider);
+          } catch (err) {
+            alert("Login failed: " + err.message);
+          }
+        });
+      }
+    });
+  </script>
+</head>
+<body style="font-family:Arial; text-align:center; padding:40px;">
+  <h2>🔥 Firebase Auth Test (Kasturi Divine)</h2>
+  <div id="status">
+    <h3>Checking status...</h3>
+  </div>
+</body>
+</html>
