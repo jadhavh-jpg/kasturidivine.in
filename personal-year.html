@@ -1,15 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Personal Year Calculator</title>
-  <style>html,body{height:100%;margin:0} .wrap{height:100%}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Year — Kasturi Divine</title>
+  <link rel="stylesheet" href="/tools/styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <iframe src="https://numerology-with-hari.vercel.app/personal-year"
-            title="Personal Year Calculator"
-            style="border:0;width:100%;height:100%"></iframe>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><span class="dot"></span> Kasturi Divine</div>
+      <nav class="nav">
+        <a href="/tools/index.html">Home</a>
+        <a href="/tools/destiny.html">Destiny</a>
+        <a href="/tools/name-numerology.html">Name</a>
+        <a href="/tools/lucky-name.html">Lucky Name</a>
+      </nav>
+    </div>
+
+    <h1>Personal Year Calculator</h1>
+    <div class="form">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" />
+      <label for="year">Target Year</label>
+      <input type="number" id="year" placeholder="2025" />
+      <label><input type="checkbox" id="masters" checked> Keep Master Numbers (11/22/33)</label>
+      <button id="calc">Calculate</button>
+      <div class="output" id="out"></div>
+    </div>
+
+    <div class="footer">Personal Year = reduce(Day) + reduce(Month) + reduce(Year).</div>
   </div>
+  <script src="/tools/chaldean.js"></script>
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('calc').addEventListener('click', ()=>{
+      const dob = document.getElementById('dob').value;
+      const year = parseInt(document.getElementById('year').value,10);
+      if(!dob || !year){ out.innerHTML='Please provide DOB and Year.'; return; }
+      const keep = document.getElementById('masters').checked;
+      const py = Chaldean.personalYear(dob, year, keep);
+      out.innerHTML = `
+        <h3>Result</h3>
+        <p><strong>Personal Year:</strong> ${py}</p>
+        <p>This number influences the theme and opportunities in ${year}.</p>
+      `;
+    });
+  </script>
 </body>
 </html>
