@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Kasturi Divine</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-green-700 to-emerald-900 text-white min-h-screen p-8">
+
+  <h1 class="text-3xl font-semibold mb-6 text-center">🛡️ Admin Approval Dashboard</h1>
+
+  <div id="admin-auth" class="text-center mb-6">
+    <p id="admin-state" class="mb-3 text-lg">Not signed in</p>
+    <button id="admin-signin" class="bg-white text-green-800 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">Sign in with Google</button>
+    <button id="admin-signout" class="bg-red-600 px-6 py-2 rounded-lg font-semibold hidden hover:bg-red-700">Sign out</button>
+    <p id="admin-msg" class="mt-3 text-sm text-white/80"></p>
+  </div>
+
+  <div id="users-list" class="max-w-4xl mx-auto bg-white/10 p-6 rounded-xl shadow-lg hidden">
+    <h2 class="text-xl font-semibold mb-4">Registered Users</h2>
+    <table class="w-full border-collapse text-sm">
+      <thead class="bg-white/20">
+        <tr>
+          <th class="py-2 px-2 border-b border-white/20">Email</th>
+          <th class="py-2 px-2 border-b border-white/20">Approved</th>
+          <th class="py-2 px-2 border-b border-white/20">Restricted</th>
+          <th class="py-2 px-2 border-b border-white/20">Action</th>
+        </tr>
+      </thead>
+      <tbody id="users-table"></tbody>
+    </table>
+  </div>
+
+  <!-- ✅ Firebase v10 Modular Admin Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+    import { getFirestore, collection, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+    // 🔧 Your real Firebase config:
+    const firebaseConfig = {
+      apiKey: "AIzaSyCHAYkKUEsGateO9VkIbOm16dFezVVz2Q",
+      authDomain: "kasturidivine-in.firebaseapp.com",
+      projectId: "kasturidivine-in",
+      storageBucket: "kasturidivine-in.firebasestorage.app",
+      messagingSenderId: "637084935513",
+      appId: "1:637084935513:web:bedbd411d6a8455f4adc48"
+    };
+
+    const ADMIN_EMAILS = ["your-admin@gmail.com"]; // 👈 apna Gmail yahan daalein
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    const adminState  = document.getElementById('admin-state');
+    const btnSignIn   = document.getElementById('admin-signin');
+    const btnSignOut  = document.getElementById('admin-signout');
+    const msg         = document.getElementById('admin-msg');
+    const listBox     = document.getElementById('users-list');
+    const tableBody   = document.getElementById('users-table');
+
+    function setMsg(t, ok=false){
+      msg.textContent = t;
+      msg.className = 'mt-3 text-sm ' + (ok?'text-green-300':'text-white/80');
+    }
+
+    async function loadUsers(){
+      tableBody.innerHTML = '<tr><td colspan="4" class="py-3">Loading…</td></tr>';
+      const snap = await getDocs(collection(db, 'users'));
+      tableBody.innerHTML = '';
+      snap.forEach(d=>{
+        const u = d.data();
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="border-b border-white/10 py-2">${u.email||''}</td>
+          <td class="border-b border-white/10 py-2 text-center">${u.approved? '✅':'❌'}</td>
+          <td class="border-b border-white/10 py-2 text-center">${u.restricted? '🚫':'—'}</td>
+          <td class="border-b border-white/10 py-2 text-center space-x-2">
+            <button class="approve bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs" data-id="${d.id}">Approve</button>
+            <button class="restrict bg-yellow-500 hover:bg-yellow-600 text-black px-2 py-1 rounded text-xs" data-id="${d.id}">Restrict</button>
+          </td>`;
+        tableBody.appendChild(tr);
+      });
+
+      // Bind buttons
+      tableBody.querySelectorAll('.approve').forEach(btn=>{
+        btn.onclick = async ()=>{
+          await updateDoc(doc(db,'users',btn.dataset.id),{approved:true,restricted:false});
+          setMsg('User approved ✅',true);
+          loadUsers();
+        };
+      });
+      tableBody.querySelectorAll('.restrict').forEach(btn=>{
+        btn.onclick = async ()=>{
+          await updateDoc(doc(db,'users',btn.dataset.id),{approved:false,restricted:true});
+          setMsg('User restricted 🚫');
+          loadUsers();
+        };
+      });
+    }
+
+    onAuthStateChanged(auth, async (user)=>{
+      if(user){
+        adminState.textContent = 'Signed in as ' + user.email;
+        btnSignIn.classList.add('hidden');
+        btnSignOut.classList.remove('hidden');
+        if(ADMIN_EMAILS.includes(user.email)){
+          listBox.classList.remove('hidden');
+          setMsg('Welcome, Admin ✅',true);
+          await loadUsers();
+        } else {
+          setMsg('You are not an admin.');
+          listBox.classList.add('hidden');
+        }
+      } else {
+        adminState.textContent = 'Not signed in';
+        btnSignIn.classList.remove('hidden');
+        btnSignOut.classList.add('hidden');
+        listBox.classList.add('hidden');
+      }
+    });
+
+    btnSignIn.onclick  = ()=> signInWithPopup(auth,provider).catch(e=>setMsg(e.message));
+    btnSignOut.onclick = ()=> signOut(auth);
+  </script>
+</body>
+</html>
