@@ -575,15 +575,141 @@
     }
   });
 </script>
-</footer>
+    </footer>
 
-<!-- 🔥 Firebase Modular SDK + Auth Logic -->
-<script type="module">
-  // your firebaseConfig and all logic here
-</script>
+    <!-- 🔥 Firebase Modular SDK + Auth Logic -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+      import {
+        getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect,
+        getRedirectResult, onAuthStateChanged, signOut
+      } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+      import {
+        getFirestore, doc, getDoc, setDoc, serverTimestamp
+      } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-</body>
+      // ✅ Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHAYkKUEsGateO9VkIbOm16dFezVVz2Q",
+        authDomain: "kasturidivine-in.firebaseapp.com",
+        projectId: "kasturidivine-in",
+        storageBucket: "kasturidivine-in.firebasestorage.app",
+        messagingSenderId: "637084935513",
+        appId: "1:637084935513:web:bedbd411d6a8455f4adc48"
+      };
+
+      // Initialize Firebase
+      const app  = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db   = getFirestore(app);
+      const provider = new GoogleAuthProvider();
+
+      const authState  = document.getElementById('auth-state');
+      const btnSignIn  = document.getElementById('google-signin');
+      const btnSignOut = document.getElementById('signout');
+      const btnCheck   = document.getElementById('check-access');
+      const statusMsg  = document.getElementById('status-msg');
+      const startBtn   = document.getElementById('start-learning');
+
+      function setMsg(msg, ok=false){
+        if (!statusMsg) return;
+        statusMsg.textContent = msg;
+        statusMsg.className = 'mt-2 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
+      }
+
+      // 🔄 Handle redirect (if popup fails)
+      try {
+        const res = await getRedirectResult(auth);
+        if (res && res.user) setMsg('Signed in via redirect ✅', true);
+      } catch (e) {
+        console.warn('Redirect check skipped:', e);
+      }
+
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          authState.textContent = `Signed in as ${user.email}`;
+          btnSignIn?.classList.add('hidden');
+          btnSignOut?.classList.remove('hidden');
+          await ensureUserDoc(user);
+          setMsg('Signed in. Click “Check Approval”.');
+        } else {
+          authState.textContent = 'Not signed in';
+          btnSignOut?.classList.add('hidden');
+          btnSignIn?.classList.remove('hidden');
+          startBtn?.classList.add('hidden');
+          setMsg('Sign in first to check approval.');
+        }
+      });
+
+      async function ensureUserDoc(user){
+        const ref = doc(db, 'users', user.uid);
+        const snap = await getDoc(ref);
+        if (!snap.exists()) {
+          await setDoc(ref, {
+            uid: user.uid,
+            email: user.email || '',
+            name: user.displayName || '',
+            createdAt: serverTimestamp(),
+            lastLoginAt: serverTimestamp()
+          });
+        } else {
+          await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
+        }
+      }
+
+      // ✳️ Sign-In flow
+      btnSignIn?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          setMsg('Opening Google sign-in…');
+          await signInWithPopup(auth, provider);
+        } catch (err) {
+          const popupIssues = [
+            'auth/popup-blocked',
+            'auth/popup-closed-by-user',
+            'auth/cancelled-popup-request'
+          ];
+          if (popupIssues.includes(err.code)) {
+            setMsg('Popup blocked — redirecting…');
+            await signInWithRedirect(auth, provider);
+          } else {
+            setMsg('Sign-in failed: ' + err.message);
+          }
+        }
+      });
+
+      // 🚪 Sign-Out
+      btnSignOut?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+      });
+
+      // ✅ Check access
+      btnCheck?.addEventListener('click', async () => {
+        const user = auth.currentUser;
+        if (!user) return setMsg('Please sign in first.');
+        try {
+          const snap = await getDoc(doc(db, 'users', user.uid));
+          const data = snap.data() || {};
+          if (data.restricted) {
+            startBtn?.classList.add('hidden');
+            return setMsg('Access restricted. Contact admin.');
+          }
+          if (data.approved) {
+            startBtn?.classList.remove('hidden');
+            return setMsg('Approved! You can start learning.', true);
+          }
+          startBtn?.classList.add('hidden');
+          setMsg('Not approved yet. Admin will enable your account.');
+        } catch (e) {
+          setMsg('Error checking approval: ' + e.message);
+        }
+      });
+    </script>
+
+  </body>
 </html>
+
 
 
 
