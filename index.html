@@ -446,123 +446,110 @@
   <footer class="py-10 border-t border-white/10">
     ...
   </footer>
+<!-- 🔰 Firebase v10 Modular Setup -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+  import {
+    getAuth, signInWithPopup, GoogleAuthProvider,
+    onAuthStateChanged, signOut
+  } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+  import {
+    getFirestore, doc, getDoc, setDoc, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-  <!-- Firebase SDKs (v9 modular via CDN) -->
-  <script type="module">
-    // ---- 5.1 Firebase Setup ----
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+  // 🟢  Replace below values with your real Firebase config:
+  const firebaseConfig = {
+    apiKey: "AIzaSyCHAYkKUEsGateO9VkIbOm16dFezVVz2Q",
+    authDomain: "kasturidivine-in.firebaseapp.com",
+    projectId: "kasturidivine-in",
+    storageBucket: "kasturidivine-in.firebasestorage.app",
+    messagingSenderId: "637084935513",
+    appId: "1:637084935513:web:bedbd411d6a8455f4adc48"
+  };
 
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
+  // 🔧 Firebase init
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+  const provider = new GoogleAuthProvider();
 
-    const ADMIN_EMAILS = ["your-admin@gmail.com"];
+  // 🔧 UI Elements
+  const authState  = document.getElementById('auth-state');
+  const btnSignIn  = document.getElementById('google-signin');
+  const btnSignOut = document.getElementById('signout');
+  const btnCheck   = document.getElementById('check-access');
+  const statusMsg  = document.getElementById('status-msg');
+  const startBtn   = document.getElementById('start-learning');
 
-    const app  = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
-    const provider = new GoogleAuthProvider();
+  function setMsg(msg, ok=false) {
+    statusMsg.textContent = msg;
+    statusMsg.className = 'mt-2 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
+  }
 
-    const authState   = document.getElementById('auth-state');
-    const btnSignIn   = document.getElementById('google-signin');
-    const btnSignOut  = document.getElementById('signout');
-    const btnCheck    = document.getElementById('check-access');
-    const statusMsg   = document.getElementById('status-msg');
-    const startBtn    = document.getElementById('start-learning');
-
-    function setMsg(text, ok=false) {
-      statusMsg.textContent = text;
-      statusMsg.className = 'mt-1 text-sm ' + (ok ? 'text-green-300' : 'text-white/80');
+  // 🔹 When user signs in/out
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      authState.textContent = `Signed in as ${user.email}`;
+      btnSignIn.classList.add('hidden');
+      btnSignOut.classList.remove('hidden');
+      await ensureUserDoc(user);
+      setMsg('Signed in. Click “Check Approval”.');
+    } else {
+      authState.textContent = 'Not signed in';
+      btnSignOut.classList.add('hidden');
+      btnSignIn.classList.remove('hidden');
+      startBtn.classList.add('hidden');
+      setMsg('Sign in first to check approval.');
     }
+  });
 
-    async function ensureUserDoc(user) {
+  // 🔹 Create or update Firestore user doc
+  async function ensureUserDoc(user) {
+    const ref = doc(db, 'users', user.uid);
+    const snap = await getDoc(ref);
+    if (!snap.exists()) {
+      await setDoc(ref, {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || '',
+        createdAt: serverTimestamp(),
+        lastLoginAt: serverTimestamp()
+      });
+    } else {
+      await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
+    }
+  }
+
+  // 🔹 Button Events
+  btnSignIn.addEventListener('click', async () => {
+    try { await signInWithPopup(auth, provider); }
+    catch (e) { setMsg('Sign-in failed: ' + e.message); }
+  });
+
+  btnSignOut.addEventListener('click', async () => { await signOut(auth); });
+
+  btnCheck.addEventListener('click', async () => {
+    const user = auth.currentUser;
+    if (!user) return setMsg('Please sign in first.');
+    try {
       const ref = doc(db, 'users', user.uid);
       const snap = await getDoc(ref);
-      if (!snap.exists()) {
-        await setDoc(ref, {
-          uid: user.uid,
-          email: user.email || '',
-          name: user.displayName || '',
-          photoURL: user.photoURL || '',
-          createdAt: serverTimestamp(),
-          lastLoginAt: serverTimestamp(),
-        });
-      } else {
-        await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
+      const data = snap.data() || {};
+      if (data.restricted) {
+        startBtn.classList.add('hidden');
+        return setMsg('Access restricted. Contact admin.');
       }
+      if (data.approved) {
+        startBtn.classList.remove('hidden');
+        return setMsg('Approved! You can start learning.', true);
+      }
+      startBtn.classList.add('hidden');
+      setMsg('Not approved yet. Admin will enable your account.');
+    } catch (e) {
+      setMsg('Error checking approval: ' + e.message);
     }
-
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        authState.textContent = `Signed in as ${user.email}`;
-        btnSignIn.classList.add('hidden');
-        btnSignOut.classList.remove('hidden');
-        await ensureUserDoc(user);
-        setMsg('Signed in. Click “Check Approval”.');
-      } else {
-        authState.textContent = 'Not signed in';
-        btnSignOut.classList.add('hidden');
-        btnSignIn.classList.remove('hidden');
-        setMsg('Sign in and check.');
-        startBtn.classList.add('hidden');
-      }
-    });
-
-    btnSignIn.addEventListener('click', async () => {
-      try { await signInWithPopup(auth, provider); }
-      catch (e) { setMsg('Sign-in failed. ' + e.message); }
-    });
-
-    btnSignOut.addEventListener('click', async () => {
-      await signOut(auth);
-    });
-
-    btnCheck.addEventListener('click', async () => {
-      const user = auth.currentUser;
-      if (!user) return setMsg('Please sign in first.');
-      try {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        const data = snap.data() || {};
-        const approved = !!data.approved;
-        const restricted = !!data.restricted;
-
-        if (restricted) {
-          startBtn.classList.add('hidden');
-          return setMsg('Access restricted. Contact admin.');
-        }
-        if (approved) {
-          startBtn.classList.remove('hidden');
-          return setMsg('Approved! You can start learning.', true);
-        }
-        startBtn.classList.add('hidden');
-        setMsg('Not approved yet. Admin will enable your account.');
-      } catch (e) {
-        setMsg('Could not check approval. ' + e.message);
-      }
-    });
-  </script>
-
-</body>
-</html>
-
-    </div>
-  </footer>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
-
-<!-- Config + Auth -->
-<script src="./firebase-init.js"></script>   <!-- ✅ root (ye URL open ho raha hai) -->
-<script src="./tools/auth.js"></script>      <!-- ✅ tools folder -->
-
+  });
+</script>
 
 </body>
 </html>
