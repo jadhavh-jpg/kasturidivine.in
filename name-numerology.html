@@ -1,15 +1,55 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Name Numerology Calculator</title>
-  <style>html,body{height:100%;margin:0} .wrap{height:100%}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Name Numerology — Kasturi Divine</title>
+  <link rel="stylesheet" href="/tools/styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <iframe src="https://numerology-with-hari.vercel.app/name-numerology"
-            title="Name Numerology Calculator"
-            style="border:0;width:100%;height:100%"></iframe>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><span class="dot"></span> Kasturi Divine</div>
+      <nav class="nav">
+        <a href="/tools/index.html">Home</a>
+        <a href="/tools/destiny.html">Destiny</a>
+        <a href="/tools/personal-year.html">Personal Year</a>
+        <a href="/tools/lucky-name.html">Lucky Name</a>
+      </nav>
+    </div>
+
+    <h1>Name Numerology (Chaldean)</h1>
+    <div class="form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter full name" />
+      <label><input type="checkbox" id="masters" checked> Keep Master Numbers (11/22/33)</label>
+      <button id="calc">Calculate</button>
+      <div class="output" id="out"></div>
+    </div>
+
+    <div class="footer">Tip: We ignore 9 in Chaldean mapping. Non-letter characters are skipped.</div>
   </div>
+  <script src="/tools/chaldean.js"></script>
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('calc').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value;
+      if(!name){ out.innerHTML='Please enter a name.'; return; }
+      const keep = document.getElementById('masters').checked;
+      const {total, values, letters} = Chaldean.chaldeanSum(name);
+      const reduced = Chaldean.digitalRoot(total, keep);
+      const rows = letters.map((ch,i)=>`<tr><td>${ch}</td><td>${values[i]}</td></tr>`).join('');
+      out.innerHTML = `
+        <h3>Result</h3>
+        <p><strong>Total:</strong> ${total} &nbsp; <strong>Reduced:</strong> ${reduced}</p>
+        <div style="overflow:auto">
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr><th style="text-align:left;border-bottom:1px solid #2a2048;padding:8px">Letter</th><th style="text-align:left;border-bottom:1px solid #2a2048;padding:8px">Value</th></tr></thead>
+            <tbody>${rows || '<tr><td colspan="2">No letters.</td></tr>'}</tbody>
+          </table>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
