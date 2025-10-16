@@ -1,6 +1,50 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Destiny Number Calculator</title>
-<style>html,body{height:100%;margin:0} .wrap{height:100%}</style></head><body>
-<div class="wrap"><iframe src="https://numerology-with-hari.vercel.app/destiny" title="Destiny Number Calculator" style="border:0;width:100%;height:100%"></iframe></div>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Destiny (Life Path) — Kasturi Divine</title>
+  <link rel="stylesheet" href="/tools/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><span class="dot"></span> Kasturi Divine</div>
+      <nav class="nav">
+        <a href="/tools/index.html">Home</a>
+        <a href="/tools/personal-year.html">Personal Year</a>
+        <a href="/tools/name-numerology.html">Name</a>
+        <a href="/tools/lucky-name.html">Lucky Name</a>
+      </nav>
+    </div>
+
+    <h1>Destiny (Life Path) Calculator</h1>
+    <div class="form">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" />
+      <label><input type="checkbox" id="masters" checked> Keep Master Numbers (11/22/33)</label>
+      <button id="calc">Calculate</button>
+      <div class="output" id="out"></div>
+    </div>
+
+    <div class="footer">Tip: Life Path is reduced sum of DOB. Compounds 11/22/33 may be preserved.</div>
+  </div>
+  <script src="/tools/chaldean.js"></script>
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('calc').addEventListener('click', ()=>{
+      const dob = document.getElementById('dob').value;
+      if(!dob){ out.innerHTML='Please select DOB'; return; }
+      const keep = document.getElementById('masters').checked;
+      const lp = Chaldean.lifePathFromDOB(dob, keep);
+      const dr = Chaldean.reduceDate(dob, keep);
+      out.innerHTML = `
+        <h3>Result</h3>
+        <p><strong>Life Path:</strong> ${lp}</p>
+        <p><strong>Direct Reduction of full date:</strong> ${dr}</p>
+        <p>Note: Different schools reduce differently; we show both styles.</p>
+      `;
+    });
+  </script>
+</body>
+</html>
