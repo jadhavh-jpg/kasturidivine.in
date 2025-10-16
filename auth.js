@@ -1,41 +1,55 @@
 <script>
 (function () {
-  if (!window.firebaseConfig) return alert("Firebase config missing!");
-
+  if (!window.firebaseConfig) return console.error("Firebase config missing");
   const app = firebase.initializeApp(window.firebaseConfig);
   const auth = firebase.auth();
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  const signIn = document.getElementById("googleSignInBtn");
-  const signOut = document.getElementById("googleSignOutBtn");
-  const status = document.getElementById("accessStatus");
-  const userName = document.getElementById("userName");
+  const signInEl  = document.getElementById('googleSignInBtn');
+  const signOutEl = document.getElementById('googleSignOutBtn');
+  const statusEl  = document.getElementById('accessStatus');
+  const userEl    = document.getElementById('userName');
 
-  function setStatus(msg) { if (status) status.textContent = msg; }
+  function setStatus(msg){ if(statusEl) statusEl.textContent = msg || ''; }
 
-  if (signIn) signIn.onclick = async () => {
+  function onClick(el, fn){
+    if(!el) return;
+    el.addEventListener('click', (e)=>{
+      if (e && typeof e.preventDefault === 'function') e.preventDefault(); // stops <a> navigation
+      fn();
+    });
+  }
+
+  onClick(signInEl, async () => {
     try {
-      setStatus("Signing in…");
+      setStatus('Signing in…');
       await auth.signInWithPopup(provider);
     } catch (e) {
-      setStatus("Error: " + e.message);
-      console.error(e);
+      console.warn('Popup error:', e.code, e.message);
+      if (e.code === 'auth/popup-blocked' || e.code === 'auth/popup-closed-by-user') {
+        setStatus('Popup blocked—redirecting…');
+        await auth.signInWithRedirect(provider);  // fallback
+      } else {
+        setStatus('Error: ' + e.message);
+      }
     }
-  };
+  });
 
-  if (signOut) signOut.onclick = async () => { await auth.signOut(); };
+  onClick(signOutEl, async () => {
+    await auth.signOut();
+  });
 
   auth.onAuthStateChanged(user => {
     if (user) {
-      userName.textContent = user.displayName || user.email;
-      signIn.style.display = "none";
-      signOut.style.display = "inline-flex";
-      setStatus("Signed in ✅");
+      if (userEl) userEl.textContent = user.displayName || user.email;
+      if (signInEl)  signInEl.style.display  = 'none';
+      if (signOutEl) signOutEl.style.display = 'inline-flex';
+      setStatus('Signed in ✅');
     } else {
-      userName.textContent = "Not signed in";
-      signIn.style.display = "inline-flex";
-      signOut.style.display = "none";
-      setStatus("");
+      if (userEl) userEl.textContent = 'Not signed in';
+      if (signInEl)  signInEl.style.display  = 'inline-flex';
+      if (signOutEl) signOutEl.style.display = 'none';
+      setStatus('');
     }
   });
 })();
