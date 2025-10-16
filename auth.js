@@ -1,26 +1,27 @@
-<script>
 (function () {
   if (!window.firebaseConfig) {
     console.error("Firebase config missing");
     return;
   }
 
-  // Firebase (compat)
-  const app = firebase.initializeApp(window.firebaseConfig);
+  // Initialize (compat)
+  if (!firebase.apps.length) {
+    firebase.initializeApp(window.firebaseConfig);
+  }
   const auth = firebase.auth();
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  // Grab elements (IDs exactly as in your HTML)
-  const statusEl  = document.getElementById('auth-state');
+  // Elements: IDs as in your HTML
+  const statusEl  = document.getElementById('auth-state');   // "Not signed in" text
   const signInEl  = document.getElementById('google-signin');
   const signOutEl = document.getElementById('signout');
 
-  function setStatus(msg) { if (statusEl) statusEl.textContent = msg || ''; }
+  function setStatus(msg){ if(statusEl) statusEl.textContent = msg || ''; }
 
   function on(el, fn){
     if(!el) return;
     el.addEventListener('click', (e)=>{
-      if (e && e.preventDefault) e.preventDefault(); // stop <button>/<a> default
+      if (e && e.preventDefault) e.preventDefault();
       fn();
     });
   }
@@ -41,23 +42,8 @@
   });
 
   on(signOutEl, async () => {
-    try {
-      await auth.signOut();
-    } catch (e) {
-      setStatus('Sign-out error: ' + e.message);
-    }
+    try { await auth.signOut(); }
+    catch (e) { setStatus('Sign-out error: ' + e.message); }
   });
 
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      setStatus('Signed in ✅ ' + (user.displayName || user.email));
-      if (signInEl)  signInEl.classList.add('hidden');
-      if (signOutEl) signOutEl.classList.remove('hidden');
-    } else {
-      setStatus('Not signed in');
-      if (signInEl)  signInEl.classList.remove('hidden');
-      if (signOutEl) signOutEl.classList.add('hidden');
-    }
-  });
-})();
-</script>
+  auth.onAuthStateChanged(use
