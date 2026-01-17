@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kasturi Divine | Numerology & Guidance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,21 +41,21 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 20px;
+  padding:14px 20px;
 }
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
-.brand img{width:55px}
+.brand img{width:56px}
 .brand span{
   font-weight:800;
   color:var(--purple);
   font-size:22px;
 }
 nav a{
-  margin:0 12px;
+  margin:0 14px;
   font-weight:700;
   color:var(--purple);
 }
@@ -68,6 +68,7 @@ nav a:hover{color:var(--violet)}
 .mobile-menu{
   display:none;
   padding:10px 20px;
+  background:#fff;
 }
 .mobile-menu a{
   display:block;
@@ -78,24 +79,36 @@ nav a:hover{color:var(--violet)}
 
 /* ================= HERO ================= */
 .hero{
-  text-align:center;
-  padding:100px 20px;
+  padding:110px 20px;
   color:#fff;
-  background:linear-gradient(120deg,#3b176b,#6d28d9,#4b1b7a);
+  text-align:center;
+  background:linear-gradient(
+    120deg,
+    #3b176b,
+    #6d28d9,
+    #4b1b7a
+  );
   background-size:300% 300%;
-  animation:heroMove 10s infinite alternate;
+  animation:heroMove 12s ease infinite;
 }
 @keyframes heroMove{
-  from{background-position:0% 50%}
-  to{background-position:100% 50%}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
-.hero h1{font-size:48px}
-.hero p{opacity:.9}
+.hero h1{
+  font-size:50px;
+  margin-bottom:12px;
+}
+.hero p{
+  font-size:18px;
+  opacity:.9;
+}
 .hero-btns{
-  margin-top:30px;
+  margin-top:32px;
 }
 .btn{
-  padding:14px 36px;
+  padding:14px 38px;
   border-radius:40px;
   font-weight:700;
   border:none;
@@ -107,130 +120,117 @@ nav a:hover{color:var(--violet)}
   color:#000;
 }
 .btn-gold:hover{
-  box-shadow:0 0 25px rgba(250,204,21,.8);
   transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(250,204,21,.8);
 }
-.btn-dark{
-  background:#2d1157;
+.btn-outline{
+  background:transparent;
+  border:2px solid var(--gold);
   color:#fff;
 }
-.btn-dark:hover{
-  box-shadow:0 0 20px rgba(255,255,255,.3);
+.btn-outline:hover{
+  background:rgba(255,255,255,.1);
   transform:translateY(-4px);
 }
 
-/* ================= WHEEL ================= */
-.wheel-section{text-align:center;padding:80px 20px}
-.wheel-wrap{width:320px;margin:40px auto;position:relative}
-.pointer{
-  position:absolute;
-  top:-14px;
-  left:50%;
-  transform:translateX(-50%);
-  width:0;height:0;
-  border-left:12px solid transparent;
-  border-right:12px solid transparent;
-  border-bottom:20px solid #000;
+/* ================= SECTIONS ================= */
+.section{
+  padding:80px 20px;
+  text-align:center;
 }
-.led{
-  position:absolute;
-  top:-30px;
-  left:50%;
-  transform:translateX(-50%);
-  width:10px;height:10px;
-  border-radius:50%;
-  background:#22c55e;
-  display:none;
-  box-shadow:0 0 10px #22c55e;
-}
-.led.on{display:block;animation:blink .6s infinite}
-@keyframes blink{50%{opacity:.2}}
-
-.wheel{
-  width:320px;height:320px;
-  border-radius:50%;
-  background:conic-gradient(
-    #facc15 0deg 40deg,
-    #38bdf8 40deg 80deg,
-    #22c55e 80deg 120deg,
-    #fb7185 120deg 160deg,
-    #fb923c 160deg 200deg,
-    #16a34a 200deg 240deg,
-    #1d4ed8 240deg 280deg,
-    #6366f1 280deg 320deg,
-    #4ade80 320deg 360deg
-  );
-  border:10px solid var(--gold);
-  transition:transform 4s cubic-bezier(.17,.67,.28,1);
-  position:relative;
-}
-.num{
-  position:absolute;
-  left:50%;top:50%;
-  transform-origin:50% 140px;
-  font-weight:800;
-}
-.n1{transform:rotate(20deg) translateY(-140px)}
-.n2{transform:rotate(60deg) translateY(-140px)}
-.n3{transform:rotate(100deg) translateY(-140px)}
-.n4{transform:rotate(140deg) translateY(-140px)}
-.n5{transform:rotate(180deg) translateY(-140px)}
-.n6{transform:rotate(220deg) translateY(-140px)}
-.n7{transform:rotate(260deg) translateY(-140px)}
-.n8{transform:rotate(300deg) translateY(-140px)}
-.n9{transform:rotate(340deg) translateY(-140px)}
-
-.center{
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:110px;height:110px;
-  border-radius:50%;
-  background:#fff;
-  border:6px solid var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  cursor:pointer;
+.section h2{
+  color:var(--purple);
+  margin-bottom:50px;
 }
 
 /* ================= TOOLS ================= */
-.tools{padding:80px 20px}
-.tools-list{max-width:600px;margin:auto}
+.tools{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
+}
 .tool{
+  background:#fff;
   border:2px solid var(--gold);
-  padding:18px;
-  border-radius:18px;
-  margin-bottom:14px;
+  border-radius:22px;
+  padding:30px 20px;
   font-weight:800;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  transition:.3s;
+  transition:.35s;
+}
+.tool span{
+  display:block;
+  font-size:28px;
+  margin-bottom:10px;
 }
 .tool:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 
-/* ================= CONTACT ================= */
-.contact{padding:80px 20px;background:#fff}
-.form{
-  max-width:500px;
+/* ================= STUDENT LOGIN ================= */
+.login-section{
+  background:#fff;
+}
+.login-wrap{
+  max-width:900px;
   margin:auto;
-  background:#f5f2ff;
-  padding:25px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.login-info{
+  text-align:left;
+}
+.login-info h3{
+  color:var(--purple);
+}
+.login-box{
+  background:var(--bg);
+  padding:32px;
   border-radius:22px;
 }
-input,textarea{
+.login-box input{
   width:100%;
-  padding:12px;
-  margin-bottom:12px;
+  padding:14px;
+  margin-bottom:14px;
   border-radius:14px;
   border:1px solid #ccc;
 }
-input:focus,textarea:focus{
+.login-box input:focus{
+  outline:none;
+  border-color:var(--gold);
+}
+.login-box button{
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:var(--gold);
+  font-weight:800;
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  background:var(--bg);
+}
+.form{
+  max-width:520px;
+  margin:auto;
+  background:#fff;
+  padding:28px;
+  border-radius:22px;
+}
+.form input,.form textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:14px;
+  border:1px solid #ccc;
+}
+.form input:focus,.form textarea:focus{
   outline:none;
   border-color:var(--gold);
 }
@@ -238,20 +238,20 @@ input:focus,textarea:focus{
 /* ================= FOOTER ================= */
 footer{
   background:#fff;
-  text-align:center;
   padding:40px 20px;
   border-top:1px solid #eee;
+  text-align:center;
 }
 .join{
   display:inline-block;
-  margin-top:12px;
+  margin-top:14px;
   border:2px solid var(--gold);
-  padding:12px 20px;
+  padding:12px 22px;
   border-radius:30px;
   font-weight:800;
 }
 
-/* ================= WHATSAPP ================= */
+/* ================= FLOAT WHATSAPP ================= */
 .whatsapp{
   position:fixed;
   right:20px;
@@ -260,12 +260,20 @@ footer{
   color:#fff;
   padding:14px 18px;
   border-radius:50%;
-  animation:blink 1.2s infinite;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
+  70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
 }
 
+/* ================= MOBILE ================= */
 @media(max-width:768px){
   nav{display:none}
   .menu-btn{display:block}
+  .login-wrap{grid-template-columns:1fr}
+  .hero h1{font-size:36px}
 }
 </style>
 </head>
@@ -275,98 +283,90 @@ footer{
 <header>
   <div class="navbar">
     <div class="brand">
-      <img src="logo.png">
+      <img src="logo.png" alt="Kasturi Divine">
       <span>Kasturi Divine</span>
     </div>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Wheel</a>
       <a href="#">Tools</a>
-      <a href="#">Courses</a>
+      <a href="#">Login</a>
       <a href="#">Contact</a>
     </nav>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </div>
   <div id="mobileMenu" class="mobile-menu">
     <a href="#">Home</a>
-    <a href="#">Wheel</a>
     <a href="#">Tools</a>
-    <a href="#">Courses</a>
+    <a href="#">Login</a>
     <a href="#">Contact</a>
   </div>
 </header>
 
 <section class="hero">
-  <h1>हम सब में है कुछ खास</h1>
-  <p>Know yourself • Trust Divine power • Create your future</p>
+  <h1>Align Your Numbers, Align Your Life</h1>
+  <p>Practical numerology guidance for clarity, balance & growth</p>
   <div class="hero-btns">
-    <button class="btn btn-gold">Explore Courses</button>
-    <button class="btn btn-dark">Book Consultation</button>
+    <button class="btn btn-gold">Explore Numerology</button>
+    <button class="btn btn-outline">Book Consultation</button>
   </div>
 </section>
 
-<section class="wheel-section">
-  <h2>Numerology Energy Wheel</h2>
-  <div class="wheel-wrap">
-    <div class="pointer"></div>
-    <div id="led" class="led"></div>
-    <div id="wheel" class="wheel">
-      <div class="num n1">1</div><div class="num n2">2</div><div class="num n3">3</div>
-      <div class="num n4">4</div><div class="num n5">5</div><div class="num n6">6</div>
-      <div class="num n7">7</div><div class="num n8">8</div><div class="num n9">9</div>
-      <div class="center" onclick="spin()">SPIN</div>
+<section class="section">
+  <h2>Numerology Tools</h2>
+  <div class="tools">
+    <div class="tool"><span>📱</span>Mobile Numerology</div>
+    <div class="tool"><span>✍️</span>Name Correction</div>
+    <div class="tool"><span>🏢</span>Business Name</div>
+    <div class="tool"><span>🍀</span>Lucky Numbers</div>
+    <div class="tool"><span>📜</span>Destiny Number</div>
+    <div class="tool"><span>🔮</span>Personal Year</div>
+  </div>
+</section>
+
+<section class="section login-section">
+  <h2>Student Login</h2>
+  <div class="login-wrap">
+    <div class="login-info">
+      <h3>Certified Numerology Programs</h3>
+      <p>
+        Access your enrolled courses, learning materials
+        and digital certificates from one place.
+      </p>
+      <img src="certificate.png" style="width:100%;max-width:360px;border-radius:20px;">
+    </div>
+    <div class="login-box">
+      <input placeholder="Email ID">
+      <input type="password" placeholder="Password">
+      <button>Login to Dashboard</button>
     </div>
   </div>
-  <h3 id="result"></h3>
 </section>
 
-<section class="tools">
-  <h2>Numerology Tools</h2>
-  <div class="tools-list">
-    <div class="tool">📱 Mobile Numerology</div>
-    <div class="tool">✍️ Name Correction</div>
-    <div class="tool">🏢 Business Name</div>
-    <div class="tool">🍀 Lucky Numbers</div>
-    <div class="tool">📜 Destiny Number</div>
-    <div class="tool">🔮 Personal Year</div>
-  </div>
-</section>
-
-<section class="contact">
+<section class="section contact">
   <h2>Contact Us</h2>
   <div class="form">
     <input placeholder="Name">
     <input placeholder="Mobile">
-    <textarea placeholder="Message"></textarea>
+    <textarea rows="4" placeholder="Message"></textarea>
     <button class="btn btn-gold">Submit</button>
   </div>
 </section>
 
 <footer>
-  <p>Kasturi Divine – Practical numerology guidance for life clarity & success.</p>
+  <p>
+    Kasturi Divine offers authentic numerology guidance to help you
+    understand numbers, correct name energies and move forward with confidence.
+  </p>
   <a class="join" href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1">Join WhatsApp Group</a>
   <p>© 2026 Kasturi Divine</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/919736317525">💬</a>
+<a href="https://wa.me/919736317525" class="whatsapp">💬</a>
 
 <script>
 function toggleMenu(){
-  const m=document.getElementById('mobileMenu');
-  m.style.display=m.style.display==='block'?'none':'block';
-}
-function spin(){
-  const wheel=document.getElementById('wheel');
-  const led=document.getElementById('led');
-  const result=document.getElementById('result');
-  led.classList.remove('on');
-  const n=Math.floor(Math.random()*9)+1;
-  const angle=360*5+(9-n)*40;
-  wheel.style.transform=`rotate(${angle}deg)`;
-  setTimeout(()=>{
-    led.classList.add('on');
-    result.innerText="Your Lucky Number: "+n;
-  },4200);
+  const m=document.getElementById("mobileMenu");
+  m.style.display = m.style.display==="block" ? "none" : "block";
 }
 </script>
 
