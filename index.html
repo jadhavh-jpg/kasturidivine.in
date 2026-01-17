@@ -218,6 +218,29 @@ function toggleMenu(){
     text-align:center;
   }
 }
+  .btn-primary{
+  background:#d4af37;
+  color:#2a1b0f;
+  padding:14px 32px;
+  border-radius:999px;
+  font-weight:700;
+  transition:all .25s ease;
+  display:inline-block;
+}
+
+/* Desktop hover */
+.btn-primary:hover{
+  background:#c9a62d;
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(212,175,55,.45);
+}
+
+/* Mobile tap effect */
+.btn-primary:active{
+  transform:scale(.96);
+  box-shadow:0 6px 15px rgba(212,175,55,.35);
+}
+
 
 </script>
 
@@ -267,7 +290,10 @@ function toggleMenu(){
   <h1>Align Your Numbers, Align Your Life</h1>
   <p>Practical numerology guidance for clarity, balance and confident decisions</p>
   <div class="hero-buttons">
-  <a href="#courses" class="btn btn-primary">Explore Course</a>
+  <a href="#courses" class="btn btn-primary">
+  Explore Course
+</a>
+
   <a href="https://calendly.com/kasturidivinei/help-line-number-kasturi-divine"
      target="_blank"
      class="btn btn-outline">
