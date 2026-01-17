@@ -3,293 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kasturi Divine | Numerology & Name Correction</title>
+<title>Kasturi Divine | Numerology</title>
 
 <link rel="icon" href="logo.png">
-
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 :root{
-  --primary:#2E1065;
-  --secondary:#6D28D9;
-  --accent:#FACC15;
-  --bg:#FAF7FF;
-  --dark:#1F1B2E;
+ --purple:#4b1b7a;
+ --violet:#6d28d9;
+ --gold:#facc15;
+ --bg:#faf7ff;
 }
 
-body{
-  font-family:Poppins,sans-serif;
-  background:var(--bg);
-  color:var(--dark);
-  scroll-behavior:smooth;
-}
+body{font-family:Poppins,sans-serif;background:var(--bg)}
 h1,h2,h3{font-family:Cinzel,serif}
-
-::selection{background:var(--accent);color:#000}
-
-/* NAV */
-.nav-link{
-  font-weight:600;
-  transition:.3s;
-}
-.nav-link:hover{
-  color:var(--secondary);
-}
-
-/* BUTTON */
-.btn{
-  padding:14px 36px;
-  border-radius:999px;
-  font-weight:600;
-  transition:.35s;
-}
-.btn-primary{
-  background:var(--accent);
-  color:#000;
-}
-.btn-primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 30px rgba(250,204,21,.7);
-}
-.btn-outline{
-  border:2px solid var(--primary);
-  color:var(--primary);
-}
-.btn-outline:hover{
-  background:var(--primary);
-  color:#fff;
-}
 
 /* HERO */
 .hero{
-  background:
-    radial-gradient(circle at 20% 20%, rgba(250,204,21,.25), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255,255,255,.18), transparent 45%),
-    linear-gradient(135deg,#2E1065,#4C1D95,#2E1065);
-  color:#fff;
-  animation:fadeIn 1.2s ease;
+ background:linear-gradient(135deg,#3b176b,#6d28d9);
+ color:#fff;
+ animation:fadeUp 1.2s ease;
 }
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
+@keyframes fadeUp{
+ from{opacity:0;transform:translateY(30px)}
+ to{opacity:1}
 }
 
-/* CARDS */
-.card{
-  background:#fff;
-  border-radius:22px;
-  padding:26px;
-  transition:.4s;
+/* BUTTONS */
+.btn{
+ padding:14px 34px;
+ border-radius:999px;
+ font-weight:600;
+ transition:.3s;
 }
-.card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
+.btn-yellow{background:var(--gold);color:#000}
+.btn-yellow:hover{box-shadow:0 0 25px rgba(250,204,21,.7)}
+.btn-book{
+ background:#3b176b;
+ color:#fff;
+ box-shadow:none;
+}
+.btn-book:hover{
+ box-shadow:0 0 20px rgba(250,204,21,.6);
+ transform:translateY(-2px);
 }
 
 /* WHEEL */
-.cycle-wheel{
-  width:320px;height:320px;
-  border-radius:50%;
-  background:#E8DCC2;
-  position:relative;
-  margin:auto;
+.wheel-box{position:relative;width:280px;height:280px;margin:auto}
+.wheel{
+ width:100%;height:100%;
+ border-radius:50%;
+ border:10px solid var(--gold);
+ position:relative;
+ background:#e8dcc2;
+ transition:transform 2s cubic-bezier(.17,.67,.28,1);
 }
-.cycle-wheel::after{
-  content:"";
-  position:absolute;
-  inset:60px;
-  background:#F1E3B0;
-  border-radius:50%;
+.wheel span{
+ position:absolute;
+ font-weight:700;
 }
-.center-text{
-  position:absolute;
-  inset:110px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  z-index:2;
+.wheel span.active{
+ color:#fff;
+ text-shadow:0 0 10px var(--gold);
 }
-.num{
-  position:absolute;
-  width:90px;
-  text-align:center;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
+
+/* TOOLS */
+.tool-btn{
+ border:2px solid var(--gold);
+ border-radius:18px;
+ padding:18px;
+ font-weight:600;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ transition:.3s;
+ background:#fff;
 }
-.num:hover{color:var(--primary);transform:scale(1.08)}
-.num span{display:block;font-size:12px}
+.tool-btn:hover{
+ transform:translateY(-6px);
+ box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* CARD */
+.card{
+ background:#fff;
+ padding:24px;
+ border-radius:22px;
+ transition:.3s;
+}
+.card:hover{
+ transform:translateY(-10px);
+ box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
 
 /* CONTACT */
 input,textarea{
-  transition:.3s;
+ transition:.3s;
 }
-input:hover,textarea:hover{
-  border-color:var(--secondary);
-}
+input:hover,textarea:hover{border-color:var(--violet)}
 input:focus,textarea:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 0 2px rgba(250,204,21,.3);
+ outline:none;
+ border-color:var(--gold);
+ box-shadow:0 0 0 2px rgba(250,204,21,.3);
 }
 
 /* WHATSAPP */
 .whatsapp{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 20px;
-  border-radius:999px;
-  font-weight:600;
-  z-index:50;
+ position:fixed;right:20px;bottom:20px;
+ background:#25D366;color:#fff;
+ padding:14px 20px;border-radius:999px;
+ font-weight:600;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="sticky top-0 bg-white/90 backdrop-blur border-b z-50">
-<div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-<div class="flex items-center gap-4">
-<img src="logo.png" class="w-16 h-16">
-<span class="text-xl font-semibold text-[var(--primary)]">Kasturi Divine</span>
-</div>
-<nav class="hidden md:flex gap-6">
-<a href="#home" class="nav-link">Home</a>
-<a href="#wheel" class="nav-link">Wheel</a>
-<a href="#tools" class="nav-link">Tools</a>
-<a href="#courses" class="nav-link">Courses</a>
-<a href="#contact" class="nav-link">Contact</a>
-</nav>
-</div>
-</header>
-
 <!-- HERO -->
-<section id="home" class="hero py-28 text-center">
+<section class="hero py-28 text-center">
 <h1 class="text-4xl md:text-6xl mb-4">हम सब में है कुछ खास</h1>
-<p class="text-lg text-white/80 mb-6">
+<p class="text-white/80 mb-6">
 Know yourself • Trust the Divine power • Create your future
 </p>
 <div class="flex justify-center gap-4 flex-wrap">
-<button class="btn btn-primary">Explore Tools</button>
-<button class="btn btn-outline">Book Consultation</button>
+<button class="btn btn-yellow">Explore Tools</button>
+<button class="btn btn-book">Book Consultation</button>
 </div>
 </section>
 
 <!-- WHEEL -->
-<section id="wheel" class="py-20 text-center">
-<h2 class="text-3xl text-[var(--primary)] mb-6">Numerology Energy Wheel</h2>
+<section class="py-20 text-center">
+<h2 class="text-3xl text-[var(--purple)] mb-6">Numerology Energy Wheel</h2>
 
-<div class="cycle-wheel">
-<div class="center-text">
-<h3>The 9<br>Year Cycle</h3>
-</div>
-
-<div class="num" style="top:-10px;left:115px" data-num="1">1<span>I Initiate</span></div>
-<div class="num" style="top:40px;right:-10px" data-num="2">2<span>I Reflect</span></div>
-<div class="num" style="top:140px;right:-20px" data-num="3">3<span>I Express</span></div>
-<div class="num" style="bottom:40px;right:-10px" data-num="4">4<span>I Build</span></div>
-<div class="num" style="bottom:-10px;left:115px" data-num="5">5<span>I Shift</span></div>
-<div class="num" style="bottom:40px;left:-10px" data-num="6">6<span>I Give</span></div>
-<div class="num" style="top:140px;left:-20px" data-num="7">7<span>I Seek</span></div>
-<div class="num" style="top:40px;left:-10px" data-num="8">8<span>I Generate</span></div>
-<div class="num" style="top:-10px;left:115px" data-num="9">9<span>I Release</span></div>
-</div>
-
-<div id="wheelResult" class="max-w-xl mx-auto mt-6 hidden bg-white p-6 rounded-2xl shadow"></div>
-</section>
-
-<!-- POSTER + CTA -->
-<section class="py-20 bg-white">
-<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4">
-<img src="numerology-poster.png" class="rounded-2xl shadow">
-<div class="space-y-4">
-<button class="btn btn-primary w-full">Mobile Numerology</button>
-<button class="btn btn-outline w-full">Name Correction</button>
-<button class="btn btn-primary w-full">Business Name Analysis</button>
-<button class="btn btn-outline w-full">Lucky Number Finder</button>
+<div class="wheel-box">
+<div id="wheel" class="wheel">
+<span style="top:-10px;left:125px">1</span>
+<span style="top:40px;right:-10px">2</span>
+<span style="top:130px;right:-20px">3</span>
+<span style="bottom:40px;right:-10px">4</span>
+<span style="bottom:-10px;left:125px">5</span>
+<span style="bottom:40px;left:-10px">6</span>
+<span style="top:130px;left:-20px">7</span>
+<span style="top:40px;left:-10px">8</span>
+<span style="top:-10px;left:125px">9</span>
 </div>
 </div>
+
+<div id="wheelResult" class="mt-6 text-lg font-semibold"></div>
 </section>
 
 <!-- TOOLS -->
-<section id="tools" class="py-20">
-<h2 class="text-3xl text-center text-[var(--primary)] mb-10">Numerology Tools</h2>
-<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-6 px-4">
-<div class="card">Mobile Numerology</div>
-<div class="card">Name Correction</div>
-<div class="card">Business Name</div>
-<div class="card">Lucky Numbers</div>
-<div class="card">Destiny Number</div>
-<div class="card">Personal Year</div>
-<div class="card">Compatibility</div>
-<div class="card">Lucky Dates</div>
+<section class="py-20">
+<h2 class="text-3xl text-center text-[var(--purple)] mb-10">Numerology Tools</h2>
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 px-4">
+<div class="tool-btn">📱 Mobile Numerology</div>
+<div class="tool-btn">✍️ Name Correction</div>
+<div class="tool-btn">🏢 Business Name</div>
+<div class="tool-btn">🍀 Lucky Numbers</div>
+<div class="tool-btn">📜 Destiny Number</div>
+<div class="tool-btn">🔮 Personal Year</div>
 </div>
 </section>
 
-<!-- COURSES -->
-<section id="courses" class="py-20 bg-white">
-<h2 class="text-3xl text-center text-[var(--primary)] mb-10">Courses</h2>
+<!-- SERVICES -->
+<section class="py-20 bg-white">
+<h2 class="text-3xl text-center text-[var(--purple)] mb-10">Our Services</h2>
 <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-4">
-<div class="card">Basic Numerology</div>
-<div class="card">Mobile Numerology Mastery</div>
-<div class="card">Name Correction Certification</div>
+<div class="card">Vedic Numerology</div>
+<div class="card">Tarot Card Reading</div>
+<div class="card">Reiki Healing</div>
 </div>
 </section>
 
 <!-- STUDENT LOGIN -->
 <section class="py-20 text-center">
-<h2 class="text-3xl text-[var(--primary)] mb-4">Student Login</h2>
-<p class="text-gray-600 mb-6">Access your courses & tools</p>
-<button class="btn btn-primary">Login with Google</button>
+<h2 class="text-3xl text-[var(--purple)] mb-6">Student Login</h2>
+<img src="certificate.png" class="mx-auto mb-4 rounded-xl shadow w-48">
+<button class="btn btn-yellow">Login to Dashboard</button>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-20 bg-white">
-<h2 class="text-3xl text-center text-[var(--primary)] mb-6">Contact Us</h2>
-<div class="max-w-xl mx-auto bg-[var(--bg)] p-6 rounded-2xl">
-<input class="w-full mb-3 p-3 rounded-xl border" placeholder="Name">
-<input class="w-full mb-3 p-3 rounded-xl border" placeholder="Mobile">
-<textarea class="w-full p-3 rounded-xl border" rows="4" placeholder="Message"></textarea>
-<button class="btn btn-primary w-full mt-4">Submit</button>
+<!-- TESTIMONIAL -->
+<section class="py-20 bg-white">
+<h2 class="text-3xl text-center text-[var(--purple)] mb-10">Testimonials</h2>
+<div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 px-4">
+<div class="card">
+<img src="user1.jpg" class="rounded-full w-16 mb-3">
+<p>“Amazing guidance, life changing.”</p>
+<strong>- Client</strong>
+</div>
 </div>
 </section>
 
-<footer class="py-8 text-center bg-white">
-© 2026 Kasturi Divine
-</footer>
+<!-- CONTACT -->
+<section class="py-20">
+<h2 class="text-3xl text-center text-[var(--purple)] mb-6">Contact Us</h2>
+<div class="max-w-xl mx-auto bg-white p-6 rounded-2xl">
+<input class="w-full mb-3 p-3 border rounded-xl" placeholder="Name">
+<input class="w-full mb-3 p-3 border rounded-xl" placeholder="Mobile">
+<textarea class="w-full p-3 border rounded-xl" rows="4" placeholder="Message"></textarea>
+<button class="btn btn-yellow w-full mt-4">Submit</button>
+</div>
+</section>
+
+<footer class="py-6 text-center bg-white">© 2026 Kasturi Divine</footer>
 
 <a href="https://wa.me/919736317525" class="whatsapp">Chat on WhatsApp</a>
 
 <script>
-const meanings={
-1:"New beginnings & leadership.",
-2:"Balance & relationships.",
-3:"Creativity & expression.",
-4:"Discipline & foundation.",
-5:"Change & freedom.",
-6:"Responsibility & harmony.",
-7:"Inner growth & wisdom.",
-8:"Power & abundance.",
-9:"Completion & release."
+const wheel=document.getElementById("wheel");
+const result=document.getElementById("wheelResult");
+wheel.onclick=()=>{
+ const n=Math.floor(Math.random()*9)+1;
+ wheel.style.transform=`rotate(${360*4+(9-n)*40}deg)`;
+ result.innerText="Your Lucky Number: "+n;
 };
-document.querySelectorAll(".num").forEach(n=>{
-n.onclick=()=>{
-document.getElementById("wheelResult").innerHTML=
-`<h3 class="text-xl font-semibold text-[var(--primary)]">Number ${n.dataset.num}</h3>
-<p class="text-gray-600 mt-2">${meanings[n.dataset.num]}</p>`;
-document.getElementById("wheelResult").classList.remove("hidden");
-};
-});
 </script>
 
 </body>
