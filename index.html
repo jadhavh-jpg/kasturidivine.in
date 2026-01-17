@@ -3,207 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kasturi Divine</title>
+<title>Kasturi Divine | Numerology & Name Correction</title>
 
 <link rel="icon" href="logo.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+body{font-family:Poppins, sans-serif;}
+h1,h2,h3{font-family:Cinzel, serif;}
+
 ::selection{background:#f2d94c;color:#000}
 
 /* Buttons */
-.btn-primary{
-  background:#f2d94c;
-  padding:14px 30px;
-  border-radius:999px;
-  font-weight:500;
-  transition:.4s;
+.btn-main{
+background:#f2d94c;
+padding:14px 34px;
+border-radius:999px;
+font-weight:500;
+transition:.4s;
 }
-.btn-primary:hover{
-  transform:translateY(-4px) scale(1.04);
-  box-shadow:0 18px 40px rgba(242,217,76,.45);
+.btn-main:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 18px 40px rgba(242,217,76,.45);
 }
-.btn-outline{
-  border:2px solid #1f6f3a;
-  color:#1f6f3a;
-  padding:14px 30px;
-  border-radius:999px;
-  transition:.4s;
+.btn-green{
+background:#1f6f3a;
+color:#fff;
+padding:14px 34px;
+border-radius:999px;
+transition:.4s;
 }
-.btn-outline:hover{
-  background:#1f6f3a;
-  color:#fff;
-  transform:translateY(-4px);
+.btn-green:hover{
+transform:translateY(-4px);
+box-shadow:0 18px 40px rgba(31,111,58,.45);
 }
 
 /* Cards */
 .card{
-  transition:.45s;
+transition:.4s;
 }
 .card:hover{
-  transform:translateY(-10px) scale(1.04);
-  box-shadow:0 25px 60px rgba(0,0,0,.18);
+transform:translateY(-12px);
+box-shadow:0 30px 60px rgba(0,0,0,.18);
 }
 
-/* Numerology animation */
-@keyframes float {
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
-  100%{transform:translateY(0)}
+/* Number animation */
+@keyframes pulse{
+0%,100%{opacity:.4;transform:scale(.9)}
+50%{opacity:1;transform:scale(1.1)}
 }
-.num-anim{
-  animation:float 4s ease-in-out infinite;
+.num span{
+animation:pulse 3s infinite;
 }
-
-/* WhatsApp */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:999px;
-  font-weight:500;
-  box-shadow:0 12px 30px rgba(0,0,0,.3);
-  transition:.3s;
-  z-index:50;
-}
-.whatsapp:hover{
-  transform:scale(1.08);
-}
+.num span:nth-child(2){animation-delay:.3s}
+.num span:nth-child(3){animation-delay:.6s}
+.num span:nth-child(4){animation-delay:.9s}
+.num span:nth-child(5){animation-delay:1.2s}
 </style>
 </head>
 
-<body class="bg-[#f7f3f0] text-[#2f2f2f] antialiased">
+<body class="bg-[#f7f3f0] text-[#2f2f2f]">
 
 <!-- ================= HEADER ================= -->
-<header class="sticky top-0 z-40 bg-[#f7f3f0]/95 backdrop-blur border-b">
+<header class="sticky top-0 bg-[#f7f3f0]/95 backdrop-blur z-50 border-b">
 <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-
 <div class="flex items-center gap-3">
-  <img src="logo.png" class="h-9 w-9 rounded-xl">
-  <span class="font-semibold text-[#1f6f3a]">Kasturi Divine</span>
+<img src="logo.png" class="h-10 w-10">
+<span class="font-semibold text-[#1f6f3a]">Kasturi Divine</span>
 </div>
-
-<nav class="hidden md:flex gap-6 text-sm">
-<a href="#home">Home</a>
-<a href="#courses">Courses</a>
-<a href="#products">Products</a>
-<a href="#media">Media</a>
-<a href="#gallery">Gallery</a>
-<a href="#blog">Blog</a>
-<a href="#contact">Contact Us</a>
-</nav>
-
 <button id="menuBtn" class="md:hidden text-2xl">☰</button>
-</div>
-
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-<div class="flex flex-col p-4 gap-3">
-<a href="#home">Home</a>
-<a href="#courses">Courses</a>
-<a href="#products">Products</a>
-<a href="#media">Media</a>
-<a href="#gallery">Gallery</a>
-<a href="#blog">Blog</a>
-<a href="#contact">Contact Us</a>
-</div>
+<nav class="hidden md:flex gap-6 text-sm">
+<a href="#">Home</a>
+<a href="#">Courses</a>
+<a href="#">Tools</a>
+<a href="#">Gallery</a>
+<a href="#">Blog</a>
+<a href="#contact">Contact</a>
+</nav>
 </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="home" class="py-20">
+<section class="py-24">
 <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-14 items-center">
 
 <div>
-<h1 class="text-4xl md:text-6xl font-semibold text-[#1f6f3a] leading-tight">
+<h1 class="text-4xl md:text-6xl text-[#1f6f3a]">
 हम सब में है कुछ खास
 </h1>
-
-<p class="mt-4 text-gray-600 text-lg">
-• Know yourself.<br>
-• Trust the Divine power within.<br>
-• The universe offers everything — we create our own future.
+<p class="mt-4 text-lg text-gray-600">
+• Know yourself<br>
+• Trust the Divine power within<br>
+• The universe offers everything — we create our own future
 </p>
 
 <div class="mt-6 flex gap-4 flex-wrap">
-<a href="#courses" class="btn-primary">Explore Courses</a>
-<a href="#contact" class="btn-outline">Book Consultation</a>
+<a class="btn-main">Explore Courses</a>
+<a class="btn-green">Book Consultation</a>
 </div>
 
-<!-- Numerology animation -->
-<div class="mt-10 flex gap-6 text-4xl text-[#c04a7a] num-anim">
+<div class="num mt-10 flex gap-8 text-4xl text-[#c04a7a]">
 <span>1</span><span>3</span><span>5</span><span>7</span><span>9</span>
 </div>
 </div>
 
-<div class="relative">
 <img src="hero-poster.jpg" class="rounded-3xl shadow-2xl">
-</div>
 
 </div>
 </section>
 
-<!-- ================= TOOLS ================= -->
-<section id="tools" class="py-20 bg-white">
+<!-- ================= WHY NUMEROLOGY ================= -->
+<section class="py-20 bg-white">
 <div class="max-w-7xl mx-auto px-4">
-<h2 class="text-3xl font-semibold text-[#1f6f3a] mb-10">Numerology Tools</h2>
-
-<div class="grid md:grid-cols-4 gap-6">
-
-<div class="card bg-[#f7f3f0] p-6 rounded-2xl border">
-<h3 class="font-semibold">Mobile Numerology</h3>
-<p class="text-sm text-gray-600 mt-2">Check mobile number vibrations.</p>
-</div>
-
-<div class="card bg-[#f7f3f0] p-6 rounded-2xl border">
-<h3 class="font-semibold">Name Correction</h3>
-<p class="text-sm text-gray-600 mt-2">Improve name energy & success.</p>
-</div>
-
-<div class="card bg-[#f7f3f0] p-6 rounded-2xl border">
-<h3 class="font-semibold">Destiny Number</h3>
-<p class="text-sm text-gray-600 mt-2">Know your core life number.</p>
-</div>
-
-<div class="card bg-[#f7f3f0] p-6 rounded-2xl border">
-<h3 class="font-semibold">Lucky Elements</h3>
-<p class="text-sm text-gray-600 mt-2">Numbers, colors & dates.</p>
-</div>
-
+<h2 class="text-3xl md:text-4xl text-[#1f6f3a] mb-8">
+Why Numerology Works
+</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">Numbers carry vibration & energy.</div>
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">Your name decides success flow.</div>
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">Mobile numbers affect daily life.</div>
 </div>
 </div>
 </section>
 
-<!-- ================= STUDENT LOGIN ================= -->
-<section class="py-20 text-center bg-[#1f6f3a] text-white">
-<h2 class="text-3xl font-semibold mb-6">🎓 Student Login</h2>
-<button class="bg-white text-[#1f6f3a] px-8 py-3 rounded-xl hover:bg-gray-200 transition">
-Sign in with Google
-</button>
+<!-- ================= SERVICES ================= -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-3xl text-[#1f6f3a] mb-10">Our Core Services</h2>
+<div class="grid md:grid-cols-4 gap-6">
+<div class="card bg-white p-6 rounded-2xl">Mobile Numerology</div>
+<div class="card bg-white p-6 rounded-2xl">Name Correction</div>
+<div class="card bg-white p-6 rounded-2xl">Business Name Analysis</div>
+<div class="card bg-white p-6 rounded-2xl">Lucky Number Guidance</div>
+</div>
+</div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-3xl text-[#1f6f3a] mb-10">What Our Clients Say</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">⭐⭐⭐⭐⭐<br>Life changed after name correction.</div>
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">⭐⭐⭐⭐⭐<br>Mobile numerology works!</div>
+<div class="card p-6 bg-[#f7f3f0] rounded-2xl">⭐⭐⭐⭐⭐<br>Accurate & practical guidance.</div>
+</div>
+</div>
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+<section id="contact" class="py-20">
+<div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+<div>
+<h2 class="text-3xl text-[#1f6f3a]">Contact Us</h2>
+<p class="text-gray-600 mt-2">Get personal numerology guidance</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow">
+<input class="w-full mb-3 p-3 border rounded-xl" placeholder="Name">
+<input class="w-full mb-3 p-3 border rounded-xl" placeholder="Mobile / WhatsApp">
+<textarea class="w-full p-3 border rounded-xl" rows="4" placeholder="Message"></textarea>
+<button class="btn-main mt-4 w-full">Submit</button>
+</div>
+</div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="py-10 bg-white text-center text-sm text-gray-600">
-<p class="max-w-xl mx-auto">
-<strong>About Kasturi Divine</strong><br>
-A spiritual platform focused on Mobile Numerology & Name Correction
-to help you unlock clarity, confidence & success.
-</p>
-<p class="mt-4">© 2026 Kasturi Divine</p>
+<p><strong>About Kasturi Divine</strong><br>
+Specialized in Mobile Numerology & Name Correction</p>
+<p class="mt-3">© 2026 Kasturi Divine</p>
 </footer>
 
 <!-- WhatsApp -->
-<a class="whatsapp" href="https://wa.me/919736317525" target="_blank">
-💬 Chat on WhatsApp
+<a href="https://wa.me/919736317525" target="_blank"
+style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:14px 18px;border-radius:999px;font-weight:500;">
+Chat on WhatsApp
 </a>
 
 <script>
-document.getElementById('menuBtn').onclick=()=>{
-document.getElementById('mobileMenu').classList.toggle('hidden');
-};
+document.getElementById("menuBtn").onclick=()=>alert("Mobile menu next step");
 </script>
 
 </body>
