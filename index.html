@@ -240,6 +240,28 @@ function toggleMenu(){
   transform:scale(.96);
   box-shadow:0 6px 15px rgba(212,175,55,.35);
 }
+  <script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault(); // page reload stop
+
+  const name = document.getElementById("name").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const phone = "919736317525"; // आपका WhatsApp number
+
+  const text =
+    "📩 New Enquiry – Kasturi Divine\n\n" +
+    "Name: " + name + "\n" +
+    "Mobile: " + mobile + "\n" +
+    "Message: " + message;
+
+  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+});
+</script>
+
 
 
 </script>
@@ -366,13 +388,16 @@ function toggleMenu(){
 
 <section id="contact" class="section">
   <h2>Contact Us</h2>
-  <div class="form">
-    <input placeholder="Name">
-    <input placeholder="Mobile">
-    <textarea rows="4" placeholder="Message"></textarea>
-    <button class="btn btn-gold">Submit</button>
-  </div>
+
+  <form id="contactForm" class="form">
+    <input id="name" placeholder="Name" required>
+    <input id="mobile" placeholder="Mobile" required>
+    <textarea id="message" rows="4" placeholder="Message" required></textarea>
+
+    <button type="submit" class="btn btn-gold">Submit</button>
+  </form>
 </section>
+
 
 <footer>
   <p>Kasturi Divine – Authentic numerology guidance for modern life.</p>
