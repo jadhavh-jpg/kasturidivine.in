@@ -194,18 +194,18 @@ footer{
   .login-wrap,.founder{grid-template-columns:1fr}
   .hero h1{font-size:34px}
 }
+  <script>
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+</script>
+
 </style>
 </head>
 
 <body>
-
 <header>
-  <div class="navbar">
-    <div class="brand">
-      <img src="logo.png">
-      <span>Kasturi Divine</span>
-    </div>
-   <header>
   <div class="navbar">
 
     <!-- Brand -->
@@ -239,6 +239,7 @@ footer{
     <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
 </header>
+
 
 
 <section class="hero">
