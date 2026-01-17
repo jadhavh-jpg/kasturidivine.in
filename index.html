@@ -272,17 +272,34 @@ onAuthStateChanged(auth, (user) => {
   <div class="btns">
     <button class="btn btn-gold">Explore Courses</button>
     <button class="btn btn-outline">Book Consultation</button>
+ <!-- ================= TOOLS SECTION ================= -->
+<section class="section" id="tools">
+  <h2>Free Numerology Tools</h2>
+
+  <!-- Login Button (shown when NOT logged in) -->
+  <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
+    🔐 Sign in with Google to use FREE tools
+  </button>
+
+  <!-- Tools Area (shown AFTER login) -->
+  <div class="tool-area" style="display:none">
+
+    <div class="tools-grid">
+      <div class="tool">📱 Mobile Numerology</div>
+      <div class="tool">✍️ Name Correction</div>
+      <div class="tool">🍀 Lucky Number</div>
+      <div class="tool">📜 Destiny Number</div>
+      <div class="tool">🔮 Personal Year</div>
+      <div class="tool">🏢 Business Name</div>
+    </div>
+
+    <button class="btn btn-outline" onclick="logoutUser()">
+      Logout
+    </button>
+
   </div>
 </section>
-  <!-- Tools -->
-  <div class="tool-area" style="display:none">
-    <div class="tool">📱 Mobile Numerology</div>
-    <div class="tool">✍️ Name Correction</div>
-    <div class="tool">🍀 Lucky Number</div>
-    <div class="tool">📜 Destiny Number</div>
-    <div class="tool">🔮 Personal Year</div>
-    <div class="tool">🏢 Business Name</div>
-</section>
+
 
 <section id="how" class="section">
   <h2>How Numerology Works</h2>
