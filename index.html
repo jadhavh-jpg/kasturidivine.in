@@ -204,6 +204,48 @@ footer{
   nav{display:none}
   .menu-btn{display:block}
 }
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+window.loginWithGoogle = async () => {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (e) {
+    alert("Login failed");
+  }
+};
+
+window.logoutUser = async () => {
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, (user) => {
+  document.querySelectorAll(".tool-area").forEach(el=>{
+    el.style.display = user ? "block" : "none";
+  });
+  document.querySelectorAll(".login-btn").forEach(el=>{
+    el.style.display = user ? "none" : "block";
+  });
+});
+</script>
+
 </style>
 </head>
 
@@ -230,6 +272,26 @@ footer{
   <div class="btns">
     <button class="btn btn-gold">Explore Courses</button>
     <button class="btn btn-outline">Book Consultation</button>
+  </div>
+</section>
+<section class="section">
+  <h2>Free Numerology Tools</h2>
+
+  <!-- Login CTA -->
+  <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
+    🔐 Sign in with Google to use FREE tools
+  </button>
+
+  <!-- Tools -->
+  <div class="tool-area" style="display:none">
+    <div class="tool">📱 Mobile Numerology</div>
+    <div class="tool">✍️ Name Correction</div>
+    <div class="tool">🍀 Lucky Number</div>
+    <div class="tool">📜 Destiny Number</div>
+    <div class="tool">🔮 Personal Year</div>
+    <div class="tool">🏢 Business Name</div>
+
+    <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
   </div>
 </section>
 
@@ -299,6 +361,25 @@ footer{
   <div class="reviews">
     <div class="review">⭐⭐⭐⭐⭐ Life changing guidance</div>
     <div class="review">⭐⭐⭐⭐⭐ Accurate & practical</div>
+  </div>
+</section>
+<section class="section">
+  <h2>Student Login</h2>
+
+  <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
+    🎓 Student Sign in with Google
+  </button>
+
+  <div class="tool-area" style="display:none">
+    <p><strong>Welcome Student 👋</strong></p>
+
+    <ul>
+      <li>📘 Mobile Numerology Course</li>
+      <li>📗 Name Correction Mastery</li>
+      <li>📕 Practice Worksheets</li>
+    </ul>
+
+    <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
   </div>
 </section>
 
