@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kasturi Divine – Numerology Energy Wheel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasturi Divine | Numerology</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -14,6 +14,7 @@
   --bg:#faf7ff;
   --dark:#1f1b2e;
 }
+
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -21,233 +22,195 @@ body{
   background:var(--bg);
   color:var(--dark);
 }
-h1,h2,h3{font-family:Cinzel,serif;color:var(--purple)}
-section{padding:80px 16px}
-.center{text-align:center}
+h1,h2,h3{font-family:Cinzel,serif}
+a{text-decoration:none;color:inherit}
 
 /* ================= HEADER ================= */
 header{
-  position:sticky;top:0;z-index:100;
-  background:#fff;border-bottom:1px solid #eee;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  position:sticky;top:0;z-index:10;
 }
 .nav{
-  max-width:1200px;margin:auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 16px;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
 }
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:52px}
-.brand span{font-weight:800;font-size:22px}
-.menu a{
-  margin:0 12px;
-  font-weight:700;
-  color:var(--purple);
-  text-decoration:none;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
-.menu a:hover{color:#000}
-
-/* ================= BUTTONS ================= */
-.btn{
-  padding:14px 32px;
-  border-radius:30px;
-  border:2px solid var(--gold);
-  background:var(--gold);
+.logo img{width:48px}
+.logo span{
   font-weight:800;
-  cursor:pointer;
-  transition:.35s;
+  color:var(--purple);
+  font-size:20px;
 }
-.btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 25px rgba(250,204,21,.7);
-}
-.btn.alt{
-  background:transparent;
-  color:#fff;
+.menu a{
+  margin-left:18px;
+  font-weight:600;
+  color:var(--purple);
 }
 
 /* ================= HERO ================= */
 .hero{
   background:linear-gradient(135deg,#3b176b,#6d28d9);
   color:#fff;
+  text-align:center;
+  padding:90px 20px;
 }
-.hero-wrap{
-  max-width:1200px;margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1.5fr 1fr;
-  gap:30px;
-  align-items:center;
+.hero h1{font-size:48px;margin-bottom:10px}
+.hero p{opacity:.9}
+.hero .btns{
+  margin-top:25px;
 }
-.hero img{
-  max-width:100%;
-  border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-}
-.hero h1{font-size:42px}
-
-/* ================= UPCOMING EVENT ================= */
-.event-btn{
-  margin-top:20px;
-  display:inline-block;
-  border:2px dashed var(--gold);
-  padding:10px 24px;
-  border-radius:999px;
-  font-weight:800;
-  background:#fff;
-}
-.event-btn:hover{
-  background:var(--gold);
-}
-
-/* ================= WHEEL ================= */
-.wheel-wrap{
-  max-width:360px;
-  margin:40px auto;
-  position:relative;
-}
-.pointer{
-  position:absolute;
-  top:-14px;
-  left:50%;
-  transform:translateX(-50%);
-  width:0;height:0;
-  border-left:12px solid transparent;
-  border-right:12px solid transparent;
-  border-bottom:22px solid #000;
-}
-.led{
-  position:absolute;
-  top:-28px;
-  left:50%;
-  transform:translateX(-50%);
-  width:10px;height:10px;
-  border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 12px #22c55e;
-  display:none;
-}
-.led.on{display:block;animation:blink .6s infinite}
-@keyframes blink{50%{opacity:.2}}
-
-.wheel{
-  width:320px;height:320px;
-  border-radius:50%;
-  border:10px solid var(--gold);
-  background:conic-gradient(
-    #4ade80 0deg 40deg,
-    #facc15 40deg 80deg,
-    #38bdf8 80deg 120deg,
-    #22c55e 120deg 160deg,
-    #fb7185 160deg 200deg,
-    #fb923c 200deg 240deg,
-    #16a34a 240deg 280deg,
-    #1d4ed8 280deg 320deg,
-    #6366f1 320deg 360deg
-  );
-  position:relative;
-  transition:transform 4s cubic-bezier(.17,.67,.28,1);
-}
-.label{
-  position:absolute;
-  top:50%;left:50%;
-  transform:
-    rotate(calc(var(--i)*40deg + 20deg))
-    translateY(-115px)
-    rotate(calc(-1*(var(--i)*40deg + 20deg)));
-  font-weight:800;
-  font-size:18px;
-}
-.spin-btn{
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:120px;height:120px;
-  border-radius:50%;
-  background:#fff;
-  border:6px solid var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
+.btn{
+  padding:14px 36px;
+  border-radius:40px;
+  font-weight:700;
+  border:none;
   cursor:pointer;
 }
-.spin-btn:hover{
-  box-shadow:0 0 20px rgba(250,204,21,.8);
+.btn-gold{
+  background:var(--gold);
+  margin-right:10px;
+}
+.btn-outline{
+  background:transparent;
+  border:2px solid var(--gold);
+  color:#fff;
 }
 
 /* ================= TOOLS ================= */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+.section h2{
+  color:var(--purple);
+  margin-bottom:40px;
+}
 .tools{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  gap:16px;
-}
-.tool{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  border:2px solid var(--gold);
-  padding:18px;
-  border-radius:18px;
-  font-size:18px;
-  font-weight:800;
-  background:#fff;
-  transition:.35s;
-}
-.tool:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 22px rgba(250,204,21,.6);
-}
-
-/* ================= CARDS ================= */
-.cards{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  gap:24px;
 }
-.card{
+.tool{
   background:#fff;
-  padding:24px;
-  border-radius:18px;
-  transition:.35s;
+  border:2px solid var(--gold);
+  border-radius:22px;
+  padding:30px 20px;
+  font-weight:700;
+  transition:.3s;
 }
-.card:hover{
+.tool:hover{
   transform:translateY(-8px);
   box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+.tool span{
+  font-size:28px;
+  display:block;
+  margin-bottom:12px;
+}
+
+/* ================= STUDENT LOGIN ================= */
+.login{
+  background:#fff;
+}
+.login-box{
+  max-width:800px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.card{
+  background:#faf7ff;
+  border-radius:20px;
+  padding:30px;
+  text-align:left;
+}
+.card input{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+}
+.card button{
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  background:var(--gold);
+  font-weight:700;
+  border:none;
 }
 
 /* ================= CONTACT ================= */
 .contact{
-  max-width:500px;
+  background:#faf7ff;
+}
+.contact-box{
+  max-width:600px;
   margin:auto;
-  background:#fff;
-  padding:24px;
-  border-radius:20px;
 }
 .contact input,.contact textarea{
   width:100%;
-  padding:12px;
-  margin-bottom:12px;
+  padding:14px;
+  margin-bottom:14px;
   border-radius:12px;
-  border:1px solid #ccc;
+  border:1px solid #ddd;
 }
-.contact input:focus,.contact textarea:focus{
-  border-color:var(--gold);
-  outline:none;
+.contact button{
+  width:100%;
+  padding:14px;
+  background:var(--gold);
+  border:none;
+  font-weight:700;
+  border-radius:30px;
 }
 
 /* ================= FOOTER ================= */
 footer{
   background:#fff;
   border-top:1px solid #eee;
-  padding:40px;
   text-align:center;
+  padding:40px 20px;
+}
+footer p{max-width:700px;margin:auto}
+
+/* ================= FLOAT BUTTONS ================= */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:40px;
+  font-weight:700;
+}
+.youtube{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#ff0000;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:40px;
+  font-weight:700;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-  .hero-wrap{grid-template-columns:1fr}
+  .hero h1{font-size:34px}
+  .login-box{grid-template-columns:1fr}
   .menu{display:none}
 }
 </style>
@@ -257,145 +220,76 @@ footer{
 
 <header>
   <div class="nav">
-    <div class="brand">
+    <div class="logo">
       <img src="logo.png">
       <span>Kasturi Divine</span>
     </div>
     <div class="menu">
-      <a href="#wheel">Wheel</a>
-      <a href="#tools">Tools</a>
-      <a href="#courses">Courses</a>
-      <a href="#contact">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">Tools</a>
+      <a href="#">Login</a>
+      <a href="#">Contact</a>
     </div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-wrap">
-    <img src="mentor1.jpg">
-    <div class="center">
-      <h1>हम सब में है कुछ खास</h1>
-      <p>Know yourself • Trust the Divine • Create your future</p><br>
-      <button class="btn">Explore Courses</button>
-      <button class="btn alt">Book Consultation</button><br>
-      <a class="event-btn">🔥 Upcoming Numerology Workshop</a>
-    </div>
-    <img src="mentor2.jpg">
+  <h1>Discover Your True Potential</h1>
+  <p>Numerology • Guidance • Transformation</p>
+  <div class="btns">
+    <button class="btn btn-gold">Explore Tools</button>
+    <button class="btn btn-outline">Book Consultation</button>
   </div>
 </section>
 
-<section id="wheel" class="center">
-  <h2>Numerology Energy Wheel</h2>
-  <p>Tap the center to spin</p>
-
-  <div class="wheel-wrap">
-    <div class="pointer"></div>
-    <div id="led" class="led"></div>
-
-    <div id="wheel" class="wheel">
-      <span class="label" style="--i:0">1</span>
-      <span class="label" style="--i:1">2</span>
-      <span class="label" style="--i:2">3</span>
-      <span class="label" style="--i:3">4</span>
-      <span class="label" style="--i:4">5</span>
-      <span class="label" style="--i:5">6</span>
-      <span class="label" style="--i:6">7</span>
-      <span class="label" style="--i:7">8</span>
-      <span class="label" style="--i:8">9</span>
-    </div>
-
-    <div id="spin" class="spin-btn">SPIN</div>
-  </div>
-
-  <h3 id="result"></h3>
-  <p id="meaning"></p>
-</section>
-
-<section id="tools">
-  <h2 class="center">Numerology Tools</h2>
+<section class="section">
+  <h2>Numerology Tools</h2>
   <div class="tools">
-    <div class="tool">📱 Mobile Numerology</div>
-    <div class="tool">✍️ Name Correction</div>
-    <div class="tool">🏢 Business Name</div>
-    <div class="tool">🍀 Lucky Number</div>
-    <div class="tool">📜 Destiny Number</div>
-    <div class="tool">🔮 Personal Year</div>
+    <div class="tool"><span>📱</span>Mobile Numerology</div>
+    <div class="tool"><span>✍️</span>Name Numerology</div>
+    <div class="tool"><span>🏢</span>Business Numerology</div>
+    <div class="tool"><span>🍀</span>Lucky Number</div>
+    <div class="tool"><span>📜</span>Destiny Number</div>
+    <div class="tool"><span>🔮</span>Personal Year</div>
   </div>
 </section>
 
-<section id="courses">
-  <h2 class="center">Courses</h2>
-  <div class="cards">
-    <div class="card">Basic Numerology</div>
-    <div class="card">Mobile Numerology Mastery</div>
-    <div class="card">Name Correction Certification</div>
-  </div>
-</section>
-
-<section class="center">
+<section class="section login">
   <h2>Student Login</h2>
-  <img src="certificate.png" width="200"><br><br>
-  <button class="btn">Login Dashboard</button>
-</section>
-
-<section class="center">
-  <h2>Testimonials</h2>
-  <div class="cards">
-    <div class="card">“Life changing guidance”</div>
-    <div class="card">“Very accurate numerology”</div>
+  <div class="login-box">
+    <div class="card">
+      <h3>Numerology Certification</h3>
+      <p>Access your course & certificate</p>
+      <img src="certificate.png" style="width:100%;border-radius:12px">
+    </div>
+    <div class="card">
+      <input placeholder="Email">
+      <input placeholder="Password" type="password">
+      <button>Login Dashboard</button>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2 class="center">Contact Us</h2>
-  <div class="contact">
+<section class="section contact">
+  <h2>Contact Us</h2>
+  <div class="contact-box">
     <input placeholder="Name">
     <input placeholder="Mobile">
-    <textarea placeholder="Message"></textarea>
-    <button class="btn" style="width:100%">Submit</button>
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button>Submit</button>
   </div>
 </section>
 
 <footer>
-  <p><strong>Need Personal Guidance?</strong></p>
-  <button class="btn">Book Appointment on WhatsApp</button>
-  <p style="margin-top:12px">© 2026 Kasturi Divine</p>
+  <p>
+    Kasturi Divine provides practical numerology guidance to align your
+    name, numbers and life path with success and balance.
+  </p>
+  <p style="margin-top:14px;">© 2026 Kasturi Divine</p>
 </footer>
 
-<script>
-const wheel=document.getElementById("wheel");
-const spin=document.getElementById("spin");
-const led=document.getElementById("led");
-const result=document.getElementById("result");
-const meaning=document.getElementById("meaning");
-
-const meanings={
-  1:"Leadership • New Beginning",
-  2:"Balance • Partnership",
-  3:"Creativity • Expression",
-  4:"Stability • Discipline",
-  5:"Change • Freedom",
-  6:"Responsibility • Care",
-  7:"Wisdom • Spirituality",
-  8:"Power • Abundance",
-  9:"Completion • Humanity"
-};
-
-let rotation=0;
-spin.onclick=()=>{
-  led.classList.remove("on");
-  const n=Math.floor(Math.random()*9)+1;
-  const stop=(9-n)*40+20;
-  rotation+=360*5+stop;
-  wheel.style.transform=`rotate(${rotation}deg)`;
-
-  setTimeout(()=>{
-    led.classList.add("on");
-    result.innerText="Your Lucky Number: "+n;
-    meaning.innerText=meanings[n];
-  },4000);
-};
-</script>
+<a class="whatsapp" href="https://wa.me/919736317525">WhatsApp</a>
+<a class="youtube" href="#">YouTube</a>
 
 </body>
 </html>
