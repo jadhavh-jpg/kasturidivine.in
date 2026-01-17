@@ -22,7 +22,7 @@ body{
   color:var(--dark);
 }
 h1,h2,h3{font-family:Cinzel,serif;color:var(--purple)}
-section{padding:70px 16px}
+section{padding:80px 16px}
 .center{text-align:center}
 
 /* ================= HEADER ================= */
@@ -36,15 +36,34 @@ header{
   padding:12px 16px;
 }
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:54px}
+.brand img{width:52px}
 .brand span{font-weight:800;font-size:22px}
 .menu a{
-  margin:0 10px;
+  margin:0 12px;
   font-weight:700;
   color:var(--purple);
   text-decoration:none;
 }
 .menu a:hover{color:#000}
+
+/* ================= BUTTONS ================= */
+.btn{
+  padding:14px 32px;
+  border-radius:30px;
+  border:2px solid var(--gold);
+  background:var(--gold);
+  font-weight:800;
+  cursor:pointer;
+  transition:.35s;
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(250,204,21,.7);
+}
+.btn.alt{
+  background:transparent;
+  color:#fff;
+}
 
 /* ================= HERO ================= */
 .hero{
@@ -53,26 +72,42 @@ header{
 }
 .hero-wrap{
   max-width:1200px;margin:auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:40px;
+  display:grid;
+  grid-template-columns:1fr 1.5fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.hero img{
+  max-width:100%;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
 }
 .hero h1{font-size:42px}
-.hero p{opacity:.85}
-.hero .btn{
-  padding:14px 30px;border-radius:30px;
-  border:2px solid var(--gold);
-  background:var(--gold);
-  font-weight:700;cursor:pointer;
+
+/* ================= UPCOMING EVENT ================= */
+.event-btn{
+  margin-top:20px;
+  display:inline-block;
+  border:2px dashed var(--gold);
+  padding:10px 24px;
+  border-radius:999px;
+  font-weight:800;
+  background:#fff;
 }
-.hero .btn.alt{background:transparent;color:#fff}
-.hero img{max-width:100%;border-radius:20px}
+.event-btn:hover{
+  background:var(--gold);
+}
 
 /* ================= WHEEL ================= */
 .wheel-wrap{
-  max-width:360px;margin:40px auto;position:relative;
+  max-width:360px;
+  margin:40px auto;
+  position:relative;
 }
 .pointer{
-  position:absolute;top:-14px;left:50%;
+  position:absolute;
+  top:-14px;
+  left:50%;
   transform:translateX(-50%);
   width:0;height:0;
   border-left:12px solid transparent;
@@ -80,10 +115,14 @@ header{
   border-bottom:22px solid #000;
 }
 .led{
-  position:absolute;top:-26px;left:50%;
+  position:absolute;
+  top:-28px;
+  left:50%;
   transform:translateX(-50%);
-  width:10px;height:10px;border-radius:50%;
-  background:#22c55e;box-shadow:0 0 12px #22c55e;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 12px #22c55e;
   display:none;
 }
 .led.on{display:block;animation:blink .6s infinite}
@@ -108,61 +147,108 @@ header{
   transition:transform 4s cubic-bezier(.17,.67,.28,1);
 }
 .label{
-  position:absolute;top:50%;left:50%;
+  position:absolute;
+  top:50%;left:50%;
   transform:
     rotate(calc(var(--i)*40deg + 20deg))
     translateY(-115px)
     rotate(calc(-1*(var(--i)*40deg + 20deg)));
-  font-weight:800;font-size:18px;
+  font-weight:800;
+  font-size:18px;
 }
 .spin-btn{
-  position:absolute;top:50%;left:50%;
+  position:absolute;
+  top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:120px;height:120px;border-radius:50%;
-  background:#fff;border:6px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;cursor:pointer;
+  width:120px;height:120px;
+  border-radius:50%;
+  background:#fff;
+  border:6px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  cursor:pointer;
+}
+.spin-btn:hover{
+  box-shadow:0 0 20px rgba(250,204,21,.8);
 }
 
 /* ================= TOOLS ================= */
-.tools{max-width:900px;margin:auto;display:grid;gap:16px}
+.tools{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  gap:16px;
+}
 .tool{
+  display:flex;
+  align-items:center;
+  gap:14px;
   border:2px solid var(--gold);
-  border-radius:16px;
-  padding:16px;
+  padding:18px;
+  border-radius:18px;
+  font-size:18px;
   font-weight:800;
   background:#fff;
+  transition:.35s;
+}
+.tool:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 22px rgba(250,204,21,.6);
 }
 
 /* ================= CARDS ================= */
 .cards{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
 .card{
-  background:#fff;padding:20px;border-radius:18px;
+  background:#fff;
+  padding:24px;
+  border-radius:18px;
+  transition:.35s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 /* ================= CONTACT ================= */
 .contact{
-  max-width:500px;margin:auto;
-  background:#fff;padding:24px;border-radius:20px;
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:24px;
+  border-radius:20px;
 }
 .contact input,.contact textarea{
-  width:100%;padding:12px;margin-bottom:12px;
-  border-radius:12px;border:1px solid #ccc;
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:1px solid #ccc;
+}
+.contact input:focus,.contact textarea:focus{
+  border-color:var(--gold);
+  outline:none;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#fff;border-top:1px solid #eee;
-  padding:30px;text-align:center;
+  background:#fff;
+  border-top:1px solid #eee;
+  padding:40px;
+  text-align:center;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
   .hero-wrap{grid-template-columns:1fr}
+  .menu{display:none}
 }
 </style>
 </head>
@@ -186,13 +272,15 @@ footer{
 
 <section class="hero">
   <div class="hero-wrap">
-    <div>
+    <img src="mentor1.jpg">
+    <div class="center">
       <h1>हम सब में है कुछ खास</h1>
       <p>Know yourself • Trust the Divine • Create your future</p><br>
       <button class="btn">Explore Courses</button>
-      <button class="btn alt">Book Consultation</button>
+      <button class="btn alt">Book Consultation</button><br>
+      <a class="event-btn">🔥 Upcoming Numerology Workshop</a>
     </div>
-    <img src="mentor1.jpg">
+    <img src="mentor2.jpg">
   </div>
 </section>
 
@@ -269,8 +357,9 @@ footer{
 </section>
 
 <footer>
-  <p>Kasturi Divine – Practical numerology for clarity & growth</p>
-  <p>© 2026 Kasturi Divine</p>
+  <p><strong>Need Personal Guidance?</strong></p>
+  <button class="btn">Book Appointment on WhatsApp</button>
+  <p style="margin-top:12px">© 2026 Kasturi Divine</p>
 </footer>
 
 <script>
