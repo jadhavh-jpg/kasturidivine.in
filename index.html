@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kasturi Divine | Numerology & Guidance</title>
+<title>Kasturi Divine | Numerology & Name Correction</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" href="logo.png">
@@ -16,7 +16,6 @@
   --dark:#1f1b2e;
   --bg:#faf7ff;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -25,255 +24,185 @@ body{
   color:var(--dark);
 }
 h1,h2,h3{font-family:Cinzel,serif}
-a{text-decoration:none}
+a{text-decoration:none;color:inherit}
 
 /* ================= HEADER ================= */
 header{
-  position:sticky;
-  top:0;
-  background:#fff;
-  border-bottom:1px solid #eee;
-  z-index:100;
+  position:sticky;top:0;z-index:99;
+  background:#fff;border-bottom:1px solid #eee;
 }
 .navbar{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
   padding:14px 20px;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+.brand{display:flex;align-items:center;gap:12px}
 .brand img{width:56px}
-.brand span{
-  font-weight:800;
-  color:var(--purple);
-  font-size:22px;
-}
-nav a{
-  margin:0 14px;
-  font-weight:700;
-  color:var(--purple);
-}
+.brand span{font-size:22px;font-weight:800;color:var(--purple)}
+nav a{margin:0 14px;font-weight:700;color:var(--purple)}
 nav a:hover{color:var(--violet)}
-.menu-btn{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-}
-.mobile-menu{
-  display:none;
-  padding:10px 20px;
-  background:#fff;
-}
-.mobile-menu a{
-  display:block;
-  padding:10px 0;
-  font-weight:700;
-  color:var(--purple);
-}
+.menu-btn{display:none;font-size:26px}
+.mobile-menu{display:none;padding:10px 20px;background:#fff}
+.mobile-menu a{display:block;padding:10px 0;font-weight:700}
 
 /* ================= HERO ================= */
 .hero{
-  padding:110px 20px;
-  color:#fff;
-  text-align:center;
-  background:linear-gradient(
-    120deg,
-    #3b176b,
-    #6d28d9,
-    #4b1b7a
-  );
+  padding:110px 20px;text-align:center;color:#fff;
+  background:linear-gradient(120deg,#3b176b,#6d28d9,#4b1b7a);
   background-size:300% 300%;
-  animation:heroMove 12s ease infinite;
+  animation:bgMove 12s ease infinite;
 }
-@keyframes heroMove{
+@keyframes bgMove{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.hero h1{
-  font-size:50px;
-  margin-bottom:12px;
-}
-.hero p{
-  font-size:18px;
-  opacity:.9;
-}
-.hero-btns{
-  margin-top:32px;
-}
+.hero h1{font-size:48px}
+.hero p{opacity:.9}
+.hero .btns{margin-top:30px}
 .btn{
-  padding:14px 38px;
-  border-radius:40px;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
-  transition:.35s;
+  padding:14px 36px;border-radius:40px;
+  font-weight:700;border:none;cursor:pointer;
+  transition:.3s;
 }
 .btn-gold{
-  background:var(--gold);
-  color:#000;
+  background:var(--gold);color:#000;
 }
 .btn-gold:hover{
   transform:translateY(-4px);
   box-shadow:0 0 25px rgba(250,204,21,.8);
 }
 .btn-outline{
-  background:transparent;
-  border:2px solid var(--gold);
+  background:transparent;border:2px solid var(--gold);
   color:#fff;
 }
-.btn-outline:hover{
-  background:rgba(255,255,255,.1);
-  transform:translateY(-4px);
-}
+.btn-outline:hover{background:rgba(255,255,255,.15)}
 
 /* ================= SECTIONS ================= */
-.section{
-  padding:80px 20px;
-  text-align:center;
-}
-.section h2{
-  color:var(--purple);
-  margin-bottom:50px;
-}
+.section{padding:80px 20px;text-align:center}
+.section h2{color:var(--purple);margin-bottom:40px}
 
-/* ================= TOOLS ================= */
-.tools{
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+/* ================= HOW IT WORKS ================= */
+.steps{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:26px;
 }
-.tool{
-  background:#fff;
+.step{
+  background:#fff;border-radius:22px;padding:26px;
   border:2px solid var(--gold);
-  border-radius:22px;
-  padding:30px 20px;
-  font-weight:800;
-  transition:.35s;
 }
-.tool span{
-  display:block;
-  font-size:28px;
-  margin-bottom:10px;
-}
-.tool:hover{
-  transform:translateY(-8px);
-  box-shadow:0 18px 40px rgba(0,0,0,.15);
+.step span{font-size:30px}
+
+/* ================= DAILY INSIGHT ================= */
+.insight{
+  max-width:700px;margin:auto;
+  background:#fff;padding:30px;border-radius:22px;
+  border-left:6px solid var(--gold);
+  font-size:18px;
 }
 
-/* ================= STUDENT LOGIN ================= */
-.login-section{
-  background:#fff;
+/* ================= PRICING ================= */
+.pricing{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
 }
-.login-wrap{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
+.price-card{
+  background:#fff;border-radius:22px;padding:30px;
+  border:2px solid var(--gold);
 }
-.login-info{
-  text-align:left;
+.price{font-size:32px;font-weight:800;color:var(--purple)}
+
+/* ================= CLIENT JOURNEY ================= */
+.journey{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
-.login-info h3{
-  color:var(--purple);
+.journey div{
+  background:#fff;padding:24px;border-radius:20px;
+  font-weight:700;
 }
-.login-box{
-  background:var(--bg);
-  padding:32px;
-  border-radius:22px;
+
+/* ================= COURSES ================= */
+.courses{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
 }
-.login-box input{
-  width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  border-radius:14px;
-  border:1px solid #ccc;
+.course{
+  background:#fff;padding:26px;border-radius:22px;
+  border:2px solid var(--gold);
 }
-.login-box input:focus{
-  outline:none;
-  border-color:var(--gold);
+
+/* ================= TRUST ================= */
+.trust{
+  max-width:900px;margin:auto;
+  background:#fff;padding:30px;border-radius:22px;
 }
-.login-box button{
-  width:100%;
-  padding:14px;
-  border-radius:30px;
-  border:none;
-  background:var(--gold);
-  font-weight:800;
+
+/* ================= CASE STUDIES ================= */
+.cases{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:26px;
+}
+.case{
+  background:#fff;padding:24px;border-radius:22px;
+}
+
+/* ================= REVIEWS ================= */
+.reviews{
+  max-width:900px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.review{
+  background:#fff;padding:22px;border-radius:20px;
 }
 
 /* ================= CONTACT ================= */
-.contact{
-  background:var(--bg);
-}
 .form{
-  max-width:520px;
-  margin:auto;
-  background:#fff;
-  padding:28px;
-  border-radius:22px;
+  max-width:520px;margin:auto;
+  background:#fff;padding:28px;border-radius:22px;
 }
 .form input,.form textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  border-radius:14px;
-  border:1px solid #ccc;
+  width:100%;padding:14px;margin-bottom:14px;
+  border-radius:14px;border:1px solid #ccc;
 }
 .form input:focus,.form textarea:focus{
-  outline:none;
-  border-color:var(--gold);
+  outline:none;border-color:var(--gold);
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#fff;
-  padding:40px 20px;
-  border-top:1px solid #eee;
-  text-align:center;
+  background:#fff;padding:40px 20px;
+  border-top:1px solid #eee;text-align:center;
 }
 .join{
-  display:inline-block;
-  margin-top:14px;
+  display:inline-block;margin-top:16px;
   border:2px solid var(--gold);
-  padding:12px 22px;
-  border-radius:30px;
+  padding:12px 22px;border-radius:30px;
   font-weight:800;
 }
 
-/* ================= FLOAT WHATSAPP ================= */
+/* ================= WHATSAPP ================= */
 .whatsapp{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:50%;
+  position:fixed;right:20px;bottom:20px;
+  background:#25D366;color:#fff;
+  padding:14px 18px;border-radius:50%;
   animation:pulse 1.5s infinite;
 }
 @keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
   70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
-  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
   nav{display:none}
   .menu-btn{display:block}
-  .login-wrap{grid-template-columns:1fr}
-  .hero h1{font-size:36px}
 }
 </style>
 </head>
@@ -283,66 +212,97 @@ footer{
 <header>
   <div class="navbar">
     <div class="brand">
-      <img src="logo.png" alt="Kasturi Divine">
-      <span>Kasturi Divine</span>
+      <img src="logo.png"><span>Kasturi Divine</span>
     </div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Tools</a>
-      <a href="#">Login</a>
-      <a href="#">Contact</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#courses">Courses</a>
+      <a href="#contact">Contact</a>
     </nav>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  </div>
-  <div id="mobileMenu" class="mobile-menu">
-    <a href="#">Home</a>
-    <a href="#">Tools</a>
-    <a href="#">Login</a>
-    <a href="#">Contact</a>
   </div>
 </header>
 
 <section class="hero">
-  <h1>Align Your Numbers, Align Your Life</h1>
-  <p>Practical numerology guidance for clarity, balance & growth</p>
-  <div class="hero-btns">
-    <button class="btn btn-gold">Explore Numerology</button>
+  <h1>Align Your Numbers, Shape Your Destiny</h1>
+  <p>Practical numerology guidance for clarity, growth & balance</p>
+  <div class="btns">
+    <button class="btn btn-gold">Explore Courses</button>
     <button class="btn btn-outline">Book Consultation</button>
   </div>
 </section>
 
+<section id="how" class="section">
+  <h2>How Numerology Works</h2>
+  <div class="steps">
+    <div class="step"><span>🎂</span><h3>Birth Date → Numbers</h3></div>
+    <div class="step"><span>✍️</span><h3>Name → Vibration</h3></div>
+    <div class="step"><span>🔢</span><h3>Numbers → Patterns</h3></div>
+    <div class="step"><span>🎯</span><h3>Patterns → Decisions</h3></div>
+  </div>
+</section>
+
 <section class="section">
-  <h2>Numerology Tools</h2>
-  <div class="tools">
-    <div class="tool"><span>📱</span>Mobile Numerology</div>
-    <div class="tool"><span>✍️</span>Name Correction</div>
-    <div class="tool"><span>🏢</span>Business Name</div>
-    <div class="tool"><span>🍀</span>Lucky Numbers</div>
-    <div class="tool"><span>📜</span>Destiny Number</div>
-    <div class="tool"><span>🔮</span>Personal Year</div>
+  <h2>Today’s Numerology Insight</h2>
+  <div class="insight">
+    Today is ideal for clarity, planning and correcting small mistakes.
+    Avoid impulsive decisions and trust structured action.
   </div>
 </section>
 
-<section class="section login-section">
-  <h2>Student Login</h2>
-  <div class="login-wrap">
-    <div class="login-info">
-      <h3>Certified Numerology Programs</h3>
-      <p>
-        Access your enrolled courses, learning materials
-        and digital certificates from one place.
-      </p>
-      <img src="certificate.png" style="width:100%;max-width:360px;border-radius:20px;">
-    </div>
-    <div class="login-box">
-      <input placeholder="Email ID">
-      <input type="password" placeholder="Password">
-      <button>Login to Dashboard</button>
-    </div>
+<section id="pricing" class="section">
+  <h2>Pricing & Packages</h2>
+  <div class="pricing">
+    <div class="price-card"><h3>Quick Check</h3><div class="price">₹499</div></div>
+    <div class="price-card"><h3>Name Correction</h3><div class="price">₹1999</div></div>
+    <div class="price-card"><h3>Business Numerology</h3><div class="price">₹4999</div></div>
   </div>
 </section>
 
-<section class="section contact">
+<section class="section">
+  <h2>Client Journey</h2>
+  <div class="journey">
+    <div>1️⃣ Book Session</div>
+    <div>2️⃣ Consultation</div>
+    <div>3️⃣ Detailed Report</div>
+    <div>4️⃣ Follow-up Support</div>
+  </div>
+</section>
+
+<section id="courses" class="section">
+  <h2>Courses & Learning</h2>
+  <div class="courses">
+    <div class="course">Mobile Numerology Certification</div>
+    <div class="course">Name Correction Mastery</div>
+    <div class="course">Professional Numerologist Program</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Why Kasturi Divine</h2>
+  <div class="trust">
+    Years of experience • Thousands of clients • Ethical, practical and result-oriented guidance.
+  </div>
+</section>
+
+<section class="section">
+  <h2>Case Studies</h2>
+  <div class="cases">
+    <div class="case">Name change → Career stability</div>
+    <div class="case">Business numerology → Growth & expansion</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Client Reviews</h2>
+  <div class="reviews">
+    <div class="review">⭐⭐⭐⭐⭐ Life changing guidance</div>
+    <div class="review">⭐⭐⭐⭐⭐ Accurate & practical</div>
+  </div>
+</section>
+
+<section id="contact" class="section">
   <h2>Contact Us</h2>
   <div class="form">
     <input placeholder="Name">
@@ -353,10 +313,7 @@ footer{
 </section>
 
 <footer>
-  <p>
-    Kasturi Divine offers authentic numerology guidance to help you
-    understand numbers, correct name energies and move forward with confidence.
-  </p>
+  <p>Kasturi Divine – Authentic numerology guidance for modern life.</p>
   <a class="join" href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1">Join WhatsApp Group</a>
   <p>© 2026 Kasturi Divine</p>
 </footer>
@@ -365,8 +322,7 @@ footer{
 
 <script>
 function toggleMenu(){
-  const m=document.getElementById("mobileMenu");
-  m.style.display = m.style.display==="block" ? "none" : "block";
+  alert("Mobile menu placeholder");
 }
 </script>
 
