@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasturi Divine | Numerology</title>
+<title>Kasturi Divine | Numerology & Guidance</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --purple:#4b1b7a;
-  --gold:#facc15;
-  --bg:#faf7ff;
+  --gold:#f4c430;
+  --bg:#faf8ff;
   --dark:#1f1b2e;
+  --soft:#ffffff;
 }
 
 *{box-sizing:border-box}
@@ -22,51 +23,74 @@ body{
   background:var(--bg);
   color:var(--dark);
 }
-h1,h2,h3{font-family:Cinzel,serif}
+h1,h2,h3{
+  font-family:Cinzel,serif;
+  letter-spacing:.5px;
+}
 a{text-decoration:none;color:inherit}
 
 /* ================= HEADER ================= */
 header{
   background:#fff;
   border-bottom:1px solid #eee;
-  position:sticky;top:0;z-index:10;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 .nav{
   max-width:1200px;
   margin:auto;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   padding:14px 20px;
 }
-.logo{
+.brand{
   display:flex;
   align-items:center;
   gap:12px;
 }
-.logo img{width:48px}
-.logo span{
+.brand img{
+  width:48px;
+}
+.brand span{
   font-weight:800;
   color:var(--purple);
-  font-size:20px;
+  font-size:22px;
 }
 .menu a{
-  margin-left:18px;
+  margin-left:22px;
   font-weight:600;
   color:var(--purple);
+}
+.menu a:hover{
+  color:#000;
 }
 
 /* ================= HERO ================= */
 .hero{
   background:linear-gradient(135deg,#3b176b,#6d28d9);
   color:#fff;
-  text-align:center;
-  padding:90px 20px;
+  padding:100px 20px;
 }
-.hero h1{font-size:48px;margin-bottom:10px}
-.hero p{opacity:.9}
-.hero .btns{
-  margin-top:25px;
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+.hero p{
+  opacity:.9;
+  font-size:18px;
+}
+.hero-buttons{
+  margin-top:30px;
 }
 .btn{
   padding:14px 36px;
@@ -77,7 +101,7 @@ header{
 }
 .btn-gold{
   background:var(--gold);
-  margin-right:10px;
+  margin-right:14px;
 }
 .btn-outline{
   background:transparent;
@@ -85,133 +109,147 @@ header{
   color:#fff;
 }
 
-/* ================= TOOLS ================= */
+/* ================= SECTION ================= */
 .section{
   padding:80px 20px;
   text-align:center;
 }
 .section h2{
   color:var(--purple);
-  margin-bottom:40px;
+  margin-bottom:50px;
 }
+
+/* ================= TOOLS ================= */
 .tools{
   max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:24px;
+  gap:26px;
 }
 .tool{
   background:#fff;
   border:2px solid var(--gold);
   border-radius:22px;
-  padding:30px 20px;
-  font-weight:700;
+  padding:32px 20px;
   transition:.3s;
 }
 .tool:hover{
   transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 .tool span{
-  font-size:28px;
+  font-size:30px;
   display:block;
   margin-bottom:12px;
+}
+.tool strong{
+  font-size:16px;
+}
+
+/* ================= SERVICES ================= */
+.services{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:30px;
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 36px rgba(0,0,0,.15);
 }
 
 /* ================= STUDENT LOGIN ================= */
 .login{
-  background:#fff;
-}
-.login-box{
-  max-width:800px;
+  max-width:900px;
   margin:auto;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px;
+  gap:40px;
 }
-.card{
-  background:#faf7ff;
-  border-radius:20px;
+.login-box{
+  background:#fff;
   padding:30px;
-  text-align:left;
+  border-radius:22px;
 }
-.card input{
+.login-box input{
   width:100%;
   padding:14px;
   margin-bottom:14px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid #ddd;
 }
-.card button{
+.login-box button{
   width:100%;
   padding:14px;
-  border-radius:30px;
   background:var(--gold);
-  font-weight:700;
   border:none;
+  border-radius:30px;
+  font-weight:700;
 }
 
 /* ================= CONTACT ================= */
-.contact{
-  background:#faf7ff;
-}
 .contact-box{
   max-width:600px;
   margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
 }
-.contact input,.contact textarea{
+.contact-box input,
+.contact-box textarea{
   width:100%;
   padding:14px;
   margin-bottom:14px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid #ddd;
 }
-.contact button{
+.contact-box button{
   width:100%;
   padding:14px;
   background:var(--gold);
   border:none;
-  font-weight:700;
   border-radius:30px;
+  font-weight:700;
 }
 
 /* ================= FOOTER ================= */
 footer{
   background:#fff;
   border-top:1px solid #eee;
+  padding:50px 20px;
   text-align:center;
-  padding:40px 20px;
 }
-footer p{max-width:700px;margin:auto}
+footer p{
+  max-width:700px;
+  margin:auto;
+}
 
-/* ================= FLOAT BUTTONS ================= */
+/* ================= FLOAT BUTTON ================= */
 .whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
   background:#25D366;
   color:#fff;
-  padding:14px 20px;
-  border-radius:40px;
-  font-weight:700;
-}
-.youtube{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#ff0000;
-  color:#fff;
-  padding:14px 20px;
+  padding:14px 22px;
   border-radius:40px;
   font-weight:700;
 }
 
 /* ================= MOBILE ================= */
-@media(max-width:768px){
-  .hero h1{font-size:34px}
-  .login-box{grid-template-columns:1fr}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .login{grid-template-columns:1fr}
   .menu{display:none}
+  .hero h1{font-size:36px}
 }
 </style>
 </head>
@@ -220,13 +258,14 @@ footer p{max-width:700px;margin:auto}
 
 <header>
   <div class="nav">
-    <div class="logo">
-      <img src="logo.png">
+    <div class="brand">
+      <img src="logo.png" alt="Kasturi Divine">
       <span>Kasturi Divine</span>
     </div>
     <div class="menu">
       <a href="#">Home</a>
       <a href="#">Tools</a>
+      <a href="#">Services</a>
       <a href="#">Login</a>
       <a href="#">Contact</a>
     </div>
@@ -234,43 +273,60 @@ footer p{max-width:700px;margin:auto}
 </header>
 
 <section class="hero">
-  <h1>Discover Your True Potential</h1>
-  <p>Numerology • Guidance • Transformation</p>
-  <div class="btns">
-    <button class="btn btn-gold">Explore Tools</button>
-    <button class="btn btn-outline">Book Consultation</button>
+  <div class="hero-inner">
+    <div>
+      <h1>Align Your Numbers<br>Align Your Life</h1>
+      <p>
+        Practical Numerology guidance to bring clarity, balance,
+        and success into your personal and professional life.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-gold">Explore Numerology</button>
+        <button class="btn btn-outline">Book Consultation</button>
+      </div>
+    </div>
+    <div>
+      <img src="hero-image.png" style="width:100%;max-width:420px;">
+    </div>
   </div>
 </section>
 
 <section class="section">
   <h2>Numerology Tools</h2>
   <div class="tools">
-    <div class="tool"><span>📱</span>Mobile Numerology</div>
-    <div class="tool"><span>✍️</span>Name Numerology</div>
-    <div class="tool"><span>🏢</span>Business Numerology</div>
-    <div class="tool"><span>🍀</span>Lucky Number</div>
-    <div class="tool"><span>📜</span>Destiny Number</div>
-    <div class="tool"><span>🔮</span>Personal Year</div>
+    <div class="tool"><span>📱</span><strong>Mobile Numerology</strong></div>
+    <div class="tool"><span>✍️</span><strong>Name Correction</strong></div>
+    <div class="tool"><span>🏢</span><strong>Business Name</strong></div>
+    <div class="tool"><span>🍀</span><strong>Lucky Number</strong></div>
+    <div class="tool"><span>📜</span><strong>Destiny Number</strong></div>
+    <div class="tool"><span>🔮</span><strong>Personal Year</strong></div>
   </div>
 </section>
 
-<section class="section login">
+<section class="section">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="card">Vedic Numerology Consultation</div>
+    <div class="card">Tarot Card Reading</div>
+    <div class="card">Reiki Healing Sessions</div>
+  </div>
+</section>
+
+<section class="section">
   <h2>Student Login</h2>
-  <div class="login-box">
-    <div class="card">
-      <h3>Numerology Certification</h3>
-      <p>Access your course & certificate</p>
-      <img src="certificate.png" style="width:100%;border-radius:12px">
+  <div class="login">
+    <div>
+      <img src="certificate.png" style="width:100%;border-radius:22px;">
     </div>
-    <div class="card">
+    <div class="login-box">
       <input placeholder="Email">
-      <input placeholder="Password" type="password">
-      <button>Login Dashboard</button>
+      <input type="password" placeholder="Password">
+      <button>Login to Dashboard</button>
     </div>
   </div>
 </section>
 
-<section class="section contact">
+<section class="section">
   <h2>Contact Us</h2>
   <div class="contact-box">
     <input placeholder="Name">
@@ -282,14 +338,14 @@ footer p{max-width:700px;margin:auto}
 
 <footer>
   <p>
-    Kasturi Divine provides practical numerology guidance to align your
-    name, numbers and life path with success and balance.
+    Kasturi Divine offers authentic numerology guidance to help you
+    understand your numbers, correct your name energy,
+    and move forward with confidence and clarity.
   </p>
-  <p style="margin-top:14px;">© 2026 Kasturi Divine</p>
+  <p style="margin-top:16px;">© 2026 Kasturi Divine</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/919736317525">WhatsApp</a>
-<a class="youtube" href="#">YouTube</a>
+<a href="https://wa.me/919736317525" class="whatsapp">WhatsApp</a>
 
 </body>
 </html>
