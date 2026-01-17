@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kasturi Divine | Numerology & Name Correction</title>
+<title>Kasturi Divine | Numerology Guidance</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" href="logo.png">
@@ -10,17 +10,17 @@
 
 <style>
 :root{
-  --purple:#4b1b7a;
-  --violet:#6d28d9;
-  --gold:#facc15;
-  --dark:#1f1b2e;
-  --bg:#faf7ff;
+  --gold:#d4af37;
+  --purple:#5a3d85;
+  --dark:#2a2438;
+  --cream1:#fdf6ec;
+  --cream2:#f7efe5;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:Poppins,sans-serif;
-  background:var(--bg);
+  background:var(--cream1);
   color:var(--dark);
 }
 h1,h2,h3{font-family:Cinzel,serif}
@@ -29,169 +29,239 @@ a{text-decoration:none;color:inherit}
 /* ================= HEADER ================= */
 header{
   position:sticky;top:0;z-index:99;
-  background:#fff;border-bottom:1px solid #eee;
+  background:#fff;
+  border-bottom:1px solid #eee;
 }
 .navbar{
-  max-width:1200px;margin:auto;
-  display:flex;align-items:center;justify-content:space-between;
+  max-width:1200px;
+  margin:auto;
   padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:56px}
-.brand span{font-size:22px;font-weight:800;color:var(--purple)}
-nav a{margin:0 14px;font-weight:700;color:var(--purple)}
-nav a:hover{color:var(--violet)}
-.menu-btn{display:none;font-size:26px}
-.mobile-menu{display:none;padding:10px 20px;background:#fff}
-.mobile-menu a{display:block;padding:10px 0;font-weight:700}
+.brand{
+  display:flex;align-items:center;gap:12px;
+}
+.brand img{width:58px}
+.brand span{
+  font-size:22px;
+  font-weight:800;
+  color:var(--purple);
+}
+nav a{
+  margin:0 14px;
+  font-weight:700;
+  color:var(--purple);
+}
+nav a:hover{color:#000}
+.menu-btn{display:none;font-size:26px;cursor:pointer}
+.mobile-menu{
+  display:none;
+  background:#fff;
+  padding:10px 20px;
+}
+.mobile-menu a{
+  display:block;
+  padding:10px 0;
+  font-weight:700;
+}
 
 /* ================= HERO ================= */
 .hero{
-  padding:110px 20px;text-align:center;color:#fff;
-  background:linear-gradient(120deg,#3b176b,#6d28d9,#4b1b7a);
+  padding:120px 20px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 20% 20%, #ffffffaa, transparent 40%),
+    radial-gradient(circle at 80% 30%, #ffffff88, transparent 45%),
+    linear-gradient(120deg, var(--cream1), var(--cream2), #fff);
   background-size:300% 300%;
-  animation:bgMove 12s ease infinite;
+  animation:cloudMove 14s ease infinite;
 }
-@keyframes bgMove{
+@keyframes cloudMove{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.hero h1{font-size:48px}
-.hero p{opacity:.9}
+.hero h1{
+  font-size:46px;
+  color:var(--purple);
+}
+.hero p{
+  max-width:720px;
+  margin:10px auto 0;
+  font-size:18px;
+}
 .hero .btns{margin-top:30px}
+
 .btn{
-  padding:14px 36px;border-radius:40px;
-  font-weight:700;border:none;cursor:pointer;
+  padding:14px 36px;
+  border-radius:40px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
   transition:.3s;
 }
 .btn-gold{
-  background:var(--gold);color:#000;
+  background:var(--gold);
+  color:#000;
 }
 .btn-gold:hover{
   transform:translateY(-4px);
-  box-shadow:0 0 25px rgba(250,204,21,.8);
+  box-shadow:0 0 22px rgba(212,175,55,.7);
 }
 .btn-outline{
-  background:transparent;border:2px solid var(--gold);
-  color:#fff;
+  background:transparent;
+  border:2px solid var(--gold);
 }
-.btn-outline:hover{background:rgba(255,255,255,.15)}
+.btn-outline:hover{
+  background:#fff;
+}
 
 /* ================= SECTIONS ================= */
-.section{padding:80px 20px;text-align:center}
-.section h2{color:var(--purple);margin-bottom:40px}
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+.section h2{
+  color:var(--purple);
+  margin-bottom:40px;
+}
 
 /* ================= HOW IT WORKS ================= */
 .steps{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:26px;
 }
 .step{
-  background:#fff;border-radius:22px;padding:26px;
+  background:#fff;
+  padding:26px;
+  border-radius:22px;
   border:2px solid var(--gold);
+  font-weight:700;
 }
-.step span{font-size:30px}
 
 /* ================= DAILY INSIGHT ================= */
 .insight{
-  max-width:700px;margin:auto;
-  background:#fff;padding:30px;border-radius:22px;
+  max-width:720px;
+  margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
   border-left:6px solid var(--gold);
-  font-size:18px;
+}
+
+/* ================= TOOLS ================= */
+.tools-grid{
+  max-width:1000px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+}
+.tool{
+  background:#fff;
+  border:2px solid var(--gold);
+  border-radius:22px;
+  padding:26px 18px;
+  font-weight:800;
+  transition:.3s;
+}
+.tool:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 
 /* ================= PRICING ================= */
 .pricing{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:26px;
 }
 .price-card{
-  background:#fff;border-radius:22px;padding:30px;
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
   border:2px solid var(--gold);
 }
-.price{font-size:32px;font-weight:800;color:var(--purple)}
-
-/* ================= CLIENT JOURNEY ================= */
-.journey{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-.journey div{
-  background:#fff;padding:24px;border-radius:20px;
-  font-weight:700;
+.price{
+  font-size:32px;
+  font-weight:800;
+  color:var(--purple);
 }
 
-/* ================= COURSES ================= */
-.courses{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+/* ================= STUDENT LOGIN ================= */
+.login-wrap{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
-.course{
-  background:#fff;padding:26px;border-radius:22px;
-  border:2px solid var(--gold);
+.login-box{
+  background:#fff;
+  padding:32px;
+  border-radius:22px;
 }
-
-/* ================= TRUST ================= */
-.trust{
-  max-width:900px;margin:auto;
-  background:#fff;padding:30px;border-radius:22px;
+.login-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:14px;
+  border:1px solid #ccc;
 }
-
-/* ================= CASE STUDIES ================= */
-.cases{
-  max-width:1000px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:26px;
-}
-.case{
-  background:#fff;padding:24px;border-radius:22px;
-}
-
-/* ================= REVIEWS ================= */
-.reviews{
-  max-width:900px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-.review{
-  background:#fff;padding:22px;border-radius:20px;
+.login-box input:focus{
+  outline:none;
+  border-color:var(--gold);
 }
 
 /* ================= CONTACT ================= */
 .form{
-  max-width:520px;margin:auto;
-  background:#fff;padding:28px;border-radius:22px;
+  max-width:520px;
+  margin:auto;
+  background:#fff;
+  padding:28px;
+  border-radius:22px;
 }
 .form input,.form textarea{
-  width:100%;padding:14px;margin-bottom:14px;
-  border-radius:14px;border:1px solid #ccc;
-}
-.form input:focus,.form textarea:focus{
-  outline:none;border-color:var(--gold);
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:14px;
+  border:1px solid #ccc;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#fff;padding:40px 20px;
-  border-top:1px solid #eee;text-align:center;
+  background:#fff;
+  border-top:1px solid #eee;
+  padding:40px 20px;
+  text-align:center;
 }
 .join{
-  display:inline-block;margin-top:16px;
+  display:inline-block;
+  margin-top:14px;
   border:2px solid var(--gold);
-  padding:12px 22px;border-radius:30px;
+  padding:12px 22px;
+  border-radius:30px;
   font-weight:800;
 }
 
 /* ================= WHATSAPP ================= */
 .whatsapp{
-  position:fixed;right:20px;bottom:20px;
-  background:#25D366;color:#fff;
-  padding:14px 18px;border-radius:50%;
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:50%;
   animation:pulse 1.5s infinite;
 }
 @keyframes pulse{
@@ -203,49 +273,9 @@ footer{
 @media(max-width:768px){
   nav{display:none}
   .menu-btn{display:block}
+  .login-wrap{grid-template-columns:1fr}
+  .hero h1{font-size:34px}
 }
-  <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-window.loginWithGoogle = async () => {
-  try {
-    await signInWithPopup(auth, provider);
-  } catch (e) {
-    alert("Login failed");
-  }
-};
-
-window.logoutUser = async () => {
-  await signOut(auth);
-};
-
-onAuthStateChanged(auth, (user) => {
-  document.querySelectorAll(".tool-area").forEach(el=>{
-    el.style.display = user ? "block" : "none";
-  });
-  document.querySelectorAll(".login-btn").forEach(el=>{
-    el.style.display = user ? "none" : "block";
-  });
-});
-</script>
-
 </style>
 </head>
 
@@ -254,36 +284,60 @@ onAuthStateChanged(auth, (user) => {
 <header>
   <div class="navbar">
     <div class="brand">
-      <img src="logo.png"><span>Kasturi Divine</span>
+      <img src="logo.png">
+      <span>Kasturi Divine</span>
     </div>
     <nav>
       <a href="#how">How It Works</a>
+      <a href="#tools">Tools</a>
       <a href="#pricing">Pricing</a>
-      <a href="#courses">Courses</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#how">How It Works</a>
+    <a href="#tools">Tools</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
 </header>
 
 <section class="hero">
-  <h1>Align Your Numbers, Shape Your Destiny</h1>
-  <p>Practical numerology guidance for clarity, growth & balance</p>
+  <h1>Align Your Numbers, Align Your Life</h1>
+  <p>Practical numerology guidance for clarity, balance and confident decisions</p>
   <div class="btns">
-    <button class="btn btn-gold">Explore Courses</button>
+    <button class="btn btn-gold">Explore Tools</button>
     <button class="btn btn-outline">Book Consultation</button>
- <!-- ================= TOOLS SECTION ================= -->
-<section class="section" id="tools">
+  </div>
+</section>
+
+<section id="how" class="section">
+  <h2>How Numerology Works</h2>
+  <div class="steps">
+    <div class="step">🎂 Birth Date → Numbers</div>
+    <div class="step">✍️ Name → Vibration</div>
+    <div class="step">🔢 Numbers → Patterns</div>
+    <div class="step">🎯 Patterns → Decisions</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Today’s Numerology Insight</h2>
+  <div class="insight">
+    Today is favourable for planning, correcting mistakes and steady progress.
+    Avoid impulsive decisions and trust structured action.
+  </div>
+</section>
+
+<section id="tools" class="section">
   <h2>Free Numerology Tools</h2>
 
-  <!-- Login Button (shown when NOT logged in) -->
   <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
-    🔐 Sign in with Google to use FREE tools
+    🔐 Sign in with Google to access tools
   </button>
 
-  <!-- Tools Area (shown AFTER login) -->
   <div class="tool-area" style="display:none">
-
     <div class="tools-grid">
       <div class="tool">📱 Mobile Numerology</div>
       <div class="tool">✍️ Name Correction</div>
@@ -292,30 +346,7 @@ onAuthStateChanged(auth, (user) => {
       <div class="tool">🔮 Personal Year</div>
       <div class="tool">🏢 Business Name</div>
     </div>
-
-    <button class="btn btn-outline" onclick="logoutUser()">
-      Logout
-    </button>
-
-  </div>
-</section>
-
-
-<section id="how" class="section">
-  <h2>How Numerology Works</h2>
-  <div class="steps">
-    <div class="step"><span>🎂</span><h3>Birth Date → Numbers</h3></div>
-    <div class="step"><span>✍️</span><h3>Name → Vibration</h3></div>
-    <div class="step"><span>🔢</span><h3>Numbers → Patterns</h3></div>
-    <div class="step"><span>🎯</span><h3>Patterns → Decisions</h3></div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Today’s Numerology Insight</h2>
-  <div class="insight">
-    Today is ideal for clarity, planning and correcting small mistakes.
-    Avoid impulsive decisions and trust structured action.
+    <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
   </div>
 </section>
 
@@ -329,63 +360,19 @@ onAuthStateChanged(auth, (user) => {
 </section>
 
 <section class="section">
-  <h2>Client Journey</h2>
-  <div class="journey">
-    <div>1️⃣ Book Session</div>
-    <div>2️⃣ Consultation</div>
-    <div>3️⃣ Detailed Report</div>
-    <div>4️⃣ Follow-up Support</div>
-  </div>
-</section>
-
-<section id="courses" class="section">
-  <h2>Courses & Learning</h2>
-  <div class="courses">
-    <div class="course">Mobile Numerology Certification</div>
-    <div class="course">Name Correction Mastery</div>
-    <div class="course">Professional Numerologist Program</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Why Kasturi Divine</h2>
-  <div class="trust">
-    Years of experience • Thousands of clients • Ethical, practical and result-oriented guidance.
-  </div>
-</section>
-
-<section class="section">
-  <h2>Case Studies</h2>
-  <div class="cases">
-    <div class="case">Name change → Career stability</div>
-    <div class="case">Business numerology → Growth & expansion</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Client Reviews</h2>
-  <div class="reviews">
-    <div class="review">⭐⭐⭐⭐⭐ Life changing guidance</div>
-    <div class="review">⭐⭐⭐⭐⭐ Accurate & practical</div>
-  </div>
-</section>
-<section class="section">
   <h2>Student Login</h2>
-
-  <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
-    🎓 Student Sign in with Google
-  </button>
-
-  <div class="tool-area" style="display:none">
-    <p><strong>Welcome Student 👋</strong></p>
-
-    <ul>
-      <li>📘 Mobile Numerology Course</li>
-      <li>📗 Name Correction Mastery</li>
-      <li>📕 Practice Worksheets</li>
-    </ul>
-
-    <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
+  <div class="login-wrap">
+    <div>
+      <h3>Certified Numerology Learning</h3>
+      <p>Access courses, materials and certificates using Gmail login.</p>
+    </div>
+    <div class="login-box">
+      <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">Sign in with Google</button>
+      <div class="tool-area" style="display:none">
+        <p><strong>Welcome Student 👋</strong></p>
+        <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -407,9 +394,45 @@ onAuthStateChanged(auth, (user) => {
 
 <a href="https://wa.me/919736317525" class="whatsapp">💬</a>
 
+<!-- ================= FIREBASE LOGIN ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider,
+  signInWithPopup, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+window.loginWithGoogle = async () => {
+  await signInWithPopup(auth, provider);
+};
+window.logoutUser = async () => {
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, user=>{
+  document.querySelectorAll(".tool-area").forEach(el=>{
+    el.style.display = user ? "block" : "none";
+  });
+  document.querySelectorAll(".login-btn").forEach(el=>{
+    el.style.display = user ? "none" : "inline-block";
+  });
+});
+</script>
+
 <script>
 function toggleMenu(){
-  alert("Mobile menu placeholder");
+  const m=document.getElementById("mobileMenu");
+  m.style.display = m.style.display==="block" ? "none" : "block";
 }
 </script>
 
