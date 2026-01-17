@@ -29,52 +29,33 @@ a{text-decoration:none;color:inherit}
 /* ================= HEADER ================= */
 header{
   position:sticky;top:0;z-index:99;
-  background:#fff;
-  border-bottom:1px solid #eee;
+  background:#fff;border-bottom:1px solid #eee;
 }
 .navbar{
-  max-width:1200px;
-  margin:auto;
+  max-width:1200px;margin:auto;
   padding:14px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.brand{
-  display:flex;align-items:center;gap:12px;
-}
+.brand{display:flex;align-items:center;gap:12px}
 .brand img{width:58px}
-.brand span{
-  font-size:22px;
-  font-weight:800;
-  color:var(--purple);
-}
-nav a{
-  margin:0 14px;
-  font-weight:700;
-  color:var(--purple);
-}
+.brand span{font-size:22px;font-weight:800;color:var(--purple)}
+nav a{margin:0 14px;font-weight:700;color:var(--purple)}
 nav a:hover{color:#000}
 .menu-btn{display:none;font-size:26px;cursor:pointer}
 .mobile-menu{
-  display:none;
-  background:#fff;
-  padding:10px 20px;
+  display:none;background:#fff;padding:10px 20px;
 }
 .mobile-menu a{
-  display:block;
-  padding:10px 0;
-  font-weight:700;
+  display:block;padding:10px 0;font-weight:700;
 }
 
 /* ================= HERO ================= */
 .hero{
-  padding:120px 20px;
-  text-align:center;
+  padding:110px 20px;text-align:center;
   background:
     radial-gradient(circle at 20% 20%, #ffffffaa, transparent 40%),
     radial-gradient(circle at 80% 30%, #ffffff88, transparent 45%),
-    linear-gradient(120deg, var(--cream1), var(--cream2), #fff);
+    linear-gradient(120deg,var(--cream1),var(--cream2),#fff);
   background-size:300% 300%;
   animation:cloudMove 14s ease infinite;
 }
@@ -83,91 +64,67 @@ nav a:hover{color:#000}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.hero h1{
-  font-size:46px;
-  color:var(--purple);
+.event{
+  display:inline-block;
+  background:var(--gold);
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:700;
+  margin-bottom:18px;
 }
-.hero p{
-  max-width:720px;
-  margin:10px auto 0;
-  font-size:18px;
-}
+.hero h1{font-size:46px;color:var(--purple)}
+.hero p{max-width:720px;margin:10px auto;font-size:18px}
 .hero .btns{margin-top:30px}
 
+/* ================= BUTTONS ================= */
 .btn{
-  padding:14px 36px;
-  border-radius:40px;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
+  padding:14px 36px;border-radius:40px;
+  font-weight:700;border:none;cursor:pointer;
   transition:.3s;
 }
 .btn-gold{
   background:var(--gold);
-  color:#000;
 }
 .btn-gold:hover{
   transform:translateY(-4px);
   box-shadow:0 0 22px rgba(212,175,55,.7);
 }
 .btn-outline{
-  background:transparent;
-  border:2px solid var(--gold);
+  background:transparent;border:2px solid var(--gold);
 }
-.btn-outline:hover{
-  background:#fff;
-}
+.btn-outline:hover{background:#fff}
 
 /* ================= SECTIONS ================= */
-.section{
-  padding:80px 20px;
-  text-align:center;
-}
-.section h2{
-  color:var(--purple);
-  margin-bottom:40px;
-}
+.section{padding:80px 20px;text-align:center}
+.section h2{color:var(--purple);margin-bottom:40px}
 
 /* ================= HOW IT WORKS ================= */
 .steps{
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:26px;
 }
 .step{
-  background:#fff;
-  padding:26px;
-  border-radius:22px;
-  border:2px solid var(--gold);
-  font-weight:700;
+  background:#fff;padding:26px;border-radius:22px;
+  border:2px solid var(--gold);font-weight:700;
 }
 
 /* ================= DAILY INSIGHT ================= */
 .insight{
-  max-width:720px;
-  margin:auto;
-  background:#fff;
-  padding:30px;
-  border-radius:22px;
+  max-width:720px;margin:auto;background:#fff;
+  padding:30px;border-radius:22px;
   border-left:6px solid var(--gold);
 }
 
-/* ================= TOOLS ================= */
+/* ================= TOOLS (FREE) ================= */
 .tools-grid{
-  max-width:1000px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-width:1000px;margin:40px auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:24px;
 }
 .tool{
-  background:#fff;
-  border:2px solid var(--gold);
-  border-radius:22px;
-  padding:26px 18px;
-  font-weight:800;
+  background:#fff;border:2px solid var(--gold);
+  border-radius:22px;padding:26px;font-weight:800;
   transition:.3s;
 }
 .tool:hover{
@@ -175,93 +132,54 @@ nav a:hover{color:#000}
   box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 
-/* ================= PRICING ================= */
-.pricing{
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
-}
-.price-card{
-  background:#fff;
-  padding:30px;
-  border-radius:22px;
-  border:2px solid var(--gold);
-}
-.price{
-  font-size:32px;
-  font-weight:800;
-  color:var(--purple);
-}
-
 /* ================= STUDENT LOGIN ================= */
 .login-wrap{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
+  max-width:900px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:center;
 }
 .login-box{
-  background:#fff;
-  padding:32px;
-  border-radius:22px;
+  background:#fff;padding:32px;border-radius:22px;
 }
-.login-box input{
-  width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  border-radius:14px;
-  border:1px solid #ccc;
+
+/* ================= FOUNDER ================= */
+.founder{
+  max-width:1000px;margin:auto;
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:30px;align-items:center;
+  background:#fff;padding:40px;border-radius:22px;
 }
-.login-box input:focus{
-  outline:none;
-  border-color:var(--gold);
+.founder img{
+  width:100%;max-width:260px;border-radius:20px;
 }
 
 /* ================= CONTACT ================= */
 .form{
-  max-width:520px;
-  margin:auto;
-  background:#fff;
-  padding:28px;
-  border-radius:22px;
+  max-width:520px;margin:auto;
+  background:#fff;padding:28px;border-radius:22px;
 }
 .form input,.form textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  border-radius:14px;
-  border:1px solid #ccc;
+  width:100%;padding:14px;margin-bottom:14px;
+  border-radius:14px;border:1px solid #ccc;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  background:#fff;
-  border-top:1px solid #eee;
-  padding:40px 20px;
-  text-align:center;
+  background:#fff;border-top:1px solid #eee;
+  padding:40px 20px;text-align:center;
 }
 .join{
-  display:inline-block;
-  margin-top:14px;
+  display:inline-block;margin-top:14px;
   border:2px solid var(--gold);
-  padding:12px 22px;
-  border-radius:30px;
+  padding:12px 22px;border-radius:30px;
   font-weight:800;
 }
 
 /* ================= WHATSAPP ================= */
 .whatsapp{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:50%;
+  position:fixed;right:20px;bottom:20px;
+  background:#25D366;color:#fff;
+  padding:14px 18px;border-radius:50%;
   animation:pulse 1.5s infinite;
 }
 @keyframes pulse{
@@ -273,7 +191,7 @@ footer{
 @media(max-width:768px){
   nav{display:none}
   .menu-btn{display:block}
-  .login-wrap{grid-template-columns:1fr}
+  .login-wrap,.founder{grid-template-columns:1fr}
   .hero h1{font-size:34px}
 }
 </style>
@@ -290,20 +208,21 @@ footer{
     <nav>
       <a href="#how">How It Works</a>
       <a href="#tools">Tools</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#student">Student</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </div>
   <div id="mobileMenu" class="mobile-menu">
-    <a href="#how">How It Works</a>
-    <a href="#tools">Tools</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+    <a href="#how" onclick="toggleMenu()">How It Works</a>
+    <a href="#tools" onclick="toggleMenu()">Tools</a>
+    <a href="#student" onclick="toggleMenu()">Student</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
 </header>
 
 <section class="hero">
+  <div class="event">📅 Upcoming Event: Live Numerology Workshop</div>
   <h1>Align Your Numbers, Align Your Life</h1>
   <p>Practical numerology guidance for clarity, balance and confident decisions</p>
   <div class="btns">
@@ -325,53 +244,47 @@ footer{
 <section class="section">
   <h2>Today’s Numerology Insight</h2>
   <div class="insight">
-    Today is favourable for planning, correcting mistakes and steady progress.
-    Avoid impulsive decisions and trust structured action.
+    Today is ideal for planning, reflection and correcting small mistakes.
+    Stay patient and trust steady progress.
   </div>
 </section>
 
 <section id="tools" class="section">
   <h2>Free Numerology Tools</h2>
-
-  <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">
-    🔐 Sign in with Google to access tools
-  </button>
-
-  <div class="tool-area" style="display:none">
-    <div class="tools-grid">
-      <div class="tool">📱 Mobile Numerology</div>
-      <div class="tool">✍️ Name Correction</div>
-      <div class="tool">🍀 Lucky Number</div>
-      <div class="tool">📜 Destiny Number</div>
-      <div class="tool">🔮 Personal Year</div>
-      <div class="tool">🏢 Business Name</div>
-    </div>
-    <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
+  <div class="tools-grid">
+    <div class="tool">📱 Mobile Numerology</div>
+    <div class="tool">✍️ Name Correction</div>
+    <div class="tool">🍀 Lucky Number</div>
+    <div class="tool">📜 Destiny Number</div>
+    <div class="tool">🔮 Personal Year</div>
+    <div class="tool">🏢 Business Name</div>
   </div>
 </section>
 
-<section id="pricing" class="section">
-  <h2>Pricing & Packages</h2>
-  <div class="pricing">
-    <div class="price-card"><h3>Quick Check</h3><div class="price">₹499</div></div>
-    <div class="price-card"><h3>Name Correction</h3><div class="price">₹1999</div></div>
-    <div class="price-card"><h3>Business Numerology</h3><div class="price">₹4999</div></div>
-  </div>
-</section>
-
-<section class="section">
+<section id="student" class="section">
   <h2>Student Login</h2>
   <div class="login-wrap">
     <div>
       <h3>Certified Numerology Learning</h3>
-      <p>Access courses, materials and certificates using Gmail login.</p>
+      <p>Login with Gmail to access courses, materials and certificates.</p>
     </div>
     <div class="login-box">
-      <button class="btn btn-gold login-btn" onclick="loginWithGoogle()">Sign in with Google</button>
-      <div class="tool-area" style="display:none">
-        <p><strong>Welcome Student 👋</strong></p>
-        <button class="btn btn-outline" onclick="logoutUser()">Logout</button>
-      </div>
+      <button class="btn btn-gold">Sign in with Google</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Founder – Kasturi Divine</h2>
+  <div class="founder">
+    <img src="founder.png">
+    <div>
+      <h3>Founder Name</h3>
+      <p>
+        Founder of Kasturi Divine with years of experience in practical numerology,
+        name correction and spiritual guidance. Known for ethical,
+        result-oriented and modern approach.
+      </p>
     </div>
   </div>
 </section>
@@ -393,41 +306,6 @@ footer{
 </footer>
 
 <a href="https://wa.me/919736317525" class="whatsapp">💬</a>
-
-<!-- ================= FIREBASE LOGIN ================= -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import {
-  getAuth, GoogleAuthProvider,
-  signInWithPopup, onAuthStateChanged, signOut
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-window.loginWithGoogle = async () => {
-  await signInWithPopup(auth, provider);
-};
-window.logoutUser = async () => {
-  await signOut(auth);
-};
-
-onAuthStateChanged(auth, user=>{
-  document.querySelectorAll(".tool-area").forEach(el=>{
-    el.style.display = user ? "block" : "none";
-  });
-  document.querySelectorAll(".login-btn").forEach(el=>{
-    el.style.display = user ? "none" : "inline-block";
-  });
-});
-</script>
 
 <script>
 function toggleMenu(){
