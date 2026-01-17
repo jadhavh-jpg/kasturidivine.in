@@ -260,6 +260,45 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
 
   window.open(url, "_blank");
 });
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.getElementById("contactForm");
+
+  if (!form) {
+    console.error("Form not found");
+    return;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+    const message = document.getElementById("message").value;
+
+    if (!name || !mobile || !message) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const phone = "919736317525";
+
+    const text =
+      "📩 New Enquiry – Kasturi Divine\n\n" +
+      "Name: " + name + "\n" +
+      "Mobile: " + mobile + "\n" +
+      "Message: " + message;
+
+    const whatsappURL =
+      "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+
+    window.open(whatsappURL, "_blank");
+  });
+
+});
+</script>
+
 </script>
 
 
@@ -390,15 +429,16 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
   <h2>Contact Us</h2>
 
   <form id="contactForm" class="form">
-    <input id="name" placeholder="Name" required>
-    <input id="mobile" placeholder="Mobile" required>
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="tel" id="mobile" placeholder="Mobile" required>
     <textarea id="message" rows="4" placeholder="Message" required></textarea>
 
-    <button type="submit" class="btn btn-gold">Submit</button>
+    <button type="submit" class="btn btn-gold">
+      Submit
+    </button>
   </form>
 </section>
-
-
+  
 <footer>
   <p>Kasturi Divine – Authentic numerology guidance for modern life.</p>
   <a class="join" href="https://chat.whatsapp.com/JyjgJl72hxcDaTGvMe0Ax1">Join WhatsApp Group</a>
