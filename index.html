@@ -500,29 +500,35 @@ function toggleMenu(){
   m.style.display = m.style.display==="block" ? "none" : "block";
 }
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a.whatsapp-button').forEach(function(el) {
-    el.addEventListener("click", function () {
+document.addEventListener("click", function (e) {
+  var el = e.target;
 
-      // GA4 Event
-      if (typeof gtag === "function") {
-        gtag('event', 'whatsapp_click', {
-          event_category: 'engagement',
-          event_label: window.location.pathname
-        });
-      }
+  while (el && el !== document.body) {
+    var cls = (el.className || "").toLowerCase();
+    var href = el.getAttribute && el.getAttribute("href");
 
-      // Facebook Pixel Event
+    if (
+      cls.includes("whatsapp") ||
+      (href && href.includes("wa.me")) ||
+      (href && href.includes("whatsapp"))
+    ) {
+
       if (typeof fbq === "function") {
-        fbq('track', 'Contact', {
-          content_name: 'WhatsApp Floating Button'
-        });
+        fbq('track', 'Contact', { content_name: 'WhatsApp Click' });
       }
 
-    });
-  });
+      if (typeof gtag === "function") {
+        gtag('event', 'whatsapp_click', { event_category: 'engagement' });
+      }
+
+      break;
+    }
+
+    el = el.parentElement;
+  }
 });
 </script>
+
 
 </script>
 
