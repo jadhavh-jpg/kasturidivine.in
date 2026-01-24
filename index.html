@@ -492,7 +492,19 @@ document.addEventListener("DOMContentLoaded", function () {
   <p>© 2026 Kasturi Divine</p>
 </footer>
 
-<a href="https://wa.me/919736317525" class="whatsapp">💬</a>
+<a href="https://wa.me/919736317525"
+   class="whatsapp"
+   onclick="
+     if (typeof fbq === 'function') {
+       fbq('track','Contact',{content_name:'WhatsApp Click'});
+     }
+     if (typeof gtag === 'function') {
+       gtag('event','whatsapp_click',{event_category:'engagement'});
+     }
+   ">
+   💬
+</a>
+
 
 <script>
 function toggleMenu(){
