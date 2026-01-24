@@ -499,9 +499,9 @@ function toggleMenu(){
   const m=document.getElementById("mobileMenu");
   m.style.display = m.style.display==="block" ? "none" : "block";
 }
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(el) {
+  document.querySelectorAll('a.whatsapp-button').forEach(function(el) {
     el.addEventListener("click", function () {
 
       // GA4 Event
@@ -515,7 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Facebook Pixel Event
       if (typeof fbq === "function") {
         fbq('track', 'Contact', {
-          content_name: 'WhatsApp Click'
+          content_name: 'WhatsApp Floating Button'
         });
       }
 
