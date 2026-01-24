@@ -494,23 +494,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <a href="https://wa.me/919736317525"
    class="whatsapp"
+   target="_blank"
    onclick="
-     event.preventDefault();
-
      if (typeof fbq === 'function') {
        fbq('track','Contact',{content_name:'WhatsApp Click'});
      }
-
      if (typeof gtag === 'function') {
        gtag('event','whatsapp_click',{event_category:'engagement'});
      }
-
-     setTimeout(function(){
-       window.location.href='https://wa.me/919736317525';
-     }, 300);
    ">
    💬
 </a>
+
 
 
 
