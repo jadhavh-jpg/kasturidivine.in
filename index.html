@@ -513,10 +513,12 @@ document.addEventListener("click", function (e) {
       (href && href.includes("whatsapp"))
     ) {
 
+      // Facebook Pixel
       if (typeof fbq === "function") {
         fbq('track', 'Contact', { content_name: 'WhatsApp Click' });
       }
 
+      // GA4
       if (typeof gtag === "function") {
         gtag('event', 'whatsapp_click', { event_category: 'engagement' });
       }
@@ -528,6 +530,7 @@ document.addEventListener("click", function (e) {
   }
 });
 </script>
+
 
 
 </script>
