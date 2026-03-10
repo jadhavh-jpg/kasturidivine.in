@@ -561,11 +561,38 @@ document.addEventListener("click", function (e) {
     el = el.parentElement;
   }
 });
+<script>
+
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function openForm(){
+  document.getElementById("webinarForm").style.display = "block";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const form = document.getElementById("registerForm");
+
+  if(form){
+    form.addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      document.getElementById("webinarForm").style.display="none";
+      document.getElementById("webinarDetails").style.display="block";
+
+    });
+  }
+
+});
+
 </script>
 
 
-
-</script>
+<!-- Registration Form Popup -->
 <div id="webinarForm" class="popup">
 
 <div class="popup-content">
@@ -580,18 +607,21 @@ document.addEventListener("click", function (e) {
 
 <input type="tel" placeholder="Mobile Number" required><br><br>
 
-<button type="submit">Register Now</button>
+<button type="submit" class="btn btn-gold">Register Now</button>
 
 </form>
 
 </div>
 
 </div>
-  <div id="webinarDetails" class="popup">
+
+
+<!-- Webinar Poster Popup -->
+<div id="webinarDetails" class="popup">
 
 <div class="popup-content">
 
-<img src="DR SANTOSH SINGH JAKHAR JI.png" width="100%">
+<img src="webinar-poster.png" width="100%">
 
 <p>
 
@@ -604,12 +634,14 @@ DATE: 10/03/2026<br>
 TIME: 08:00 PM<br>
 LOCATION: ZOOM<br><br>
 
-🎤 MENTORS<br>
+🎤 <b>MENTORS</b><br>
 
 MRS. NEITU CHOUDHARY JI<br>
 DR. SANTOSH SINGH JAKHAR JI<br><br>
 
-<a href="https://us06web.zoom.us/j/88327530635?pwd=vgWpMEp8EAEWppUy3Fm8FwEmZ8vXUj.1" target="_blank">
+<a href="https://us06web.zoom.us/j/88327530635?pwd=vgWpMEp8EAEWppUy3Fm8FwEmZ8vXUj.1"
+   target="_blank"
+   class="btn btn-gold">
 
 Join Zoom Meeting
 
@@ -620,28 +652,10 @@ Join Zoom Meeting
 </div>
 
 </div>
-  <script>
 
-function openForm(){
-document.getElementById("webinarForm").style.display="block";
-}
 
-document.addEventListener("DOMContentLoaded", function(){
 
-const form = document.getElementById("registerForm");
 
-if(form){
-form.addEventListener("submit", function(e){
-
-e.preventDefault();
-
-document.getElementById("webinarForm").style.display="none";
-document.getElementById("webinarDetails").style.display="block";
-
-});
-}
-
-});
 
 </script>
 </body>
